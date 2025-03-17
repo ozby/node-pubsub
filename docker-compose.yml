@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # app:
+  #   build: .
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NODE_ENV=production
+  #     - MONGODB_URI=mongodb://mongodb:27017/queue-service
+  #     - PORT=3000
+  #     - JWT_SECRET=change-this-in-production
+  #     - JWT_EXPIRES_IN=1d
+  #     - DEFAULT_RETENTION_PERIOD=14
+  #   depends_on:
+  #     - mongodb
+  #   restart: unless-stopped
+  mongo1:
+    image: mongo:7.0
+    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
+    ports:
+      - 27017:27017
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'host.docker.internal:27017'}]}) }" | mongosh --port 27017 --quiet
+      interval: 5s
+      timeout: 30s
+      start_period: 0s
+      start_interval: 1s
+      retries: 30
+    volumes:
+      - "mongo1_data:/data/db"
+      - "mongo1_config:/data/configdb"
+
+  mongo-express:
+    image: mongo-express:latest
+    platform: linux/arm64/v8  # Specific for M2 Mac
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo1
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=password
+    ports:
+      - "8081:8081"
+    depends_on:
+      mongo1:
+        condition: service_healthy
+
+volumes:
+  mongo1_data:
+  mongo1_config:
