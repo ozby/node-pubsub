@@ -9,7 +9,7 @@ let testEnv: IntegrationTestEnv;
 describe('Message API', () => {
   beforeAll(async () => {
     testEnv = await setupIntegrationTestEnv();
-  });
+  }, 60000);
 
   afterAll(async () => {
     await teardownTestEnv(testEnv);

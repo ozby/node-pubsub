@@ -8,7 +8,7 @@ let testEnv: IntegrationTestEnv;
 
 beforeAll(async () => {
   testEnv = await setupIntegrationTestEnv();
-});
+}, 60000);
 
 afterAll(async () => {
   await teardownTestEnv(testEnv);

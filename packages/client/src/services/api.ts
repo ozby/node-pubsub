@@ -26,7 +26,6 @@ interface ApiResponse<T> {
 }
 
 // Define types that were previously imported from axios
-type AxiosInstance = ReturnType<typeof axios.create>;
 type AxiosRequestConfig = Parameters<typeof axios.create>[0];
 
 class ApiService {

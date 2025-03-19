@@ -3,7 +3,7 @@ import { createTopicController } from '../../controllers/topicController';
 import Topic from '../../models/Topic';
 import Queue from '../../models/Queue';
 import Message from '../../models/Message';
-import { IDecodedToken } from '../../types';
+import { IDecodedToken } from '@ozby-pubsub/types';
 import { Server } from 'socket.io';
 
 jest.mock('../../models/Topic');
@@ -186,7 +186,7 @@ describe('Topic Controller', () => {
       };
       (Queue.findById as jest.Mock).mockResolvedValue(mockQueue);
       
-      await topicController.subscribeTopic(mockRequest as Request, mockResponse as Response, nextFunction);
+      await topicController.subscribeTopic(mockRequest as Request<{ topicId: string }>, mockResponse as Response, nextFunction);
       
       expect(Topic.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439012');
@@ -203,7 +203,7 @@ describe('Topic Controller', () => {
     it('should return 404 if topic not found', async () => {
       (Topic.findById as jest.Mock).mockResolvedValue(null);
       
-      await topicController.subscribeTopic(mockRequest as Request, mockResponse as Response, nextFunction);
+      await topicController.subscribeTopic(mockRequest as Request<{ topicId: string }>, mockResponse as Response, nextFunction);
       
       expect(Topic.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
       expect(Queue.findById).not.toHaveBeenCalled();
@@ -236,7 +236,7 @@ describe('Topic Controller', () => {
       ];
       (Message.create as jest.Mock).mockResolvedValueOnce(mockMessages[0]).mockResolvedValueOnce(mockMessages[1]);
       
-      await topicController.publishToTopic(mockRequest as Request, mockResponse as Response, nextFunction);
+      await topicController.publishToTopic(mockRequest as Request<{ topicId: string }>, mockResponse as Response, nextFunction);
       
       expect(Topic.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
       expect(Queue.find).toHaveBeenCalledWith({ _id: { $in: ['queue1', 'queue2'] } });
@@ -254,7 +254,7 @@ describe('Topic Controller', () => {
     it('should return 404 if topic not found', async () => {
       (Topic.findById as jest.Mock).mockResolvedValue(null);
       
-      await topicController.publishToTopic(mockRequest as Request, mockResponse as Response, nextFunction);
+      await topicController.publishToTopic(mockRequest as Request<{ topicId: string }>, mockResponse as Response, nextFunction);
       
       expect(Topic.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
       expect(Message.create).not.toHaveBeenCalled();
@@ -274,7 +274,7 @@ describe('Topic Controller', () => {
       };
       (Topic.findById as jest.Mock).mockResolvedValue(mockTopic);
       
-      await topicController.publishToTopic(mockRequest as Request, mockResponse as Response, nextFunction);
+      await topicController.publishToTopic(mockRequest as Request<{ topicId: string }>, mockResponse as Response, nextFunction);
       
       expect(Topic.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
       expect(Message.create).not.toHaveBeenCalled();
@@ -294,7 +294,7 @@ describe('Topic Controller', () => {
       };
       (Topic.findById as jest.Mock).mockResolvedValue(mockTopic);
       
-      await topicController.publishToTopic(mockRequest as Request, mockResponse as Response, nextFunction);
+      await topicController.publishToTopic(mockRequest as Request<{ topicId: string }>, mockResponse as Response, nextFunction);
       
       expect(Topic.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
       expect(Message.create).not.toHaveBeenCalled();

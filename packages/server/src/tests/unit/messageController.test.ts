@@ -4,7 +4,7 @@ import { createMessageController } from '../../controllers/messageController';
 import Message from '../../models/Message';
 import Queue from '../../models/Queue';
 import { QueueMetrics } from '../../models/Metrics';
-import { IDecodedToken } from '../../types';
+import { IDecodedToken } from '@ozby-pubsub/types';
 
 jest.mock('../../models/Message');
 jest.mock('../../models/Queue');

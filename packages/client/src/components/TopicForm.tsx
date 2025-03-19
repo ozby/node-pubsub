@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -23,7 +23,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { PlusCircle, Users, Loader2 } from 'lucide-react';
+import { PlusCircle, Users } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 
 // Updated schema to include subscribers

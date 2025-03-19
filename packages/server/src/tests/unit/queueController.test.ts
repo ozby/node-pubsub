@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import * as queueController from '../../controllers/queueController';
 import Queue from '../../models/Queue';
 import { QueueMetrics } from '../../models/Metrics';
-import { IDecodedToken } from '../../types';
+import { IDecodedToken } from '@ozby-pubsub/types';
 
 // Mock dependencies
 jest.mock('../../models/Queue');
@@ -60,7 +60,7 @@ describe('Queue Controller', () => {
       (QueueMetrics.create as jest.Mock).mockResolvedValue({});
       
       // Call controller method
-      await queueController.createQueue(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.createQueue(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.create).toHaveBeenCalledWith({
@@ -85,7 +85,7 @@ describe('Queue Controller', () => {
       (Queue.create as jest.Mock).mockRejectedValue(error);
       
       // Call controller method
-      await queueController.createQueue(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.createQueue(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.create).toHaveBeenCalled();
@@ -108,7 +108,7 @@ describe('Queue Controller', () => {
       (Queue.find as jest.Mock).mockResolvedValue(mockQueues);
       
       // Call controller method
-      await queueController.getQueues(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.getQueues(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.find).toHaveBeenCalledWith({ ownerId: 'test-user' });
@@ -132,7 +132,7 @@ describe('Queue Controller', () => {
       (Queue.find as jest.Mock).mockResolvedValue(mockQueues);
       
       // Call controller method
-      await queueController.getQueues(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.getQueues(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.find).toHaveBeenCalledWith({ 
@@ -159,7 +159,7 @@ describe('Queue Controller', () => {
       (Queue.findById as jest.Mock).mockResolvedValue(mockQueue);
       
       // Call controller method
-      await queueController.getQueue(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.getQueue(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
@@ -176,7 +176,7 @@ describe('Queue Controller', () => {
       (Queue.findById as jest.Mock).mockResolvedValue(null);
       
       // Call controller method
-      await queueController.getQueue(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.getQueue(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
@@ -196,7 +196,7 @@ describe('Queue Controller', () => {
       (Queue.findById as jest.Mock).mockResolvedValue(mockQueue);
       
       // Call controller method
-      await queueController.getQueue(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.getQueue(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
@@ -221,7 +221,7 @@ describe('Queue Controller', () => {
       (Queue.findByIdAndDelete as jest.Mock).mockResolvedValue({});
       
       // Call controller method
-      await queueController.deleteQueue(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.deleteQueue(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
@@ -239,7 +239,7 @@ describe('Queue Controller', () => {
       (Queue.findById as jest.Mock).mockResolvedValue(null);
       
       // Call controller method
-      await queueController.deleteQueue(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.deleteQueue(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
@@ -260,7 +260,7 @@ describe('Queue Controller', () => {
       (Queue.findById as jest.Mock).mockResolvedValue(mockQueue);
       
       // Call controller method
-      await queueController.deleteQueue(mockRequest as Request, mockResponse as Response, nextFunction);
+      await queueController.deleteQueue(mockRequest as Request<{ id: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');

@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running pre-commit hooks..."
+echo "Running lint across all packages..."
+npx lerna run lint
+
+echo "Running tests across all packages..."
+npx lerna run test 

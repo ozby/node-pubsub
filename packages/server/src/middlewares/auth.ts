@@ -4,12 +4,6 @@ import { AppError } from './errorHandler';
 import config from '../config';
 import { IDecodedToken } from '@ozby-pubsub/types';
 
-declare module 'express' {
-  interface Request {
-    user?: IDecodedToken;
-  }
-}
-
 export const authenticate = (req: Request, _res: Response, next: NextFunction): void => {
   try {
     const authHeader = req.headers.authorization;

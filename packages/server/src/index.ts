@@ -13,6 +13,16 @@ import authRoutes from './routes/auth';
 import dashboardRoutes from './routes/dashboard';
 import { errorHandler } from './middlewares/errorHandler';
 import { requestLogger } from './middlewares/requestLogger';
+import { IDecodedToken } from '@ozby-pubsub/types';
+
+declare module 'express' {
+  interface Request {
+    user?: IDecodedToken;
+    id?: string;
+    topicId?: string;
+    queueId?: string;
+  }
+}
 
 const app = express();
 
