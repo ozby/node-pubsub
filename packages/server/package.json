@@ -1,12 +1,13 @@
 {
-  "name": "queue-service",
+  "name": "@ozby-pubsub/server",
   "version": "1.0.0",
-  "description": "A simple queue service similar to SQS or Google PubSub",
+  "description": "A queue system similar to SQS or Google PubSub",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "nodemon --exec ts-node src/index.ts",
+    "dev": "nodemon",
     "build": "tsc",
+    "build:types": "cd ../types && npm run build",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
@@ -31,6 +32,7 @@
     "mongoose": "^8.0.3",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.8.1",
+    "@ozby-pubsub/types": "^1.0.0",
     "uuid": "^9.0.1",
     "winston": "^3.11.0"
   },
@@ -43,7 +45,6 @@
     "@types/jsonwebtoken": "^9.0.9",
     "@types/mongoose": "^5.11.96",
     "@types/node": "^20.10.5",
-    "@types/socket.io": "^3.0.2",
     "@types/socket.io-client": "^1.4.36",
     "@types/supertest": "^2.0.16",
     "@types/uuid": "^9.0.7",
@@ -56,7 +57,7 @@
     "lint-staged": "^15.2.0",
     "nodemon": "^3.0.2",
     "prettier": "^3.1.1",
-    "supertest": "^6.3.3",
+    "supertest": "^6.0.0",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"

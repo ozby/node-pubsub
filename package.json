@@ -1,0 +1,11 @@
+{
+  "name": "ozby-pubsub",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^8.2.1"
+  }
+}

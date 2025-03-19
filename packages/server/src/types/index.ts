@@ -1,3 +1,5 @@
+export * from 'types';
+
 export interface IMessage {
   id: string;
   data: unknown;
