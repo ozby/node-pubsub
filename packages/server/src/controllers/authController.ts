@@ -4,6 +4,7 @@ import User from '../models/User';
 import { AppError } from '../middlewares/errorHandler';
 import config from '../config';
 import logger from '../utils/logger';
+import { LoginCredentials, RegisterCredentials } from '@ozby-pubsub/types';
 
 const generateToken = (userId: string, username: string): string => {
   const payload = { userId, username };
@@ -13,7 +14,7 @@ const generateToken = (userId: string, username: string): string => {
   return jwt.sign(payload, secret, options);
 };
 
-export const register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const register = async (req: Request<object, object, RegisterCredentials>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { username, email, password } = req.body;
 
@@ -44,7 +45,7 @@ export const register = async (req: Request, res: Response, next: NextFunction):
   }
 };
 
-export const login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const login = async (req: Request<object, object, LoginCredentials>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { username, password } = req.body;
 

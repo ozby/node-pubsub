@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { ITopic } from '../types';
+import { ITopic } from '@ozby-pubsub/types';
 
 export interface TopicDocument extends ITopic {}
 

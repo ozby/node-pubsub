@@ -5,13 +5,14 @@ import Message from '../models/Message';
 import { AppError } from '../middlewares/errorHandler';
 import logger from '../utils/logger';
 import { Server } from 'socket.io';
+import { CreateTopicRequest, PublishTopicRequest, SubscribeTopicRequest } from '@ozby-pubsub/types';
 
 export const createTopicController = (io: Server) => {
   return {
-    createTopic: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    createTopic: async (req: Request<object, object, CreateTopicRequest>, res: Response, next: NextFunction): Promise<void> => {
       try {
         const { name } = req.body;
-        const ownerId = req.user?.userId || 'anonymous';
+        const ownerId = req.user?.userId;
 
         const topic = await Topic.create({
           name,
@@ -34,7 +35,7 @@ export const createTopicController = (io: Server) => {
 
     getTopics: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
       try {
-        const ownerId = req.user?.userId || 'anonymous';
+        const ownerId = req.user?.userId;
         const topics = await Topic.find({ ownerId });
 
         res.status(200).json({
@@ -52,14 +53,13 @@ export const createTopicController = (io: Server) => {
     getTopic: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
       try {
         const { id } = req.params;
-        
         const topic = await Topic.findById(id);
 
         if (!topic) {
           throw new AppError('Topic not found', 404);
         }
 
-        const ownerId = req.user?.userId || 'anonymous';
+        const ownerId = req.user?.userId;
         if (topic.ownerId !== ownerId) {
           throw new AppError('Not authorized to access this topic', 403);
         }
@@ -75,11 +75,11 @@ export const createTopicController = (io: Server) => {
       }
     },
 
-    subscribeTopic: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    subscribeTopic: async (req: Request<{ topicId: string }, object, SubscribeTopicRequest>, res: Response, next: NextFunction): Promise<void> => {
       try {
         const { topicId } = req.params;
         const { queueId } = req.body;
-        
+
         const topic = await Topic.findById(topicId);
         if (!topic) {
           throw new AppError('Topic not found', 404);
@@ -90,7 +90,7 @@ export const createTopicController = (io: Server) => {
           throw new AppError('Queue not found', 404);
         }
 
-        const ownerId = req.user?.userId || 'anonymous';
+        const ownerId = req.user?.userId;
         if (topic.ownerId !== ownerId) {
           throw new AppError('Not authorized to modify this topic', 403);
         }
@@ -115,17 +115,17 @@ export const createTopicController = (io: Server) => {
       }
     },
 
-    publishToTopic: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    publishToTopic: async (req: Request<{ topicId: string }, object, PublishTopicRequest>, res: Response, next: NextFunction): Promise<void> => {
       try {
         const { topicId } = req.params;
         const { data } = req.body;
-        
+
         const topic = await Topic.findById(topicId);
         if (!topic) {
           throw new AppError('Topic not found', 404);
         }
 
-        const ownerId = req.user?.userId || 'anonymous';
+        const ownerId = req.user?.userId;
         if (topic.ownerId !== ownerId) {
           throw new AppError('Not authorized to publish to this topic', 403);
         }
@@ -145,7 +145,7 @@ export const createTopicController = (io: Server) => {
             data,
             queueId: queue.id,
             expiresAt: expirationDate,
-            visible: true,
+            received: false,
             receivedCount: 0,
           });
 
@@ -164,6 +164,32 @@ export const createTopicController = (io: Server) => {
           data: {
             messages,
           },
+        });
+      } catch (error) {
+        next(error);
+      }
+    },
+
+    deleteTopic: async (req: Request<{ id: string }>, res: Response, next: NextFunction): Promise<void> => {
+      try {
+        const { id } = req.params;
+        const topic = await Topic.findById(id);
+
+        if (!topic) {
+          throw new AppError(`Topic not found with ID: ${id}`, 404);
+        }
+
+        const ownerId = req.user?.userId;
+        if (topic.ownerId !== ownerId) {
+          throw new AppError('Not authorized to delete this topic', 403);
+        }
+
+        await Topic.findByIdAndDelete(id);
+        logger.info(`Topic deleted: ${id}`);
+
+        res.status(204).json({
+          status: 'success',
+          data: null,
         });
       } catch (error) {
         next(error);

@@ -20,7 +20,7 @@ export const getServerMetrics = async (req: Request, res: Response, next: NextFu
 
     const totalQueues = await Queue.countDocuments();
     const totalMessages = await Message.countDocuments();
-    const activeMessages = await Message.countDocuments({ visible: true });
+    const activeMessages = await Message.countDocuments({ received: true });
 
     res.status(200).json({
       status: 'success',
@@ -38,7 +38,7 @@ export const getServerMetrics = async (req: Request, res: Response, next: NextFu
   }
 };
 
-export const getQueueMetrics = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getQueueMetrics = async (req: Request<{ queueId: string }>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { queueId } = req.params;
 
@@ -47,7 +47,7 @@ export const getQueueMetrics = async (req: Request, res: Response, next: NextFun
       throw new AppError('Queue not found', 404);
     }
 
-    const ownerId = req.user?.userId || 'anonymous';
+    const ownerId = req.user?.userId;
     if (queue.ownerId !== ownerId) {
       throw new AppError('Not authorized to access this queue', 403);
     }
@@ -64,8 +64,8 @@ export const getQueueMetrics = async (req: Request, res: Response, next: NextFun
     }
 
     const totalMessages = await Message.countDocuments({ queueId });
-    const activeMessages = await Message.countDocuments({ queueId, visible: true });
-    const oldestMessage = await Message.findOne({ queueId, visible: true }).sort({ createdAt: 1 });
+    const activeMessages = await Message.countDocuments({ queueId, received: true });
+    const oldestMessage = await Message.findOne({ queueId, received: true }).sort({ createdAt: 1 });
     const newestMessage = await Message.findOne({ queueId }).sort({ createdAt: -1 });
 
     res.status(200).json({
@@ -87,7 +87,7 @@ export const getQueueMetrics = async (req: Request, res: Response, next: NextFun
 
 export const getAllQueueMetrics = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const ownerId = req.user?.userId || 'anonymous';
+    const ownerId = req.user?.userId;
     
     const queues = await Queue.find({ ownerId });
     const queueIds = queues.map(queue => queue.id);

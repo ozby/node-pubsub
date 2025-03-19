@@ -37,6 +37,19 @@ export const createTopicRouter = (io: Server) => {
     topicController.getTopic
   );
 
+  router.delete(
+    '/:id',
+    [
+      param('id')
+        .isMongoId().withMessage('Invalid Topic ID format'),
+    ],
+    validate([
+      param('id')
+        .isMongoId().withMessage('Invalid Topic ID format'),
+    ]),
+    topicController.deleteTopic
+  );
+
   router.post(
     '/:topicId/subscribe',
     [

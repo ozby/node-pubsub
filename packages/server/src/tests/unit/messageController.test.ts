@@ -138,7 +138,7 @@ describe('Message Controller', () => {
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
       expect(Message.find).toHaveBeenCalledWith({
         queueId: '507f1f77bcf86cd799439011',
-        visible: true
+        received: false
       });
       expect(mockMessageFind.limit).toHaveBeenCalledWith(2);
       expect(Message.updateMany).toHaveBeenCalled();

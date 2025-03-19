@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { AppError } from './errorHandler';
 import config from '../config';
-import { IDecodedToken } from '../types';
+import { IDecodedToken } from '@ozby-pubsub/types';
 
 declare module 'express' {
   interface Request {

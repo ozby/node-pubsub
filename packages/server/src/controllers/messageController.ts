@@ -2,14 +2,13 @@ import { Request, Response, NextFunction } from 'express';
 import Message from '../models/Message';
 import Queue from '../models/Queue';
 import { AppError } from '../middlewares/errorHandler';
-import { QueueMetrics } from '../models/Metrics';
 import config from '../config';
 import logger from '../utils/logger';
 import { Server } from 'socket.io';
-
+import { SendMessageRequest } from '@ozby-pubsub/types';
 export const createMessageController = (io: Server) => {
   return {
-    sendMessage: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    sendMessage: async (req: Request<{ queueId: string }, object, SendMessageRequest>, res: Response, next: NextFunction): Promise<void> => {
       try {
         const { queueId } = req.params;
         const { data } = req.body;
@@ -26,20 +25,9 @@ export const createMessageController = (io: Server) => {
           data,
           queueId,
           expiresAt: expirationDate,
-          visible: true,
+          received: false,
           receivedCount: 0,
         });
-
-        await QueueMetrics.findOneAndUpdate(
-          { queueId },
-          {
-            $inc: {
-              messageCount: 1,
-              messagesSent: 1,
-            },
-          },
-          { new: true }
-        );
 
         logger.info(`Message sent to queue ${queueId}: ${message.id}`);
 
@@ -58,7 +46,7 @@ export const createMessageController = (io: Server) => {
       }
     },
 
-    receiveMessages: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    receiveMessages: async (req: Request<{ queueId: string }, object, object, { maxMessages?: number, visibilityTimeout?: number }>, res: Response, next: NextFunction): Promise<void> => {
       try {
         const { queueId } = req.params;
         const { maxMessages = 10, visibilityTimeout = config.visibilityTimeout } = req.query;
@@ -70,7 +58,7 @@ export const createMessageController = (io: Server) => {
 
         const messages = await Message.find({
           queueId,
-          visible: true,
+          received: false,
         }).limit(Number(maxMessages));
 
         if (messages.length === 0) {
@@ -84,27 +72,17 @@ export const createMessageController = (io: Server) => {
           return;
         }
 
-        const visibleAt = new Date();
-        visibleAt.setSeconds(visibleAt.getSeconds() + Number(visibilityTimeout));
+        const receivedAt = new Date();
+        receivedAt.setSeconds(receivedAt.getSeconds() + Number(visibilityTimeout));
 
         const messageIds = messages.map(message => message.id);
         await Message.updateMany(
           { _id: { $in: messageIds } },
           {
-            visible: false,
-            visibleAt,
+            received: false,
+            receivedAt,
             $inc: { receivedCount: 1 },
           }
-        );
-
-        await QueueMetrics.findOneAndUpdate(
-          { queueId },
-          {
-            $inc: {
-              messagesReceived: messages.length,
-            },
-          },
-          { new: true }
         );
 
         logger.info(`${messages.length} messages received from queue ${queueId}`);
@@ -122,7 +100,7 @@ export const createMessageController = (io: Server) => {
       }
     },
 
-    deleteMessage: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    deleteMessage: async (req: Request<{ queueId: string, messageId: string }>, res: Response, next: NextFunction): Promise<void> => {
       try {
         const { queueId, messageId } = req.params;
 
@@ -138,16 +116,6 @@ export const createMessageController = (io: Server) => {
 
         await Message.findByIdAndDelete(messageId);
 
-        await QueueMetrics.findOneAndUpdate(
-          { queueId },
-          {
-            $inc: {
-              messageCount: -1,
-            },
-          },
-          { new: true }
-        );
-
         logger.info(`Message ${messageId} deleted from queue ${queueId}`);
 
         res.status(204).json({
@@ -159,7 +127,7 @@ export const createMessageController = (io: Server) => {
       }
     },
 
-    getMessage: async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    getMessage: async (req: Request<{ queueId: string, messageId: string }>, res: Response, next: NextFunction): Promise<void> => {
       try {
         const { queueId, messageId } = req.params;
         const message = await Message.findOne({ _id: messageId, queueId });

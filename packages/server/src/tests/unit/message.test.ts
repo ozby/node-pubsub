@@ -33,7 +33,7 @@ describe('Message Model', () => {
     expect(message).toBeDefined();
     expect(message.data).toEqual(messageData.data);
     expect(message.queueId).toBe(messageData.queueId);
-    expect(message.visible).toBe(true);
+    expect(message.received).toBe(false);
     expect(message.receivedCount).toBe(0);
   });
 
@@ -79,8 +79,8 @@ describe('Message Model', () => {
 
     const message = await Message.create(messageData);
     
-    expect(message.visible).toBe(true);
+    expect(message.received).toBe(false);
     expect(message.receivedCount).toBe(0);
-    expect(message.visibleAt).toBeNull();
+    expect(message.receivedAt).toBeNull();
   });
 }); 

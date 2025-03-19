@@ -1,8 +1,8 @@
 import mongoose, { Schema } from 'mongoose';
-import { IMessage } from '../types';
-import config from '../config';
+import { IMessage } from '@ozby-pubsub/types';
+import { QueueMetrics } from './Metrics';
 
-export interface MessageDocument extends IMessage {}
+export interface MessageDocument extends IMessage { }
 
 const MessageSchema = new Schema<IMessage>(
   {
@@ -15,12 +15,12 @@ const MessageSchema = new Schema<IMessage>(
       required: true,
       index: true,
     },
-    visible: {
+    received: {
       type: Boolean,
-      default: true,
+      default: false,
       index: true,
     },
-    visibleAt: {
+    receivedAt: {
       type: Date,
       default: null,
     },
@@ -47,14 +47,48 @@ const MessageSchema = new Schema<IMessage>(
   }
 );
 
-
-MessageSchema.pre('save', async function (next) {
-  if (this.isNew) {
-    const expirationDate = new Date();
-    expirationDate.setDate(expirationDate.getDate() + config.defaultRetentionPeriod);
-    this.expiresAt = expirationDate;
+MessageSchema.post('save', async function (doc: any) {
+  const isNew = doc.createdAt === doc.updatedAt;
+  if (isNew) {
+    await QueueMetrics.findOneAndUpdate(
+      { queueId: doc.queueId },
+      {
+        $inc: {
+          messageCount: 1,
+          messagesSent: 1,
+        },
+      },
+      { upsert: true, new: true }
+    );
   }
-  next();
+});
+
+MessageSchema.post('findOneAndUpdate', async function (doc) {
+  if (doc && doc.received && doc.receivedCount === 1) {
+    await QueueMetrics.findOneAndUpdate(
+      { queueId: doc.queueId },
+      {
+        $inc: {
+          messagesReceived: 1,
+        },
+      },
+      { new: true }
+    );
+  }
+});
+
+MessageSchema.post('findOneAndDelete', async function (doc) {
+  if (doc) {
+    await QueueMetrics.findOneAndUpdate(
+      { queueId: doc.queueId },
+      {
+        $inc: {
+          messageCount: -1,
+        },
+      },
+      { new: true }
+    );
+  }
 });
 
 export default mongoose.model<MessageDocument>('Message', MessageSchema); 

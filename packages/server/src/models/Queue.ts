@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { IQueue } from '../types';
+import { IQueue } from '@ozby-pubsub/types';
 import config from '../config';
 
 export interface QueueDocument extends IQueue {}

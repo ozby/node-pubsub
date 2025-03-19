@@ -3,11 +3,12 @@ import Queue from '../models/Queue';
 import { AppError } from '../middlewares/errorHandler';
 import { QueueMetrics } from '../models/Metrics';
 import logger from '../utils/logger';
+import { CreateQueueRequest } from '@ozby-pubsub/types';
 
-export const createQueue = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const createQueue = async (req: Request<object, object, CreateQueueRequest>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { name, retentionPeriod, schema, pushEndpoint } = req.body;
-    const ownerId = req.user?.userId || 'anonymous';
+    const ownerId = req.user?.userId;
 
     const queue = await Queue.create({
       name,
@@ -38,7 +39,7 @@ export const createQueue = async (req: Request, res: Response, next: NextFunctio
   }
 };
 
-export const getQueues = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getQueues = async (req: Request<object, object, object, { name?: string }>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { name } = req.query;
     const filter: any = {};
@@ -65,7 +66,7 @@ export const getQueues = async (req: Request, res: Response, next: NextFunction)
   }
 };
 
-export const getQueue = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getQueue = async (req: Request<{ id: string }>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
     
@@ -89,7 +90,7 @@ export const getQueue = async (req: Request, res: Response, next: NextFunction):
   }
 };
 
-export const deleteQueue = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const deleteQueue = async (req: Request<{ id: string }>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
     

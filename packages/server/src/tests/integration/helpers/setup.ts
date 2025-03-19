@@ -17,7 +17,6 @@ import { createTopicRouter } from '../../../routes/topic';
 import { createMessageRouter } from '../../../routes/message';
 import { errorHandler } from '../../../middlewares/errorHandler';
 import config from '../../../config';
-import logger from '../../../utils/logger';
 
 export interface IntegrationTestEnv {
   mongoServer: MongoMemoryServer;
@@ -47,7 +46,6 @@ export const setupIntegrationTestEnv = async (): Promise<IntegrationTestEnv> => 
   app.use(helmet());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  logger.transports.forEach((t) => (t.silent = true));
 
   const user = await User.create({
     username: 'testuser',
