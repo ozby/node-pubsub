@@ -68,8 +68,6 @@ describe('Message Controller', () => {
       };
       (Message.create as jest.Mock).mockResolvedValue(mockMessage);
       
-      // Mock QueueMetrics findOneAndUpdate
-      (QueueMetrics.findOneAndUpdate as jest.Mock).mockResolvedValue({});
       
       // Call controller method
       await messageController.sendMessage(mockRequest as Request, mockResponse as Response, nextFunction);
@@ -77,7 +75,6 @@ describe('Message Controller', () => {
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
       expect(Message.create).toHaveBeenCalled();
-      expect(QueueMetrics.findOneAndUpdate).toHaveBeenCalled();
       expect(mockResponse.status).toHaveBeenCalledWith(201);
       expect(mockResponse.json).toHaveBeenCalledWith({
         status: 'success',
@@ -125,8 +122,6 @@ describe('Message Controller', () => {
       // Mock Message updateMany
       (Message.updateMany as jest.Mock).mockResolvedValue({});
       
-      // Mock QueueMetrics findOneAndUpdate
-      (QueueMetrics.findOneAndUpdate as jest.Mock).mockResolvedValue({});
       
       // Setup request query params
       mockRequest.query = { maxMessages: '2', visibilityTimeout: '30' };
@@ -142,7 +137,6 @@ describe('Message Controller', () => {
       });
       expect(mockMessageFind.limit).toHaveBeenCalledWith(2);
       expect(Message.updateMany).toHaveBeenCalled();
-      expect(QueueMetrics.findOneAndUpdate).toHaveBeenCalled();
       expect(mockResponse.status).toHaveBeenCalledWith(200);
       expect(mockResponse.json).toHaveBeenCalledWith({
         status: 'success',

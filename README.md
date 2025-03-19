@@ -50,3 +50,40 @@ npx lerna publish
 - [Lerna Documentation](https://lerna.js.org/)
 - [npm Workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces)
 
+## CI/CD Workflow
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+### Automated Checks
+
+- **Linting**: All packages are linted using the configured ESLint rules
+- **Testing**: All packages' tests are run automatically
+
+### When Checks Run
+
+- On push to main, master, and develop branches
+- On all pull requests to these branches
+- Manually via workflow dispatch
+
+### Pre-commit Hooks
+
+This repository also uses Husky to run linting and tests locally before commits:
+
+```bash
+# This runs automatically on git commit
+npx lerna run lint
+npx lerna run test
+```
+
+You can bypass hooks if necessary using:
+
+```bash
+git commit -m "Your message" --no-verify
+```
+
+### GitHub Actions Workflows
+
+- `ci.yml` - Main CI workflow that runs lint and test for all packages
+- `pr-feedback.yml` - Provides detailed lint results as PR comments
+- `test-feedback.yml` - Provides detailed test results as PR comments
+

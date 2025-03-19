@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'npm'
+
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+
+    - name: Cache node modules
+      uses: actions/cache@v3
+      id: npm-cache
+      with:
+        path: |
+          ${{ steps.npm-cache-dir.outputs.dir }}
+          **/node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Lint
+      id: lint
+      run: npx lerna run lint
+      continue-on-error: true
+      
+    - name: Test
+      id: test
+      run: npx lerna run test
+      continue-on-error: true
+      
+    - name: Check Results
+      if: steps.lint.outcome == 'failure' || steps.test.outcome == 'failure'
+      run: |
+        echo "Lint status: ${{ steps.lint.outcome }}"
+        echo "Test status: ${{ steps.test.outcome }}"
+        exit 1 

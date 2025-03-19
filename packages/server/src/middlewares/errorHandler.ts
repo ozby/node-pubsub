@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import logger from '../utils/logger';
 
 export class AppError extends Error {
@@ -17,7 +17,6 @@ export const errorHandler = (
   err: Error | AppError,
   _req: Request,
   res: Response,
-  _next: NextFunction
 ): void => {
   let statusCode = 500;
   let message = 'Internal Server Error';
