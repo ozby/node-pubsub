@@ -1,89 +1,40 @@
-# Lerna Monorepo
+# Turborepo kitchen sink starter
 
-This is a JavaScript/TypeScript monorepo managed with [Lerna](https://lerna.js.org/), using modern workspace management.
+This Turborepo starter is maintained by the Turborepo core team.
 
-## Project Structure
+This example also shows how to use [Workspace Configurations](https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces).
 
-This monorepo contains multiple packages that are managed together. The packages are located in the `packages/` directory.
+## Using this example
 
-## Installation
+Run the following command:
 
-This project uses modern workspace management (Lerna v7+) which no longer requires the legacy `bootstrap` command.
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v14 or later recommended)
-- npm (v7 or later) or Yarn (v1.22 or later)
-
-### Installing Dependencies
-
-#### Using npm workspaces (recommended)
-
-```bash
-npm install
-npx lerna run dev
+```sh
+npx create-turbo@latest -e kitchen-sink
 ```
 
-The command will:
-- Install all dependencies for all packages
-- Automatically link any cross-dependencies between packages
-- Create the appropriate node_modules structure
-- Start all packages in dev mode
+## What's inside?
 
+This Turborepo includes the following packages and apps:
 
-to build all packages:
+### Apps and Packages
 
-```bash
-npx lerna run build
-```
+- `api`: an [Express](https://expressjs.com/) server
+- `storefront`: a [Next.js](https://nextjs.org/) app
+- `admin`: a [Vite](https://vitejs.dev/) single page app
+- `blog`: a [Remix](https://remix.run/) blog
+- `@repo/eslint-config`: ESLint configurations used throughout the monorepo
+- `@repo/jest-presets`: Jest configurations
+- `@repo/logger`: isomorphic logger (a small wrapper around console.log)
+- `@repo/ui`: a dummy React UI library (which contains `<CounterButton>` and `<Link>` components)
+- `@repo/typescript-config`: tsconfig.json's used throughout the monorepo
 
-## Publishing
+Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-To publish packages to npm:
+### Utilities
 
-```bash
-npx lerna publish
-```
+This Turborepo has some additional tools already setup for you:
 
-## Additional Resources
-
-- [Lerna Documentation](https://lerna.js.org/)
-- [npm Workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces)
-
-## CI/CD Workflow
-
-This project uses GitHub Actions for continuous integration and deployment:
-
-### Automated Checks
-
-- **Linting**: All packages are linted using the configured ESLint rules
-- **Testing**: All packages' tests are run automatically
-
-### When Checks Run
-
-- On push to main, master, and develop branches
-- On all pull requests to these branches
-- Manually via workflow dispatch
-
-### Pre-commit Hooks
-
-This repository also uses Husky to run linting and tests locally before commits:
-
-```bash
-# This runs automatically on git commit
-npx lerna run lint
-npx lerna run test
-```
-
-You can bypass hooks if necessary using:
-
-```bash
-git commit -m "Your message" --no-verify
-```
-
-### GitHub Actions Workflows
-
-- `ci.yml` - Main CI workflow that runs lint and test for all packages
-- `pr-feedback.yml` - Provides detailed lint results as PR comments
-- `test-feedback.yml` - Provides detailed test results as PR comments
-
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Jest](https://jestjs.io) test runner for all things JavaScript
+- [Prettier](https://prettier.io) for code formatting
