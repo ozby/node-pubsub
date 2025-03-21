@@ -8,7 +8,8 @@
     "JWT_SECRET",
     "JWT_EXPIRES_IN",
     "DEFAULT_RETENTION_PERIOD",
-    "CORS_ORIGIN"
+    "CORS_ORIGIN",
+    "JEST_WORKER_ID"
   ],
   "tasks": {
     "build": {

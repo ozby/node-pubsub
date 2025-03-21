@@ -1,5 +1,5 @@
 {
-  "name": "kitchen-sink",
+  "name": "ozbys-node-pubsub",
   "private": true,
   "scripts": {
     "build": "turbo run build",

@@ -1,6 +1,6 @@
 # Node PubSub Dashboard
 
-A Turborepo project that provides a dashboard for managing Google Cloud Pub/Sub topics and subscriptions.
+A Turborepo project that provides a PubSub and corresponding managing dashboard.
 
 ## Getting Started
 
@@ -108,3 +108,31 @@ pnpm --filter=client add @repo/ui@workspace:*
 ## License
 
 MIT
+
+## Testing
+
+### Running All Tests
+
+```sh
+# Run all tests in the repo
+pnpm test
+
+# Run tests for a specific package or app
+pnpm --filter=server test
+pnpm --filter=client test
+```
+
+### Running Specific Tests
+
+```sh
+# Run a specific test file in an app or package
+pnpm --filter=server test src/tests/integration/dashboard.test.ts
+
+# Run tests with Jest options
+pnpm --filter=server test -- src/tests/integration/dashboard.test.ts --watch
+
+# Run a specific test by name
+pnpm --filter=server test src/tests/integration/dashboard.test.ts -t "should return server metrics"
+```
+
+These commands can be run from the root of the monorepo, so you don't need to change directories.

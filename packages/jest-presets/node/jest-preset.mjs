@@ -14,6 +14,10 @@ const config = {
   testMatch: [
     "**/tests/**/*.[jt]s?(x)"
   ],
+  testPathIgnorePatterns: [
+    "<rootDir>/src/tests/integration/helpers/"
+  ],
 };
 
 export default config;
+
