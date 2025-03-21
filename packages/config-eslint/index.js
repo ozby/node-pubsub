@@ -19,6 +19,7 @@ export const config = [
     },
     rules: {
       "turbo/no-undeclared-env-vars": "warn",
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   },
   {
@@ -28,5 +29,12 @@ export const config = [
   },
   {
     ignores: ["dist/**"],
+  },
+  // Add overrides for test files
+  {
+    files: ["**/*.test.ts", "**/*.test.tsx", "**/tests/**/*.ts", "**/tests/**/*.tsx"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
   },
 ];

@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from '@repo/ui/components';
 import { Input } from '@repo/ui/components';
-import { CreateTopicRequest } from '@ozby-pubsub/types';
+import { CreateTopicRequest } from '@repo/types';
 import {
   Dialog,
   DialogContent,

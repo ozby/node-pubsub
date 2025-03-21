@@ -16,7 +16,7 @@ import {
   RegisterCredentials,
   SendMessageRequest,
   SubscribeTopicRequest
-} from '@ozby-pubsub/types';
+} from '@repo/types';
 import { toast } from 'sonner';
 
 // Define types for API responses

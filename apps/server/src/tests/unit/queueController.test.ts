@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import * as queueController from '../../controllers/queueController';
 import Queue from '../../models/Queue';
 import { QueueMetrics } from '../../models/Metrics';
-import { IDecodedToken } from '@ozby-pubsub/types';
+import { IDecodedToken } from '@repo/types';
 
 // Mock dependencies
 jest.mock('../../models/Queue');

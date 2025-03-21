@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import apiService from '@/services/api';
-import { PublishTopicRequest, SubscribeTopicRequest } from '@ozby-pubsub/types';
-import { ITopic, IQueue } from '@ozby-pubsub/types';
+import { PublishTopicRequest, SubscribeTopicRequest } from '@repo/types';
+import { ITopic, IQueue } from '@repo/types';
 import NavBar from '@/components/NavBar';
 import Sidebar from '@/components/Sidebar';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@repo/ui/components';

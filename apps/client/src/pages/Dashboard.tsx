@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Activity, ArrowRight, Hash, List, SendHorizontal } from 'lucide-react';
 import apiService from '@/services/api';
-import { CreateQueueRequest, CreateTopicRequest, SubscribeTopicRequest } from '@ozby-pubsub/types';
+import { CreateQueueRequest, CreateTopicRequest, SubscribeTopicRequest } from '@repo/types';
 import {
   IQueue,
   IQueueMetrics,
   IServerMetrics,
   ITopic,
-} from '@ozby-pubsub/types';
+} from '@repo/types';
 import NavBar from '@/components/NavBar';
 import Sidebar from '@/components/Sidebar';
 import MetricsCard from '@/components/MetricsCard';

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Activity } from 'lucide-react';
 import apiService from '@/services/api';
-import { IServerMetrics } from '@ozby-pubsub/types';
+import { IServerMetrics } from '@repo/types';
 import NavBar from '@/components/NavBar';
 import Sidebar from '@/components/Sidebar';
 import ServerMetricsComponent from '@/components/ServerMetrics';

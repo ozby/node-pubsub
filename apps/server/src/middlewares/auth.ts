@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { AppError } from './errorHandler';
 import config from '../config';
-import { IDecodedToken } from '@ozby-pubsub/types';
+import { IDecodedToken } from '@repo/types';
 
 export const authenticate = (req: Request, _res: Response, next: NextFunction): void => {
   try {

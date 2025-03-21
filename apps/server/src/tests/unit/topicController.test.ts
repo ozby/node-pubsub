@@ -3,7 +3,7 @@ import { createTopicController } from '../../controllers/topicController';
 import Topic from '../../models/Topic';
 import Queue from '../../models/Queue';
 import Message from '../../models/Message';
-import { IDecodedToken } from '@ozby-pubsub/types';
+import { IDecodedToken } from '@repo/types';
 import { Server } from 'socket.io';
 
 jest.mock('../../models/Topic');

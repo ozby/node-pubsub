@@ -14,7 +14,7 @@ import {
 } from '@repo/ui/components';
 import { Input } from '@repo/ui/components';
 import { Textarea } from '@repo/ui/components';
-import { CreateQueueRequest } from '@ozby-pubsub/types';
+import { CreateQueueRequest } from '@repo/types';
 import {
   Dialog,
   DialogContent,

@@ -3,7 +3,7 @@
 
 echo "Running pre-commit hooks..."
 echo "Running lint across all packages..."
-npx lerna run lint
+pnpm lint
 
 echo "Running tests across all packages..."
-npx lerna run test 
+pnpm test 

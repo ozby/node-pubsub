@@ -5,8 +5,17 @@ import { AppError } from '../middlewares/errorHandler';
 import config from '../config';
 import logger from '../utils/logger';
 import { Server } from 'socket.io';
-import { SendMessageRequest } from '@ozby-pubsub/types';
-export const createMessageController = (io: Server) => {
+import { SendMessageRequest } from '@repo/types';
+
+
+export interface MessageController {
+  sendMessage: (req: Request<{ queueId: string }>, res: Response, next: NextFunction) => Promise<void>;
+  receiveMessages: (req: Request<{ queueId: string }, object, object, { maxMessages?: number, visibilityTimeout?: number }>, res: Response, next: NextFunction) => Promise<void>;
+  deleteMessage: (req: Request<{ queueId: string, messageId: string }>, res: Response, next: NextFunction) => Promise<void>;
+  getMessage: (req: Request<{ queueId: string, messageId: string }>, res: Response, next: NextFunction) => Promise<void>;
+}
+
+export const createMessageController = (io: Server): MessageController => {
   return {
     sendMessage: async (req: Request<{ queueId: string }, object, SendMessageRequest>, res: Response, next: NextFunction): Promise<void> => {
       try {

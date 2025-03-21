@@ -5,7 +5,7 @@ import Message from '../models/Message';
 import { AppError } from '../middlewares/errorHandler';
 import logger from '../utils/logger';
 import { Server } from 'socket.io';
-import { CreateTopicRequest, PublishTopicRequest, SubscribeTopicRequest } from '@ozby-pubsub/types';
+import { CreateTopicRequest, PublishTopicRequest, SubscribeTopicRequest } from '@repo/types';
 
 export const createTopicController = (io: Server) => {
   return {

@@ -20,34 +20,37 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18
-        cache: 'npm'
 
-    - name: Get npm cache directory
-      id: npm-cache-dir
-      run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-
-    - name: Cache node modules
-      uses: actions/cache@v3
-      id: npm-cache
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
       with:
-        path: |
-          ${{ steps.npm-cache-dir.outputs.dir }}
-          **/node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        version: 8.15.6
+
+    - name: Get pnpm store directory
+      id: pnpm-cache
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+    - name: Cache pnpm modules
+      uses: actions/cache@v3
+      with:
+        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-node-
+          ${{ runner.os }}-pnpm-store-
 
     - name: Install Dependencies
-      run: npm install
+      run: pnpm install
 
     - name: Lint
       id: lint
-      run: npx lerna run lint
+      run: pnpm lint
       continue-on-error: true
       
     - name: Test
       id: test
-      run: npx lerna run test
+      run: pnpm test
       continue-on-error: true
       
     - name: Check Results

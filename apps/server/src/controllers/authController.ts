@@ -4,7 +4,7 @@ import User from '../models/User';
 import { AppError } from '../middlewares/errorHandler';
 import config from '../config';
 import logger from '../utils/logger';
-import { LoginCredentials, RegisterCredentials } from '@ozby-pubsub/types';
+import { LoginCredentials, RegisterCredentials } from '@repo/types';
 
 const generateToken = (userId: string, username: string): string => {
   const payload = { userId, username };

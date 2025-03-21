@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import apiService from '@/services/api';
-import { IQueue, IQueueMetrics, IMessage } from '@ozby-pubsub/types';
-import { SendMessageRequest } from '@ozby-pubsub/types';
+import { IQueue, IQueueMetrics, IMessage } from '@repo/types';
+import { SendMessageRequest } from '@repo/types';
 import NavBar from '@/components/NavBar';
 import Sidebar from '@/components/Sidebar';
 import MessageList from '@/components/MessageList';

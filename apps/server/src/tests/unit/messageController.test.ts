@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
 import { Server } from 'socket.io';
-import { createMessageController } from '../../controllers/messageController';
+import { createMessageController, MessageController } from '../../controllers/messageController';
 import Message from '../../models/Message';
 import Queue from '../../models/Queue';
-import { QueueMetrics } from '../../models/Metrics';
-import { IDecodedToken } from '@ozby-pubsub/types';
+import { IDecodedToken } from '@repo/types';
 
 jest.mock('../../models/Message');
 jest.mock('../../models/Queue');
@@ -16,7 +15,7 @@ describe('Message Controller', () => {
   let mockResponse: Partial<Response>;
   let nextFunction: jest.Mock;
   let mockIo: jest.Mocked<Server>;
-  let messageController: any;
+  let messageController: MessageController;
 
   beforeEach(() => {
     // Reset mocks
@@ -70,7 +69,7 @@ describe('Message Controller', () => {
       
       
       // Call controller method
-      await messageController.sendMessage(mockRequest as Request, mockResponse as Response, nextFunction);
+      await messageController.sendMessage(mockRequest as Request<{ queueId: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
@@ -88,7 +87,7 @@ describe('Message Controller', () => {
       (Queue.findById as jest.Mock).mockResolvedValue(null);
       
       // Call controller method
-      await messageController.sendMessage(mockRequest as Request, mockResponse as Response, nextFunction);
+      await messageController.sendMessage(mockRequest as Request<{ queueId: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');
@@ -127,7 +126,7 @@ describe('Message Controller', () => {
       mockRequest.query = { maxMessages: '2', visibilityTimeout: '30' };
       
       // Call controller method
-      await messageController.receiveMessages(mockRequest as Request, mockResponse as Response, nextFunction);
+      await messageController.receiveMessages(mockRequest as Request<{ queueId: string }>, mockResponse as Response, nextFunction);
       
       // Assertions
       expect(Queue.findById).toHaveBeenCalledWith('507f1f77bcf86cd799439011');

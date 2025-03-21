@@ -1,6 +1,15 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
+  "globalEnv": [
+    "MONGODB_URI",
+    "NODE_ENV",
+    "LOG_LEVEL",
+    "JWT_SECRET",
+    "JWT_EXPIRES_IN",
+    "DEFAULT_RETENTION_PERIOD",
+    "CORS_ORIGIN"
+  ],
   "tasks": {
     "build": {
       "inputs": ["$TURBO_DEFAULT$", ".env*"],

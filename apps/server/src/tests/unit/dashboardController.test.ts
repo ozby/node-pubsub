@@ -3,7 +3,7 @@ import * as dashboardController from '../../controllers/dashboardController';
 import Queue from '../../models/Queue';
 import Message from '../../models/Message';
 import { ServerMetrics } from '../../models/Metrics';
-import { IDecodedToken } from '@ozby-pubsub/types';
+import { IDecodedToken } from '@repo/types';
 
 jest.mock('../../models/Queue');
 jest.mock('../../models/Message');

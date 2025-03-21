@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMessage } from '@ozby-pubsub/types';
+import { IMessage } from '@repo/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui/components';
 import { formatDistanceToNow } from 'date-fns';
 import { Eye, EyeOff, Trash2 } from 'lucide-react';

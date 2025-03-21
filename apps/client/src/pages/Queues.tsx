@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CreateQueueRequest } from '@ozby-pubsub/types';
-import { IQueue, IQueueMetrics } from '@ozby-pubsub/types';
+import { CreateQueueRequest } from '@repo/types';
+import { IQueue, IQueueMetrics } from '@repo/types';
 import apiService from '@/services/api';
 import NavBar from '@/components/NavBar';
 import Sidebar from '@/components/Sidebar';

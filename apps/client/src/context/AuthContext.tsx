@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { IUser } from '@ozby-pubsub/types';
+import { IUser } from '@repo/types';
 import apiService from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';

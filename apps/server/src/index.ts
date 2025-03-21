@@ -13,7 +13,7 @@ import authRoutes from './routes/auth';
 import dashboardRoutes from './routes/dashboard';
 import { errorHandler } from './middlewares/errorHandler';
 import { requestLogger } from './middlewares/requestLogger';
-import { IDecodedToken } from '@ozby-pubsub/types';
+import { IDecodedToken } from '@repo/types';
 
 declare module 'express' {
   interface Request {

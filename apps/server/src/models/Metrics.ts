@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { IServerMetrics, IQueueMetrics } from '@ozby-pubsub/types';
+import { IServerMetrics, IQueueMetrics } from '@repo/types';
 
 export interface ServerMetricsDocument extends IServerMetrics {}
 export interface QueueMetricsDocument extends IQueueMetrics {}

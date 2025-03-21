@@ -1,5 +1,5 @@
 import mongoose, { CallbackError, Schema } from 'mongoose';
-import { IUser } from '@ozby-pubsub/types';
+import { IUser } from '@repo/types';
 import crypto from 'crypto';
 
 export interface UserDocument extends IUser {

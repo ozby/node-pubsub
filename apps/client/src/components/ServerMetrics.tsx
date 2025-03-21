@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IServerMetrics } from '@ozby-pubsub/types';
+import { IServerMetrics } from '@repo/types';
 import { Activity, Clock, MailCheck, Server, XCircle } from 'lucide-react';
 import MetricsCard from './MetricsCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@repo/ui/components';
@@ -15,7 +15,7 @@ import {
 } from 'recharts';
 import apiService from '@/services/api';
 import { toast } from 'sonner';
-import { IActivityDataPoint } from '@ozby-pubsub/types';
+import { IActivityDataPoint } from '@repo/types';
 
 interface ServerMetricsComponentProps {
   metrics: IServerMetrics;

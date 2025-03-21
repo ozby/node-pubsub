@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CreateTopicRequest, SubscribeTopicRequest } from '@ozby-pubsub/types';
-import { ITopic, IQueue } from '@ozby-pubsub/types';
+import { CreateTopicRequest, SubscribeTopicRequest } from '@repo/types';
+import { ITopic, IQueue } from '@repo/types';
 import apiService from '@/services/api';
 import NavBar from '@/components/NavBar';
 import Sidebar from '@/components/Sidebar';

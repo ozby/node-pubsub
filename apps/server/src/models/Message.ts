@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { IMessage } from '@ozby-pubsub/types';
+import { IMessage } from '@repo/types';
 import { QueueMetrics } from './Metrics';
 
 export interface MessageDocument extends IMessage { }
@@ -47,7 +47,7 @@ const MessageSchema = new Schema<IMessage>(
   }
 );
 
-MessageSchema.post('save', async function (doc: any) {
+MessageSchema.post('save', async function (doc: MessageDocument) {
   const isNew = doc.createdAt === doc.updatedAt;
   if (isNew) {
     await QueueMetrics.findOneAndUpdate(

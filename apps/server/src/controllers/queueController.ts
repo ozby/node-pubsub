@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import Queue from '../models/Queue';
+import Queue, { QueueDocument } from '../models/Queue';
 import { AppError } from '../middlewares/errorHandler';
 import { QueueMetrics } from '../models/Metrics';
 import logger from '../utils/logger';
-import { CreateQueueRequest } from '@ozby-pubsub/types';
+import { CreateQueueRequest } from '@repo/types';
+import { FilterQuery } from 'mongoose';
 
 export const createQueue = async (req: Request<object, object, CreateQueueRequest>, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -42,7 +43,7 @@ export const createQueue = async (req: Request<object, object, CreateQueueReques
 export const getQueues = async (req: Request<object, object, object, { name?: string }>, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { name } = req.query;
-    const filter: any = {};
+    const filter: FilterQuery<QueueDocument> = {};
     
     if (req.user?.userId) {
       filter.ownerId = req.user.userId;
