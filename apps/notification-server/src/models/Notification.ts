@@ -9,7 +9,7 @@ interface UpdateDescription {
 export interface INotification extends Omit<Document, 'collection'> {
   event: string;
   documentId: string;
-  collection: string;
+  collectionName: string;
   operationType: string;
   payload: {
     fullDocument?: Record<string, unknown>;
@@ -36,7 +36,7 @@ const NotificationSchema = new Schema<INotification>(
       required: true,
       index: true,
     },
-    collection: {
+    collectionName: {
       type: String,
       required: true,
       index: true,
@@ -66,7 +66,7 @@ const NotificationSchema = new Schema<INotification>(
 );
 
 // Create compound indices for efficient querying
-NotificationSchema.index({ collection: 1, status: 1 });
+NotificationSchema.index({ collectionName: 1, status: 1 });
 NotificationSchema.index({ event: 1, status: 1 });
 NotificationSchema.index({ createdAt: 1 });
 

@@ -7,13 +7,7 @@ import logger from './logger';
  */
 export async function connectDatabase(): Promise<void> {
   try {
-    // In tests, the config.mongodbUri will be mocked
-    // In regular use, we need a fallback if the environment variable is not defined
-    const mongoUri = typeof config.mongodbUri === 'string' && config.mongodbUri.length > 0
-      ? config.mongodbUri
-      : 'mongodb://localhost:27017/notification-server';
-      
-    await mongoose.connect(mongoUri);
+    await mongoose.connect(config.mongodbUri);
     
     mongoose.connection.on('error', (err) => {
       logger.error('MongoDB connection error:', err);

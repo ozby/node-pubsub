@@ -14,10 +14,8 @@ describe('Queue Controller', () => {
   let nextFunction: jest.Mock;
 
   beforeEach(() => {
-    // Reset mocks
     jest.clearAllMocks();
     
-    // Setup mock Express objects
     mockRequest = {
       params: { id: '507f1f77bcf86cd799439011' },
       body: { 

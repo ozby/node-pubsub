@@ -17,6 +17,10 @@ const config = {
   testPathIgnorePatterns: [
     "<rootDir>/src/tests/integration/helpers/"
   ],
+  testEnvironment: "node",
+  setupFiles: [
+    "<rootDir>/node_modules/@repo/jest-presets/node/jest.setup.js"
+  ],
 };
 
 export default config;

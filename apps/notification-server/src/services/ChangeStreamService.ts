@@ -77,7 +77,7 @@ class ChangeStreamService {
       
       // Get the last stored resume token for this collection
       const lastNotification = await Notification.findOne(
-        { collection: collectionName },
+        { collectionName },
         {},
         { sort: { createdAt: -1 } }
       );
@@ -127,7 +127,7 @@ class ChangeStreamService {
       const notification = await Notification.create({
         event,
         documentId,
-        collection: collectionName,
+        collectionName,
         operationType,
         payload: {
           fullDocument,

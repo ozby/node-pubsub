@@ -28,36 +28,37 @@ The notification server complements the API server by:
 
 ### Environment Variables
 
-Copy the example environment file and adjust as needed:
+The notification server uses the root-level `.env` file in the monorepo:
 
 ```bash
+# From the root of the repository
 cp .env.example .env
 ```
 
-Required environment variables:
+Required environment variables for the notification server:
 
 - `MONGODB_URI`: Connection string for MongoDB
 - `JWT_SECRET`: Secret key for JWT token validation
-- `PORT`: Port to run the server on (default: 4001)
+- `NOTIFICATION_PORT`: Port to run the server on (default: 4001)
+
+Notification server variables are prefixed with `NOTIFICATION_` to distinguish them from other services.
 
 ### Installation
 
 ```bash
-# Install dependencies
+# From the root of the repository
 pnpm install
-
-# Build the project
 pnpm build
-
-# Start the server
-pnpm start
 ```
 
-### Development
+### Running the Server
 
 ```bash
 # Start in development mode with hot reloading
-pnpm dev
+pnpm --filter=notification-server dev
+
+# Start in production mode
+pnpm --filter=notification-server start
 ```
 
 ## Testing
@@ -66,10 +67,10 @@ The notification server includes comprehensive tests:
 
 ```bash
 # Run all tests
-pnpm test
+pnpm --filter=notification-server test
 
 # Run tests with coverage
-pnpm test -- --coverage
+pnpm --filter=notification-server test -- --coverage
 ```
 
 ### Test Categories

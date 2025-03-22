@@ -22,19 +22,41 @@ npm install -g pnpm
 pnpm install
 
 # Set up environment variables
-cp apps/api-server/.env.example apps/api-server/.env
-cp apps/notification-server/.env.example apps/notification-server/.env
+cp .env.example .env
 ```
 
 ### Environment Setup
 
-After copying the environment files, open them in your editor to configure any necessary values:
+After copying the environment file, open it in your editor to configure the necessary values:
 
 ```sh
-# Edit the environment files
-nano apps/api-server/.env
-nano apps/notification-server/.env
+# Edit the environment file
+nano .env
 ```
+
+The repository uses a single `.env` file at the root level for all applications. **All required environment variables must be set or the applications will not start**.
+
+#### Required Environment Variables
+
+- `MONGODB_URI`: MongoDB connection string (e.g., `mongodb://localhost:27017/pubsub`)
+- `JWT_SECRET`: Secret key for JWT token generation and validation
+
+#### Application-specific Variables
+
+Environment variables are prefixed to indicate which service they apply to:
+- Common variables: `MONGODB_URI`, `JWT_SECRET`, `NODE_ENV`
+- API server variables: prefixed with `API_` (e.g., `API_PORT`)
+- Notification server variables: prefixed with `NOTIFICATION_` (e.g., `NOTIFICATION_PORT`)
+
+#### Troubleshooting Environment Variables
+
+If you see errors about missing environment variables:
+
+1. Make sure the `.env` file exists in the root directory of the project
+2. Verify that it contains all required variables (`MONGODB_URI` and `JWT_SECRET` at minimum)
+3. Check for typos in variable names
+4. Ensure the file is properly formatted (one variable per line, no spaces around the `=` sign)
+5. Restart the application after making changes to the `.env` file
 
 ## Development
 

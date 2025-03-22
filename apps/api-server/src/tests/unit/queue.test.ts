@@ -44,7 +44,7 @@ describe('Queue Model', () => {
       ownerId: 'test-user',
       retentionPeriod: 7,
       schema: { type: 'object', properties: { name: { type: 'string' } } },
-      pushEndpoint: 'http://localhost:3000/webhook',
+      pushEndpoint: '',
     };
 
     const queue = await Queue.create(queueData);

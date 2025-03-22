@@ -74,7 +74,7 @@ describe('Notification Server Integration', () => {
     const defaultData = {
       event: 'message.created',
       documentId: new mongoose.Types.ObjectId().toString(),
-      collection: 'messages',
+      collectionName: 'messages',
       operationType: 'insert',
       payload: { fullDocument: { content: 'Test message content' } },
       status: 'pending'

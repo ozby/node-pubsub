@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import {
   AuthResponse,
   CreateQueueRequest,
@@ -25,15 +25,12 @@ interface ApiResponse<T> {
   data: T;
 }
 
-// Define types that were previously imported from axios
-type AxiosRequestConfig = Parameters<typeof axios.create>[0];
-
 class ApiService {
   private api: ReturnType<typeof axios.create>;
   private token: string | null = null;
 
   constructor() {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     this.api = axios.create({
       baseURL: apiUrl,

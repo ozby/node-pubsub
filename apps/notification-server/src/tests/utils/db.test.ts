@@ -29,10 +29,8 @@ describe('Database Connection Utility', () => {
       
       await connectDatabase();
       
-      // Check if the MongoDB connection was attempted with any URI
       expect(mongoose.connect).toHaveBeenCalled();
       
-      // Get the actual argument passed to connect
       const connectArg = (mongoose.connect as jest.Mock).mock.calls[0][0];
       
       expect(typeof connectArg).toBe('string');

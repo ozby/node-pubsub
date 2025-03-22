@@ -24,7 +24,7 @@ describe('Notification Model', () => {
     const notificationData = {
       event: 'message.created',
       documentId: new mongoose.Types.ObjectId().toString(),
-      collection: 'messages',
+      collectionName: 'messages',
       operationType: 'insert',
       payload: {
         fullDocument: { content: 'Test message' },
@@ -57,7 +57,7 @@ describe('Notification Model', () => {
     expect(validationError).toBeDefined();
     expect(validationError.errors.event).toBeDefined();
     expect(validationError.errors.documentId).toBeDefined();
-    expect(validationError.errors.collection).toBeDefined();
+    expect(validationError.errors.collectionName).toBeDefined();
     expect(validationError.errors.operationType).toBeDefined();
   });
 
@@ -65,7 +65,7 @@ describe('Notification Model', () => {
     const notification = await Notification.create({
       event: 'message.updated',
       documentId: new mongoose.Types.ObjectId().toString(),
-      collection: 'messages',
+      collectionName: 'messages',
       operationType: 'update',
       payload: { updateDescription: { updatedFields: { status: 'read' } } },
       status: 'pending',
@@ -89,7 +89,7 @@ describe('Notification Model', () => {
     const notification = await Notification.create({
       event: 'queue.created',
       documentId,
-      collection: 'queues',
+      collectionName: 'queues',
       operationType: 'insert',
       payload: { fullDocument: { name: 'test-queue' } },
     });
