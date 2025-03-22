@@ -1,4 +1,4 @@
-# Node PubSub Dashboard
+# Node PubSub Implementation + Dashboard (for FUN)
 
 A Turborepo project that provides a PubSub and corresponding managing dashboard.
 
@@ -22,16 +22,18 @@ npm install -g pnpm
 pnpm install
 
 # Set up environment variables
-cp apps/server/.env.example apps/server/.env
+cp apps/api-server/.env.example apps/api-server/.env
+cp apps/notification-server/.env.example apps/notification-server/.env
 ```
 
 ### Environment Setup
 
-After copying the environment file, open it in your editor to configure any necessary values:
+After copying the environment files, open them in your editor to configure any necessary values:
 
 ```sh
-# Edit the environment file
-nano apps/server/.env
+# Edit the environment files
+nano apps/api-server/.env
+nano apps/notification-server/.env
 ```
 
 ## Development
@@ -71,13 +73,31 @@ This Turborepo includes the following packages and apps:
 
 ### Apps
 - `client`: A Vite React application for the PubSub dashboard UI
-- `api`: An Express server for backend services
+- `api-server`: An Express server providing the main PubSub API for publishing and subscribing to messages
+- `notification-server`: A specialized server that monitors database changes and handles event notifications
 
 ### Packages
 - `@repo/ui`: A shared UI component library 
 - `@repo/eslint-config`: ESLint configurations
 - `@repo/typescript-config`: TypeScript configurations
 - `@repo/types`: Shared TypeScript types
+- `@repo/logger`: Shared logging utilities
+
+## Service Overview
+
+### API Server
+The API server handles the core PubSub functionality, including:
+- Topic and queue management
+- Message publishing and subscribing
+- User authentication and authorization
+- Dashboard metrics and monitoring
+
+### Notification Server
+The notification server is responsible for:
+- Monitoring MongoDB change streams to detect data changes
+- Processing database events (message creation, updates, queue changes)
+- Managing notification records for event tracking
+- Providing real-time notification capabilities to connected clients
 
 ## Working with the Monorepo
 
@@ -86,7 +106,8 @@ This Turborepo includes the following packages and apps:
 ```sh
 # Run a command in a specific workspace
 pnpm --filter=client dev
-pnpm --filter=api dev
+pnpm --filter=api-server dev
+pnpm --filter=notification-server dev
 
 # Build a specific package
 pnpm --filter=@repo/ui build
@@ -105,10 +126,6 @@ pnpm --filter=client add -D @types/react
 pnpm --filter=client add @repo/ui@workspace:*
 ```
 
-## License
-
-MIT
-
 ## Testing
 
 ### Running All Tests
@@ -118,7 +135,8 @@ MIT
 pnpm test
 
 # Run tests for a specific package or app
-pnpm --filter=server test
+pnpm --filter=api-server test
+pnpm --filter=notification-server test
 pnpm --filter=client test
 ```
 
@@ -126,13 +144,17 @@ pnpm --filter=client test
 
 ```sh
 # Run a specific test file in an app or package
-pnpm --filter=server test src/tests/integration/dashboard.test.ts
+pnpm --filter=api-server test src/tests/integration/dashboard.test.ts
 
 # Run tests with Jest options
-pnpm --filter=server test -- src/tests/integration/dashboard.test.ts --watch
+pnpm --filter=api-server test -- src/tests/integration/dashboard.test.ts --watch
 
 # Run a specific test by name
-pnpm --filter=server test src/tests/integration/dashboard.test.ts -t "should return server metrics"
+pnpm --filter=api-server test src/tests/integration/dashboard.test.ts -t "should return server metrics"
 ```
 
 These commands can be run from the root of the monorepo, so you don't need to change directories.
+
+## License
+
+MIT

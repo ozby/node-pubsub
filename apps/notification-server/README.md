@@ -1,6 +1,6 @@
 # Notification Server
 
-The Notification Server is a specialized microservice that processes MongoDB change events from collections and handles them asynchronously. It uses MongoDB's change streams feature to detect database changes and trigger appropriate side effects.
+The Notification Server is a specialized microservice that processes MongoDB change events from collections and handles them asynchronously. It uses MongoDB's change streams feature to detect database changes and trigger appropriate side effects as part of the Node PubSub system.
 
 ## Features
 
@@ -9,6 +9,15 @@ The Notification Server is a specialized microservice that processes MongoDB cha
 - **Notification Storage**: Records all change events in the database for auditing and tracking
 - **Automatic Recovery**: Resumes processing from where it left off after restarts using resume tokens
 - **Health Checks**: Provides endpoints to check the service and database health
+
+## Role in the PubSub System
+
+The notification server complements the API server by:
+
+- Monitoring database changes to trigger event-driven workflows
+- Providing real-time notification capabilities for clients
+- Handling asynchronous event processing to improve system responsiveness
+- Creating an audit trail of system events for troubleshooting and analytics
 
 ## Getting Started
 
@@ -35,20 +44,20 @@ Required environment variables:
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Build the project
-npm run build
+pnpm build
 
 # Start the server
-npm start
+pnpm start
 ```
 
 ### Development
 
 ```bash
 # Start in development mode with hot reloading
-npm run dev
+pnpm dev
 ```
 
 ## Testing
@@ -57,10 +66,10 @@ The notification server includes comprehensive tests:
 
 ```bash
 # Run all tests
-npm test
+pnpm test
 
 # Run tests with coverage
-npm test -- --coverage
+pnpm test -- --coverage
 ```
 
 ### Test Categories
@@ -97,6 +106,29 @@ The notification server works by:
 - `message.deleted`: When a message is deleted
 - `queue.created`: When a new queue is created
 - `queue.updated`: When a queue is updated
+
+### Code Structure
+
+- `/src/models`: Database models including the Notification schema
+- `/src/services`: Core services including the ChangeStreamService
+- `/src/routes`: API endpoints for health checks and monitoring
+- `/src/utils`: Utility functions for logging, database connection, etc.
+- `/src/tests`: Test suites for all components
+
+## Integration with API Server
+
+The notification server works alongside the API server to provide a complete PubSub system:
+
+- API server handles direct client requests for publishing and subscribing
+- Notification server monitors the database for changes and handles side effects
+- Both servers share the same MongoDB database but operate independently
+
+## Future Enhancements
+
+- WebSocket support for real-time client notifications
+- More granular event filtering options
+- Support for additional collections and event types
+- Performance optimizations for high-volume change streams
 
 ## License
 
