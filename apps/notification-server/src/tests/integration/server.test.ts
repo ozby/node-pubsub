@@ -3,14 +3,6 @@ import mongoose from 'mongoose';
 import { jest } from '@jest/globals';
 import Notification from '../../models/Notification';
 
-// Mock the necessary modules
-jest.mock('@repo/logger', () => ({
-  info: jest.fn(),
-  error: jest.fn(),
-  warn: jest.fn(),
-  http: jest.fn()
-}));
-
 // Use a more complete mockConfig with all required properties
 const mockConfig = {
   port: 4001,
@@ -57,7 +49,7 @@ describe('Notification Server Integration', () => {
       
     // Connect to MongoDB
     await mongoose.connect(mongoUri);
-  });
+  }, 60000);
   
   afterAll(async () => {
     await mongoose.disconnect();

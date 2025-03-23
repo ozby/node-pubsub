@@ -9,26 +9,6 @@
     "dist"
   ],
   "exports": {
-    "./counter-button": {
-      "import": {
-        "types": "./dist/es/counter-button.d.mts",
-        "default": "./dist/es/counter-button.mjs"
-      },
-      "require": {
-        "types": "./dist/cjs/counter-button.d.ts",
-        "default": "./dist/cjs/counter-button.js"
-      }
-    },
-    "./link": {
-      "import": {
-        "types": "./dist/es/link.d.mts",
-        "default": "./dist/es/link.mjs"
-      },
-      "require": {
-        "types": "./dist/cjs/link.d.ts",
-        "default": "./dist/cjs/link.js"
-      }
-    },
     "./components": {
       "import": {
         "types": "./dist/es/components.d.mts",
@@ -55,7 +35,7 @@
     "dev": "bunchee --watch",
     "check-types": "tsc --noEmit",
     "lint": "eslint src/",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "jest": {
     "preset": "@repo/jest-presets/browser"

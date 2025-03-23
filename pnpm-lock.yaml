@@ -255,6 +255,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.1.4
         version: 1.1.8(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@repo/logger':
+        specifier: workspace:*
+        version: link:../../packages/logger
       '@repo/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -373,6 +376,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.21(postcss@8.5.3)
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.7
       eslint:
         specifier: ^9.22.0
         version: 9.22.0(jiti@1.21.7)
@@ -580,6 +586,36 @@ importers:
         version: 29.7.0
 
   packages/logger:
+    devDependencies:
+      '@jest/globals':
+        specifier: ^29.7.0
+        version: 29.7.0
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../config-eslint
+      '@repo/jest-presets':
+        specifier: workspace:*
+        version: link:../jest-presets
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../config-typescript
+      '@types/node':
+        specifier: ^22.13.9
+        version: 22.13.9
+      bunchee:
+        specifier: ^6.4.0
+        version: 6.4.0(typescript@5.8.2)
+      eslint:
+        specifier: ^9.22.0
+        version: 9.22.0(jiti@1.21.7)
+      jest:
+        specifier: ^29.7.0
+        version: 29.7.0(@types/node@22.13.9)(ts-node@10.9.2(@swc/core@1.11.11(@swc/helpers@0.5.15))(@types/node@22.13.9)(typescript@5.8.2))
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/test-utils:
     devDependencies:
       '@jest/globals':
         specifier: ^29.7.0

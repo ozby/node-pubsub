@@ -11,12 +11,6 @@ jest.mock('mongoose', () => ({
   }
 }));
 
-jest.mock('@repo/logger', () => ({
-  info: jest.fn(),
-  error: jest.fn(),
-  warn: jest.fn()
-}));
-
 describe('Database Connection Utility', () => {
   afterEach(() => {
     jest.clearAllMocks();
