@@ -30,8 +30,8 @@ class ApiService {
   private token: string | null = null;
 
   constructor() {
-    const apiUrl = import.meta.env.VITE_API_URL;
-
+    const apiUrl = import.meta.env.API_URL;
+    console.log('apiUrl', apiUrl);
     this.api = axios.create({
       baseURL: apiUrl,
       headers: {

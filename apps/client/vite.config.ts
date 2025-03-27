@@ -13,10 +13,9 @@ if (fs.existsSync(rootEnvPath)) {
 export default defineConfig(({ mode }) => {
   // Load env files from Vite project directory
   const env = loadEnv(mode, process.cwd(), '');
-  
   // Priority: Vite project .env, then root .env, then default
-  const CLIENT_PORT = env.VITE_CLIENT_PORT || '3000';
-  
+  const CLIENT_PORT = env.CLIENT_PORT || '3000';
+  const API_URL = env.API_URL;
   return {
     plugins: [
       react(),
@@ -32,6 +31,9 @@ export default defineConfig(({ mode }) => {
       fs: {
         cachedChecks: false
       }
+    },
+    define: {
+      'import.meta.env.API_URL': JSON.stringify(API_URL),
     }
   };
 });

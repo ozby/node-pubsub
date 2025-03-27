@@ -1,20 +1,6 @@
 version: '3.8'
 
 services:
-  # app:
-  #   build: .
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     - NODE_ENV=production
-  #     - MONGODB_URI=mongodb://mongodb:27017/queue-service
-  #     - PORT=3000
-  #     - JWT_SECRET=change-this-in-production
-  #     - JWT_EXPIRES_IN=1d
-  #     - DEFAULT_RETENTION_PERIOD=14
-  #   depends_on:
-  #     - mongodb
-  #   restart: unless-stopped
   mongo1:
     image: mongo:7.0
     command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
