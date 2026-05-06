@@ -29,7 +29,7 @@ const PROBES = [
   "p12-neon-serverless-listen.ts",
   "p13-cf-worker-subrequest-limit.ts",
   "p14-hyperdrive-pricing.ts",
-  "p15-repo-ak-cli.ts",
+  "p15-repo-webpresso-agent-cli.ts",
   "p16-postgres-notify-payload.ts",
   "p17-inter-tight-variant.ts",
 ];

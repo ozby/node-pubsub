@@ -1,11 +1,13 @@
 #!/usr/bin/env bun
 /**
- * Probe p15 — Repo sanity: does the `ak` CLI actually exist in this repo's
- * workspace, and does it support `e2e --suite` as the blueprints assume?
+ * Probe p15 — Repo sanity: does the unified `webpresso agent` CLI surface
+ * actually exist in this repo's workspace, and does it support
+ * `agent e2e --suite` as the cutover expects?
  *
  * This is an internal-claim probe: scenario 1a/1b blueprints say
- * `pnpm exec ak e2e --suite s1a-correctness` registers and runs the suite.
- * If `ak` doesn't exist, or doesn't support `--suite`, the AK suite
+ * `pnpm exec webpresso agent e2e --suite s1a-correctness` registers and runs
+ * the suite. If `webpresso agent` doesn't exist, or doesn't support `--suite`,
+ * the suite
  * registration tasks (2.7 / 3.7) are ghosts.
  */
 import { spawn } from "node:child_process";
@@ -17,9 +19,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const REPO_ROOT = join(__dirname, "..", "..", "..");
 
-const PROBE = "p15-repo-ak-cli";
+const PROBE = "p15-repo-webpresso-agent-cli";
 const CLAIM =
-  "`pnpm exec ak --help` succeeds in this repo and `ak e2e` accepts a `--suite` argument";
+  "`pnpm exec webpresso agent e2e --help` succeeds in this repo and the command accepts a `--suite` argument";
 
 function runCmd(
   cmd: string,
@@ -49,18 +51,18 @@ function runCmd(
 }
 
 async function run(): Promise<void> {
-  const help = await runCmd("pnpm", ["exec", "ak", "--help"], 30_000);
-  const akExists = help.code === 0 || /Usage|Commands|ak/.test(help.stdout);
+  const help = await runCmd("pnpm", ["exec", "webpresso", "agent", "e2e", "--help"], 30_000);
+  const webpressoAgentExists =
+    help.code === 0 || /webpresso agent|agent e2e|--suite/i.test(help.stdout + help.stderr);
 
   let e2eHelpOk = false;
   let suiteFlagMentioned = false;
-  if (akExists) {
-    const e2eHelp = await runCmd("pnpm", ["exec", "ak", "e2e", "--help"], 30_000);
-    e2eHelpOk = e2eHelp.code === 0 || /e2e/.test(e2eHelp.stdout);
-    suiteFlagMentioned = /--suite|suite\s+name/i.test(e2eHelp.stdout + e2eHelp.stderr);
+  if (webpressoAgentExists) {
+    e2eHelpOk = help.code === 0 || /e2e/.test(help.stdout);
+    suiteFlagMentioned = /--suite|suite\s+name/i.test(help.stdout + help.stderr);
   }
 
-  const verdict: "CONFIRMED" | "PARTIAL" | "WRONG" = !akExists
+  const verdict: "CONFIRMED" | "PARTIAL" | "WRONG" = !webpressoAgentExists
     ? "WRONG"
     : suiteFlagMentioned
       ? "CONFIRMED"
@@ -71,11 +73,11 @@ async function run(): Promise<void> {
     verdict,
     claim: CLAIM,
     evidence: [
-      `ak-cli-exists=${akExists}`,
-      `ak-e2e-help-ok=${e2eHelpOk}`,
+      `webpresso-agent-cli-exists=${webpressoAgentExists}`,
+      `webpresso-agent-e2e-help-ok=${e2eHelpOk}`,
       `--suite-flag-mentioned=${suiteFlagMentioned}`,
     ].join(" | "),
-    citation: "internal: pnpm exec ak --help",
+    citation: "internal: pnpm exec webpresso agent e2e --help",
   });
   if (verdict === "WRONG") process.exit(1);
 }
@@ -86,7 +88,7 @@ run().catch(async (err) => {
     verdict: "UNREACHABLE",
     claim: CLAIM,
     evidence: `threw: ${err instanceof Error ? err.message : String(err)}`,
-    citation: "internal: pnpm exec ak --help",
+    citation: "internal: pnpm exec webpresso agent e2e --help",
   });
   process.exit(2);
 });

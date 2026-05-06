@@ -11,10 +11,10 @@
     "act:e2e": "bun ./scripts/act-with-doppler.ts workflow_dispatch -W .github/workflows/testing-e2e-act.yml -j full-suite-local",
     "act:list": "bun ./scripts/act-with-doppler.ts -l",
     "build": "vp run build",
-    "catalog:check": "ak audit catalog-drift",
+    "catalog:check": "pnpm exec webpresso agent audit catalog-drift",
     "check": "vp check",
     "clean": "vp run clean",
-    "client:bundle:check": "ak audit bundle-budget apps/client/dist --max-js-asset-bytes 512000 --max-html-eager-js-asset-bytes 262144 --max-html-eager-js-total-bytes 393216",
+    "client:bundle:check": "pnpm exec webpresso agent audit bundle-budget apps/client/dist --max-js-asset-bytes 512000 --max-html-eager-js-asset-bytes 262144 --max-html-eager-js-total-bytes 393216",
     "dev": "with-secrets --doppler ozby-shell:dev -- vp run dev",
     "dev:no-doppler": "vp run dev",
     "format": "vp fmt",
@@ -25,14 +25,17 @@
     "check-types": "vp run check-types",
     "commitlint": "commitlint",
     "secretlint": "secretlint",
-    "setup:agent-kit": "pnpm exec ak setup --yes --with omx,gstack",
+    "setup:agent-kit": "pnpm exec webpresso agent setup --yes --with omx,gstack",
     "postinstall": "pnpm run setup:agent-kit",
     "prepare": "husky",
-    "docs:check": "ak audit docs-frontmatter",
-    "blueprints:check": "ak audit blueprint-lifecycle --legacy-omx",
+    "docs:check": "pnpm exec webpresso agent audit docs-frontmatter",
+    "blueprints:check": "pnpm exec webpresso agent audit blueprint-lifecycle --legacy-omx",
     "e2e": "bun ./apps/e2e/scripts/e2e-with-neon.ts",
     "ai:eval": "bun ./scripts/run-mapping-eval.ts",
     "probes:lab": "bun scripts/probes/consistency-lab/run-all.ts"
+  },
+  "dependencies": {
+    "@webpresso/cli": "link:../../webpresso/monorepo/packages/cli/public-cli"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
@@ -69,7 +72,8 @@
       "@voidzero-dev/vite-plus-core>yaml": "2.8.3",
       "micromatch>picomatch": "2.3.2",
       "protobufjs": "7.5.5",
-      "table>ajv": "8.18.0"
+      "table>ajv": "8.18.0",
+      "@webpresso/webpresso": "link:../../webpresso/webpresso"
     },
     "peerDependencyRules": {
       "allowedVersions": {

@@ -1,6 +1,6 @@
 # justfile — task runner.
 # Delegates to pnpm (app tasks) and deploy scripts (infra tasks).
-# The ak-stop-qa hook calls `just typecheck [--file f]...` and `just test [--file f]...`.
+# The shared stop-qa hook calls `just typecheck [--file f]...` and `just test [--file f]...`.
 
 typecheck *args:
     pnpm --filter @repo/workers check-types

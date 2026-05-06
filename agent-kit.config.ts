@@ -1,8 +1,8 @@
 /**
- * agent-kit.config.ts — root configuration for @webpresso/agent-kit.
+ * agent-kit.config.ts — root configuration for the agent-kit e2e library surface.
  *
  * Registers e2e suites for the consistency lab scenarios.
- * Run: pnpm exec ak e2e --suite s1a-correctness
+ * Unified target runner: webpresso agent e2e --suite s1a-correctness
  */
 export default {
   e2e: {

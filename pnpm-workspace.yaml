@@ -43,6 +43,9 @@ catalog:
   # Webpresso tooling (GitHub Packages npm registry)
   "@webpresso/typescript-config": 0.1.0
   "@webpresso/vitest-config": 0.1.0
+
+  # Webpresso umbrella (npm-registry, scoped on GitHub Packages)
+  "@webpresso/webpresso": 0.1.1
   "@webpresso/workers-test-kit": 0.1.0
   axios: ^1.15.2
   bunchee: ^6.10.0
@@ -61,9 +64,6 @@ catalog:
   # Task runner
   vite-plus: 0.1.19
 
-  # Webpresso umbrella (npm-registry, scoped on GitHub Packages)
-  "@webpresso/webpresso": 0.1.1-alpha.6
-
 catalogs:
   tooling:
     "@typescript/native-preview": "7.0.0-dev.20260421.2"
@@ -79,3 +79,4 @@ catalogs:
     hono: ^4.12.14
     postgres: ^3.4.9
     wrangler: ^4.84.1
+confirmModulesPurge: false
