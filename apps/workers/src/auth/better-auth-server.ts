@@ -1,4 +1,4 @@
-import { betterAuth } from "better-auth";
+import { betterAuth, type BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { createWebpressoAuthHost } from "@webpresso/webpresso/auth/server";
 import { createWebpressoAuthDrizzleMap } from "@webpresso/webpresso/auth/schema";
@@ -44,6 +44,7 @@ export function createBetterAuth(env: Env): BetterAuthHandler {
 
   const auth = betterAuth({
     ...hostConfig,
+    plugins: hostConfig.plugins as BetterAuthPlugin[],
     baseURL,
     // App-local: Drizzle adapter with ingest-lens schema table mapping
     database: drizzleAdapter(db, {

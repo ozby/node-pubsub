@@ -59,13 +59,9 @@ function createFakeDb(state: FakeDbState, overrides: FakeDbOverrides = {}) {
       from: vi.fn((table: unknown) => ({
         where: vi.fn(() => {
           const rows = rowsForTable(table);
-          return {
+          return Object.assign(Promise.resolve(rows), {
             limit: vi.fn(async () => rows),
-            then: (
-              onFulfilled: (value: unknown[]) => unknown,
-              onRejected?: (reason: unknown) => unknown,
-            ) => Promise.resolve(rows).then(onFulfilled, onRejected),
-          };
+          });
         }),
       })),
     })),
