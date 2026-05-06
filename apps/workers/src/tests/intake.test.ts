@@ -248,7 +248,7 @@ const testQueue = {
 beforeEach(() => {
   vi.clearAllMocks();
   deliveryQueue.send.mockResolvedValue(undefined);
-  vi.mocked(authenticate).mockImplementation(async (c: any) =>
+  vi.mocked(authenticate).mockImplementation(async (c: Parameters<typeof authenticate>[0]) =>
     c.json({ status: "error", message: "Authentication required" }, 401),
   );
 });

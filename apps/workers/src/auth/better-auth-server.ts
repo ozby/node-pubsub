@@ -8,8 +8,9 @@ import * as schema from "../db/schema";
 
 export interface BetterAuthHandler {
   handler: (req: Request) => Promise<Response>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  api: { getSession: (opts: any) => Promise<unknown> };
+  api: {
+    getSession: (opts: { headers: Headers; query?: Record<string, unknown> }) => Promise<unknown>;
+  };
 }
 
 function toDomainUsername(name: string, id: string): string {
