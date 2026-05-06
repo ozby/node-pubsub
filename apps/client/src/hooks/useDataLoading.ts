@@ -73,7 +73,7 @@ export function useDataLoading<T>(
       cancelled = true;
       controller.abort();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- deps is a caller-controlled array; static analysis can't verify it
   }, [...deps, reloadToken]);
 
   return { data, isLoading, error, reload };
