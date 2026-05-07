@@ -25,7 +25,7 @@
     "check-types": "vp run check-types",
     "commitlint": "commitlint",
     "secretlint": "secretlint",
-    "setup:agent-kit": "pnpm exec webpresso agent setup --yes --with omx,gstack",
+    "setup:agent-kit": "bun ./node_modules/@webpresso/agent-kit/src/cli/cli.ts setup --yes --with omx,gstack",
     "postinstall": "pnpm run setup:agent-kit",
     "prepare": "husky",
     "docs:check": "pnpm exec webpresso agent audit docs-frontmatter",
