@@ -3,6 +3,9 @@ import { defineConfig } from "vite-plus";
 const compactQaFixture = /\.compact-qa\.[a-z]+$/i;
 
 export default defineConfig({
+  fmt: {
+    ignorePatterns: ["**/*.compact-qa.*"],
+  },
   staged: {
     "*.{ts,tsx,js,mjs,cjs}": (files: readonly string[]) => {
       const filtered = files.filter((file) => !compactQaFixture.test(file));
