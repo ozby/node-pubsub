@@ -20,5 +20,4 @@ brew "act"            # run GitHub Actions locally: act -j <job>
 brew "oxlint"         # linter (mirrors devDependency version via pnpm catalog)
 
 # --- Agent surface ---
-tap "rtk-ai/rtk"
-brew "rtk-ai/rtk/rtk"  # shell-tool output filtering peer plugin; default-on via `ak setup`
+brew "rtk"             # CLI proxy that compresses command output; default-on via `ak setup`
