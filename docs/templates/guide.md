@@ -9,7 +9,7 @@ last_updated: "YYYY-MM-DD"
 
 ## Prerequisites
 
-- Workspace checked out, `pnpm install` run
+- Workspace checked out, dependencies installed
 - Any role/permission the reader needs
 - Links to conceptually prior docs
 

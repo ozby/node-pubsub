@@ -60,6 +60,17 @@ When `/pll` is executing blueprint-backed work:
 - use `ak blueprint finalize <slug>` only after all tasks are validly done
 - do **not** use `ak blueprint move` as the normal execution primitive; it is recovery-only
 
+
+## Roadmap-Aware Lane Picking
+
+When invoked without an explicit task list, `/pll` should prefer the roadmap-shaped queue exposed by `ak blueprint list`:
+
+1. Read `ak blueprint list` first. `ROADMAP` rows are strategic parents; indented `CHILD` rows are tactical lanes.
+2. Choose the next `planned` child under an active (`in-progress` or `planned`) roadmap, respecting each child's `depends_on:` before fan-out.
+3. Use orphan blueprints only when no roadmap child is actionable. The `ORPHANS` group is fallback work, not the primary lane queue.
+4. Keep output-shape assumptions aligned with `ROADMAP ... children=N ...`, `CHILD ... parent=<roadmap>`, and `ORPHANS` rows from `ak blueprint list`.
+5. If the roadmap/child relationship looks inconsistent, run `ak audit roadmap-links` before dispatching lanes.
+
 ## What `/pll` Owns
 
 - parsing lightweight dependency hints from task lists or blueprint task structure
@@ -126,22 +137,22 @@ If the model would diverge between the two surfaces, fix the contract instead of
 
 ## Concurrency Guidance
 
-| Scope                 | Guidance                                                                        |
-| --------------------- | ------------------------------------------------------------------------------- |
-| Default               | Use only as much parallelism as the current runtime and task mix safely support |
-| Test-heavy work       | Reduce parallelism to avoid exhausting Vitest/CPU/memory                        |
-| Build-heavy work      | Reduce parallelism to avoid CPU/memory spikes                                   |
-| Mixed doc + code work | Run lightweight doc/admin work beside one heavier lane when safe                |
+| Scope | Guidance |
+| --- | --- |
+| Default | Use only as much parallelism as the current runtime and task mix safely support |
+| Test-heavy work | Reduce parallelism to avoid exhausting Vitest/CPU/memory |
+| Build-heavy work | Reduce parallelism to avoid CPU/memory spikes |
+| Mixed doc + code work | Run lightweight doc/admin work beside one heavier lane when safe |
 
 ## Failure Handling
 
-| Event                         | Action                                                        |
-| ----------------------------- | ------------------------------------------------------------- |
-| Task fails                    | Mark blocked with reason; do not mark complete                |
-| Lifecycle mutation fails      | Stop immediately rather than continuing with stale plan state |
-| Dependency cycle detected     | Reject the run and ask for plan cleanup                       |
-| No ready tasks remain         | Report blockers and the tasks they are waiting on             |
-| File-scope conflict suspected | Serialize the conflicting tasks or merge them into one lane   |
+| Event | Action |
+| --- | --- |
+| Task fails | Mark blocked with reason; do not mark complete |
+| Lifecycle mutation fails | Stop immediately rather than continuing with stale plan state |
+| Dependency cycle detected | Reject the run and ask for plan cleanup |
+| No ready tasks remain | Report blockers and the tasks they are waiting on |
+| File-scope conflict suspected | Serialize the conflicting tasks or merge them into one lane |
 
 ## Examples
 

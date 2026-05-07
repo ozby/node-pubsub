@@ -3,6 +3,10 @@
   "installed": {
     "tier3Skills": []
   },
+  "rules": {
+    "overrides": []
+  },
+  "scripts": {},
   "durablePlanningRoot": ".agent/planning/",
   "lastInit": "2026-05-05T23:35:52.340Z"
 }

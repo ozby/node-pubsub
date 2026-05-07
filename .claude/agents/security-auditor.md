@@ -1,0 +1,1 @@
+../../node_modules/.pnpm/@webpresso+agent-kit@0.6.0/node_modules/@webpresso/agent-kit/catalog/agent/agents/security-auditor.md

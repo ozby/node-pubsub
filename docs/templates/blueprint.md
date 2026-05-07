@@ -2,8 +2,8 @@
 type: blueprint
 status: draft
 complexity: M
-created: "2026-04-21"
-last_updated: "2026-04-21"
+created: "2026-04-22"
+last_updated: "2026-04-22"
 progress: "0% (drafted)"
 depends_on: []
 tags: []
@@ -18,8 +18,9 @@ tags: []
 - Goal input: `{{description}}`
 - Complexity: `{{complexity}}`
 - Draft slug: `{{slug}}`
-- Output path: `blueprints/{{status}}/{{slug}}/_overview.md`
-- Validation scope: structure, exact file paths, and repo command realism before write
+- Output path: `{{output_path}}`
+- Generated command: `wp blueprint new "{{description}}" --complexity {{complexity}}`
+- Validation scope: parser compliance before write
 
 ## Architecture Overview
 
@@ -40,24 +41,26 @@ tags: []
 | **Wave 0**        | 1.1   | None         | 1 agent        |
 | **Critical path** | 1.1   | --           | 1 wave         |
 
-**Note:** Use t-shirt sizing (XS/S/M/L/XL) for individual task estimates, **not** day/week estimates.
+**Note:** Use t-shirt sizing (XS/S/M/L/XL) for individual task estimates, NOT day/week estimates.
 
-**Lifecycle:** Blueprint frontmatter `status` is one of `draft`, `planned`, `parked`, `in-progress`, `completed`, `archived`. There is no blueprint-level `blocked` status; when work waits on a dependency, set the task **Status:** to `blocked` and add a non-empty **Blocked:** line with the reason.
+**Lifecycle:** Blueprint frontmatter `status` is one of `draft`, `planned`, `parked`, `in-progress`, `completed`, `archived`. Use `parked` when the blueprint is intentionally paused but should remain distinct from active planning or abandoned work. There is no blueprint-level `blocked` status; when work waits on an external dependency, set the task **Status:** to `blocked` and add a non-empty **Blocked:** line with the reason.
 
 > [!NOTE]
-> This template mirrors the reference repo blueprint structure and task conventions, but verification commands are adapted to this repo’s `pnpm` + `turbo` command authority.
+> This template reflects the current preferred blueprint structure. Repo-wide validity is determined by the live blueprint parser/audit rules, so older blueprints may still use a different-but-valid section mix.
 
 ### Phase 1: [Phase Name] [Complexity: S]
 
-#### [lane] Task 1.1: [Component Name]
+#### Task 1.1: [Component Name]
 
-**Status:** pending
+> **Task header (current accepted form):** Use `#### [lane] Task X.Y:` when the task has a clear lane (`[schema]`, `[backend]`, `[ui]`, `[infra]`, `[docs]`, `[qa]`). `#### Task X.Y:` is still valid, but lane-prefixed headers are preferred in new blueprints.
+
+**Status:** todo
 
 **Depends:** None
 
-[Self-contained description. An independent agent should be able to execute
-this task with only this text + the codebase + repo commands. Never rely on
-“see above” references for execution-critical context.]
+[Self-contained description. An independent agent must be able to execute
+this task with ONLY this text + the codebase + repo-owned commands. Never
+reference "see above" or "as described in Task X.Y" — inline all context.]
 
 **Files:**
 
@@ -67,30 +70,54 @@ this task with only this text + the codebase + repo commands. Never rely on
 
 **Steps (TDD):**
 
-1. Write a failing test for [specific behavior]
-2. Run: `pnpm --filter <workspace> test` — verify FAIL
-3. Implement the minimal change to pass
-4. Run: `pnpm --filter <workspace> test` — verify PASS
+1. Write failing test for [specific behavior]
+2. Run the repo's scoped test recipe — verify FAIL
+3. Implement minimal code to pass
+4. Run the repo's scoped test recipe — verify PASS
 5. Refactor if needed (complexity <= 8)
-6. Run: `pnpm --filter <workspace> lint` and `pnpm --filter <workspace> check-types`
 
 **Acceptance:**
 
-- [ ] Test file created with a failing test first
-- [ ] Implementation passes all targeted tests
-- [ ] `pnpm --filter <workspace> lint` passes
-- [ ] `pnpm --filter <workspace> check-types` passes
+- [ ] Test file created with failing test
+- [ ] Implementation passes all tests
+- [ ] Scoped lint passes
+- [ ] Verification commands recorded in the task notes
+
+#### Task 1.2: [Component Name]
+
+**Status:** todo
+
+**Depends:** Task 1.1
+
+[Self-contained description.]
+
+**Files:**
+
+- Create: `exact/path/to/file.ts`
+
+**Steps (TDD):**
+
+1. Write failing test
+2. Run the repo's scoped test recipe — verify FAIL
+3. Implement
+4. Run the repo's scoped test recipe — verify PASS
+
+**Acceptance:**
+
+- [ ] Tests pass
+- [ ] Lint passes
 
 ---
 
 ## Verification Gates
 
-| Gate        | Command                                         | Success Criteria     |
-| ----------- | ----------------------------------------------- | -------------------- |
-| Type safety | `pnpm check-types`                              | Zero errors          |
-| Lint        | `pnpm lint`                                     | Zero violations      |
-| Tests       | `pnpm test`                                     | Relevant suites pass |
-| Docs format | `pnpm format:check` or `vp fmt --check <paths>` | All pass             |
+| Gate        | Command                      | Success Criteria                                |
+| ----------- | ---------------------------- | ----------------------------------------------- |
+| Type safety | repo typecheck recipe        | Zero errors                                     |
+| Lint        | repo lint recipe (scoped)    | Zero violations                                 |
+| Tests       | repo test recipe (scoped)    | All pass                                        |
+| Full QA     | repo full-QA recipe          | All pass                                        |
+| Perf        | bundle / runtime measurement | No regression vs baseline (or N/A — delete row) |
 
 ## Cross-Plan References
 

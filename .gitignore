@@ -105,3 +105,21 @@ apps/workers/reports/
 .gstack/
 .webpresso/
 .npmrc
+
+# >>> managed by @webpresso/agent-kit (rule-sync)
+.agent/rules/
+.cursor/rules/
+.windsurf/rules/
+.claude/rules/
+.gemini/commands/
+.codex/agents/
+# <<< managed by @webpresso/agent-kit (rule-sync)
+
+# >>> managed by @webpresso/agent-kit (skill-sync)
+.agent/skills/
+.cursor/skills/
+.windsurf/skills/
+.claude/skills/
+.gemini/commands/
+.codex/agents/
+# <<< managed by @webpresso/agent-kit (skill-sync)

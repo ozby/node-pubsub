@@ -63,6 +63,16 @@ When `/pll` is executing blueprint-backed work:
 - use `ak blueprint finalize <slug>` only after all tasks are validly done
 - do **not** use `ak blueprint move` as the normal execution primitive; it is recovery-only
 
+## Roadmap-Aware Lane Picking
+
+When invoked without an explicit task list, `/pll` should prefer the roadmap-shaped queue exposed by `ak blueprint list`:
+
+1. Read `ak blueprint list` first. `ROADMAP` rows are strategic parents; indented `CHILD` rows are tactical lanes.
+2. Choose the next `planned` child under an active (`in-progress` or `planned`) roadmap, respecting each child's `depends_on:` before fan-out.
+3. Use orphan blueprints only when no roadmap child is actionable. The `ORPHANS` group is fallback work, not the primary lane queue.
+4. Keep output-shape assumptions aligned with `ROADMAP ... children=N ...`, `CHILD ... parent=<roadmap>`, and `ORPHANS` rows from `ak blueprint list`.
+5. If the roadmap/child relationship looks inconsistent, run `ak audit roadmap-links` before dispatching lanes.
+
 ## What `/pll` Owns
 
 - parsing lightweight dependency hints from task lists or blueprint task structure

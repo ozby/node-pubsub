@@ -14,26 +14,26 @@ Delete if not useful.
 
 ### Core Packages
 
-| Package           | Path                          | Purpose                         | Common Files                                    |
-| ----------------- | ----------------------------- | ------------------------------- | ----------------------------------------------- |
-| **platform-api**  | `apps/workers/platform-api/`  | Main API, GraphQL, handlers     | `src/routes/`, `src/handlers/`, `src/services/` |
-| **platform-web**  | `apps/web/platform-web/`      | Platform web UI                 | `app/routes/`, `app/components/`                |
-| **admin-api**     | `apps/workers/admin-api/`     | Admin API                       | `src/routes/`, `src/services/`                  |
-| **admin-web**     | `apps/web/admin-web/`         | Admin web UI                    | `app/routes/`, `app/components/`                |
-| **schema-engine** | `packages/sdk/schema-engine/` | Entity schemas, GraphQL codegen | `src/`, emitters                                |
-| **database**      | `packages/core/database/`     | Drizzle schemas, migrations     | `src/schemas/`, `migrations/`                   |
-| **test-utils**    | `packages/core/test-utils/`   | Test utilities, mocks           | `src/`, `src/playwright/`                       |
-| **cli2**          | `apps/cli2/`                  | CLI tool, just commands         | `src/commands/`, `src/lib/`                     |
+| Package           | Path                                  | Purpose                         | Common Files                                    |
+| ----------------- | ------------------------------------- | ------------------------------- | ----------------------------------------------- |
+| **platform-api**  | `apps/platform/workers/platform-api/` | Main API, GraphQL, handlers     | `src/routes/`, `src/handlers/`, `src/services/` |
+| **platform-web**  | `apps/platform/web/platform-web/`     | Platform web UI                 | `app/routes/`, `app/components/`                |
+| **admin-api**     | `apps/platform/workers/admin-api/`    | Admin API                       | `src/routes/`, `src/services/`                  |
+| **admin-web**     | `apps/platform/web/admin-web/`        | Admin web UI                    | `app/routes/`, `app/components/`                |
+| **schema-engine** | `packages/sdk/schema-engine/`         | Entity schemas, GraphQL codegen | `src/`, emitters                                |
+| **database**      | `packages/core/database/`             | Drizzle schemas, migrations     | `src/schemas/`, `migrations/`                   |
+| **test-utils**    | `packages/core/test-utils/`           | Test utilities, mocks           | `src/`, `src/playwright/`                       |
+| **cli2**          | `apps/cli2/`                          | CLI tool, just commands         | `src/commands/`, `src/lib/`                     |
 
 ### Key Locations
 
 **API Routes**: `apps/workers/*/src/routes/` (Hono routes)
 **Services**: `apps/workers/*/src/services/` (business logic)
 **Database Queries**: Look in services or `packages/core/database/`
-**GraphQL Actions**: `apps/workers/platform-api/src/handlers//`
+**GraphQL Actions**: `apps/platform/workers/platform-api/src/handlers//`
 **Frontend Routes**: `apps/web/*/app/routes/`
 **Shared Components**: `packages/core/ui/src/components/`
-**Generated Package**: `.webpresso/generated/` (physical root, exposed as workspace package `@webpresso/generated`)
+**Generated Package**: `.webpresso/generated/` (physical root, exposed as workspace package `@repo/generated`)
 
 ## Preferred Inspection Flow
 
@@ -55,10 +55,10 @@ For simple read-only repo inspection, use the lightest reliable tool first:
 
 ```bash
 # Search route files
-rg -n "POST.*deploy" apps/workers/platform-api/src/routes/
+rg -n "POST.*deploy" apps/platform/workers/platform-api/src/routes/
 
 # Or check handlers
-rg -n "deploy" apps/workers/platform-api/src/handlers/
+rg -n "deploy" apps/platform/workers/platform-api/src/handlers/
 ```
 
 **Where a function is defined**
@@ -83,7 +83,7 @@ rg -n "table.*projects" packages/core/database packages/sdk/schema-engine
 
 ```bash
 # Actions are in platform-api
-rg -n "projects:" apps/workers/platform-api/src/handlers/
+rg -n "projects:" apps/platform/workers/platform-api/src/handlers/
 ```
 
 ## Cross-Package Import Patterns
@@ -92,16 +92,16 @@ rg -n "projects:" apps/workers/platform-api/src/handlers/
 
 ```typescript
 // From generated artifacts (real workspace package rooted at .webpresso/generated/)
-import { projectFragment } from "@webpresso/generated/graphql";
-import * as schema from "@webpresso/generated/drizzle/schemas";
+import { projectFragment } from "@repo/generated/graphql";
+import * as schema from "@repo/generated/drizzle/schemas";
 
 // From test-utils
-import { createIntegrationContext } from "@webpresso/test-utils";
-import { projectsFactory } from "@webpresso/generated/factories";
+import { createIntegrationContext } from "@repo/test-utils";
+import { projectsFactory } from "@repo/generated/factories";
 
 // From database
-import { db } from "@webpresso/database/client";
-import { projects } from "@webpresso/database/schemas";
+import { db } from "@repo/database/client";
+import { projects } from "@repo/database/schemas";
 
 // From ui (shared components)
 import { Button } from "@webpresso/ui";
@@ -109,8 +109,12 @@ import { Button } from "@webpresso/ui";
 
 ### Package Names
 
-Full names: `@webpresso/platform-api`, `@webpresso/schema-engine`, etc.
-Short names in just commands: `platform-api`, `schema-engine`, `cli2`
+Two npm scopes coexist after the `6 degrees of seperation` rename:
+
+- Internal workspace packages use `@repo/*` scope (e.g. `@repo/platform-api`, `@repo/platform-web`, `@repo/chef`, `@repo/neon`, `@repo/e2e`, `@repo/docs-linter`)
+- Externally published packages keep `@webpresso/*` scope (e.g. `@webpresso/schema-engine`, `@webpresso/cli-wp`, `@webpresso/agent-kit`, `@webpresso/ui`, `@repo/generated`)
+
+Short names in just commands: `platform-api`, `schema-engine`, `cli2` (slug only, no scope)
 
 ## Dynamic Targeting
 
@@ -122,7 +126,7 @@ just test platform-api
 just lint schema-engine
 
 # By file path
-just test apps/workers/platform-api/src/services/project.ts
+just test apps/platform/workers/platform-api/src/services/project.ts
 just lint BLUEPRINT-COMMANDS-REMOVED
 
 # By category
@@ -137,10 +141,10 @@ just test cli2,schema-engine
 
 ### Adding a New API Endpoint
 
-1. **Route**: `apps/workers/platform-api/src/routes/<feature>.ts`
-2. **Service**: `apps/workers/platform-api/src/services/<feature>-service.ts`
-3. **Handler**: `apps/workers/platform-api/src/handlers/<feature>-handlers.ts`
-4. **Test**: `apps/workers/platform-api/src/services/<feature>-service.integration.test.ts`
+1. **Route**: `apps/platform/workers/platform-api/src/routes/<feature>.ts`
+2. **Service**: `apps/platform/workers/platform-api/src/services/<feature>-service.ts`
+3. **Handler**: `apps/platform/workers/platform-api/src/handlers/<feature>-handlers.ts`
+4. **Test**: `apps/platform/workers/platform-api/src/services/<feature>-service.integration.test.ts`
 
 ### Adding a Database Query
 
@@ -153,7 +157,7 @@ just test cli2,schema-engine
 1. Edit entity YAML: `webpresso/entities/<entity>.yaml`
 2. Run `just schema-compile`
 3. Check generated artifacts in `.webpresso/generated/`
-4. Import generated consumer surfaces via `@webpresso/generated/*` instead of deep relative paths
+4. Import generated consumer surfaces via `@repo/generated/*` instead of deep relative paths
 5. Test with integration tests
 
 ## Dependency Graph
@@ -166,8 +170,8 @@ just test cli2,schema-engine
 
 **Downstream** (uses many):
 
-- `apps/workers/platform-api` - Uses database, schema-engine
-- `apps/web/platform-web` - Uses schema-engine, ui
+- `apps/platform/workers/platform-api` - Uses database, schema-engine
+- `apps/platform/web/platform-web` - Uses schema-engine, ui
 
 ## Finding Related Code
 
@@ -178,18 +182,18 @@ Check these locations:
 1. `packages/core/database/` - Source of truth
 2. `.webpresso/generated/drizzle/` - Generated
 3. `apps/workers/*/src/services/` - Services that use the schema
-4. `apps/workers/platform-api/src/handlers/` - GraphQL resolvers / action handlers
+4. `apps/platform/workers/platform-api/src/handlers/` - GraphQL resolvers / action handlers
 
 ### GraphQL query not working
 
 1. Check generated fragments: `.webpresso/generated/graphql/fragments/`
-2. Verify resolver: `apps/workers/platform-api/src/handlers/`
+2. Verify resolver: `apps/platform/workers/platform-api/src/handlers/`
 3. Check permissions: `webpresso/permissions/` YAML files
 
 ### Frontend not seeing updates
 
 1. Regenerate frontend: `just schema-frontend`
-2. Check route file: `apps/web/platform-web/app/routes/...`
+2. Check route file: `apps/platform/web/platform-web/app/routes/...`
 3. Verify hooks: Look for `useQuery`, `useMutation` from generated code
 
 ## File Naming Conventions
@@ -218,20 +222,20 @@ rg -n "functionName" apps/ packages/ -t ts
 rg --files apps packages | rg 'function|project|service'
 
 # Read an exact range once you have the file
-sed -n '120,170p' apps/workers/platform-api/src/services/project-service.ts
+sed -n '120,170p' apps/platform/workers/platform-api/src/services/project-service.ts
 ```
 
 **Import not working?**
 
 - Check `package.json` exports field
-- Check `package.json` imports field for package-private `#...` mappings, and prefer `@webpresso/generated/*` for generated artifacts
-- Ensure the importing package declares `@webpresso/generated` in `dependencies`
+- Check `package.json` imports field for package-private `#...` mappings, and prefer `@repo/generated/*` for generated artifacts
+- Ensure the importing package declares `@repo/generated` in `dependencies`
 - Ensure package is built: `just build <package>`
 - Check workspace install/link state instead of adding `tsconfig.paths` aliases
 
 **Not sure which package to edit?**
 
-- API logic → `apps/workers/platform-api/`
+- API logic → `apps/platform/workers/platform-api/`
 - UI component → `packages/core/ui/` or specific web app
 - Database schema → `packages/core/database/`
 - Shared types → `packages/sdk/schema-engine/`

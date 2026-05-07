@@ -12,7 +12,7 @@ last_updated: "YYYY-MM-DD"
 ## Pre-flight
 
 - [ ] Access to required dashboards
-- [ ] Access to required consoles (Cloudflare, Doppler, Pulumi)
+- [ ] Access to required consoles
 - [ ] Incident channel identified
 
 ## Steps
@@ -29,7 +29,7 @@ If steps above worsen the situation:
 
 ## Communication
 
-- Who to notify (human, not Slack handles that decay).
+- Who to notify (human, not chat handles that decay).
 - What to say, with a template.
 
 ## Aftermath
