@@ -1,1 +1,1 @@
-../../node_modules/.pnpm/@webpresso+agent-kit@0.7.1/node_modules/@webpresso/agent-kit/catalog/agent/rules/repo-restrictions.md
+../../node_modules/.pnpm/@webpresso+agent-kit@0.7.2/node_modules/@webpresso/agent-kit/catalog/agent/rules/repo-restrictions.md

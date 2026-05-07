@@ -55,8 +55,8 @@ catalogs:
       specifier: ^6.0.1
       version: 6.0.1
     '@webpresso/agent-kit':
-      specifier: 0.7.1
-      version: 0.7.1
+      specifier: 0.7.2
+      version: 0.7.2
     '@webpresso/neon-branching':
       specifier: 0.2.1
       version: 0.2.1
@@ -196,7 +196,7 @@ importers:
         version: 19.2.14
       '@webpresso/agent-kit':
         specifier: 'catalog:'
-        version: 0.7.1
+        version: 0.7.2
       '@webpresso/runtime':
         specifier: 'catalog:'
         version: 0.3.0
@@ -4541,8 +4541,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@webpresso/agent-kit@0.7.1':
-    resolution: {integrity: sha512-7jCyiJQJGcuEfTpFredstPW24BvrIHUivOCqLTipZC5GsMzQn9eJFzbbcEtYLQBAPe0oZ7MHWHqe4d/uvho3bQ==, tarball: https://npm.pkg.github.com/download/@webpresso/agent-kit/0.7.1/4378014be81c37f7dbb8cf0647fdaf977126dfcf}
+  '@webpresso/agent-kit@0.7.2':
+    resolution: {integrity: sha512-C/aaLLtigWDFxKjmMsogs2ylYjHb+DK4a62mYtMPRH0I3HKQzjgFvJ007tpt+YXFLvSRp2CIVx/uvKRD/hJWIg==, tarball: https://npm.pkg.github.com/download/@webpresso/agent-kit/0.7.2/36e2e2e2580fab8b21106e74b1dc39c88ea03d5b}
     engines: {node: '>=24'}
     hasBin: true
 
@@ -10784,7 +10784,7 @@ snapshots:
   '@voidzero-dev/vite-plus-win32-x64-msvc@0.1.19':
     optional: true
 
-  '@webpresso/agent-kit@0.7.1':
+  '@webpresso/agent-kit@0.7.2':
     dependencies:
       '@manypkg/find-root': 3.1.0
       '@modelcontextprotocol/sdk': 1.29.0(zod@4.4.3)

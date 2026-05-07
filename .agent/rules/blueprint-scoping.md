@@ -1,1 +1,1 @@
-../../node_modules/.pnpm/@webpresso+agent-kit@0.7.1/node_modules/@webpresso/agent-kit/catalog/agent/rules/blueprint-scoping.md
+../../node_modules/.pnpm/@webpresso+agent-kit@0.7.2/node_modules/@webpresso/agent-kit/catalog/agent/rules/blueprint-scoping.md
