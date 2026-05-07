@@ -12,7 +12,7 @@ export default mergeConfig(workersConfig as never, {
           name: "node",
           environment: "node",
           include: ["src/**/*.test.ts"],
-          exclude: ["src/tests/TopicRoom.test.ts"],
+          exclude: ["src/tests/TopicRoom.test.ts", "src/**/*.compact-qa.*"],
         },
       },
       // Workers pool — tests that exercise CF-native globals:
