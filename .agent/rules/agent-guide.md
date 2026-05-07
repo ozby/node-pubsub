@@ -1,1 +1,1 @@
-../../node_modules/.pnpm/@webpresso+agent-kit@0.6.0/node_modules/@webpresso/agent-kit/catalog/agent/rules/agent-guide.md
+../../node_modules/.pnpm/@webpresso+agent-kit@0.7.1/node_modules/@webpresso/agent-kit/catalog/agent/rules/agent-guide.md
