@@ -28,6 +28,9 @@ export type Env = {
   KV: KVNamespace;
   AUTO_HEAL_THRESHOLD?: string;
   LOW_CONFIDENCE_THRESHOLD?: string;
+  LANGFUSE_PUBLIC_KEY?: string;
+  LANGFUSE_SECRET_KEY?: string;
+  LANGFUSE_BASE_URL?: string;
 };
 
 export function createDb(env: Env) {

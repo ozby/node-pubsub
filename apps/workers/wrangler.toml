@@ -45,6 +45,7 @@ routes = [{ pattern = "api.dev.ingest-lens.ozby.dev", custom_domain = true }]
 [env.dev.vars]
 NODE_ENV = "development"
 ALLOWED_ORIGIN = "https://dev.ingest-lens.ozby.dev"
+LANGFUSE_BASE_URL = "https://cloud.langfuse.com"
 
 [[env.dev.rate_limiting]]
 binding = "RATE_LIMITER"
@@ -111,6 +112,7 @@ routes = [{ pattern = "api.ingest-lens.ozby.dev", custom_domain = true }]
 [env.prd.vars]
 NODE_ENV = "production"
 ALLOWED_ORIGIN = "https://ingest-lens.ozby.dev"
+LANGFUSE_BASE_URL = "https://cloud.langfuse.com"
 
 [[env.prd.rate_limiting]]
 binding = "RATE_LIMITER"
