@@ -24,6 +24,8 @@ const forwardedVars: Array<[string, string | undefined]> = [
   ["JWT_SECRET", process.env.JWT_SECRET ?? "local-dev-jwt-secret"],
   ["AUTO_HEAL_THRESHOLD", process.env.AUTO_HEAL_THRESHOLD],
   ["LOW_CONFIDENCE_THRESHOLD", process.env.LOW_CONFIDENCE_THRESHOLD],
+  ["LANGFUSE_PUBLIC_KEY", process.env.LANGFUSE_PUBLIC_KEY],
+  ["LANGFUSE_SECRET_KEY", process.env.LANGFUSE_SECRET_KEY],
 ];
 
 const args = ["exec", "wrangler", "dev", ...passthroughArgs];
