@@ -52,6 +52,7 @@ type IntakeAttemptRecord = {
     | "ingest_failed";
   ingestStatus: "not_started" | "pending" | "ingested" | "failed";
   overallConfidence: number;
+  promptVersion: string;
   suggestionBatch?: {
     suggestions: MappingSuggestion[];
   };
@@ -323,5 +324,58 @@ describe("intake mapping flow", () => {
     expect(queueAfterAck.response.status).toBe(200);
     expect(queueAfterAck.body.results).toBe(0);
     expect(queueAfterAck.body.data.messages).toEqual([]);
+  });
+
+  it("returns 201 with populated overallConfidence and fallback promptVersion when Langfuse is not configured", async () => {
+    // This test runs in an environment where LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY are
+    // absent (standard local dev + CI). It pins the observable contract: the route must
+    // return 201 and the attempt record must carry a non-negative overallConfidence (sourced
+    // from the AI result, not Langfuse) and promptVersion equal to the static fallback token.
+    const runId = crypto.randomUUID().slice(0, 8);
+    const credentials = {
+      username: `lf-fallback-${runId}`,
+      email: `lf-fallback-${runId}@example.test`,
+      password: `Pass-${runId}`,
+    };
+
+    const registration = await postJson<AuthResponse>(baseUrl, "/api/auth/register", credentials);
+    expect(registration.response.status).toBe(201);
+    const token = registration.body.data.token;
+
+    const queue = await postJson<ApiSuccess<{ queue: QueueRecord }>>(
+      baseUrl,
+      "/api/queues",
+      { name: `lf-fallback-${runId}`, retentionPeriod: 7 },
+      token,
+    );
+    expect(queue.response.status).toBe(201);
+
+    const attempt = await postJson<ApiSuccess<{ attempt: IntakeAttemptRecord }>>(
+      baseUrl,
+      "/api/intake/mapping-suggestions",
+      {
+        sourceSystem: "ashby",
+        contractId: "job-posting-v1",
+        fixtureId: "ashby-job-001",
+        queueId: queue.body.data.queue.id,
+      },
+      token,
+    );
+
+    // Route must succeed even with no Langfuse creds
+    expect(attempt.response.status).toBe(201);
+
+    const { attempt: record } = attempt.body.data;
+
+    // overallConfidence is populated from the AI decisionLog, not Langfuse
+    expect(typeof record.overallConfidence).toBe("number");
+    expect(record.overallConfidence).toBeGreaterThanOrEqual(0);
+    expect(record.overallConfidence).toBeLessThanOrEqual(1);
+
+    // When Langfuse is unavailable the fallback prompt version token is stored on the attempt
+    expect(record.promptVersion).toBe("payload-mapper-v1");
+
+    // Suggestions are still produced
+    expect(record.suggestionBatch?.suggestions.length).toBeGreaterThan(0);
   });
 });
