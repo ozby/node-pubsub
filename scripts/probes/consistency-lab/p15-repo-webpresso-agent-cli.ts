@@ -5,7 +5,7 @@
  * `agent e2e --suite` as the cutover expects?
  *
  * This is an internal-claim probe: scenario 1a/1b blueprints say
- * `pnpm exec webpresso agent e2e --suite s1a-correctness` registers and runs
+ * `bun ./scripts/run-webpresso-cli.ts agent e2e --suite s1a-correctness` registers and runs
  * the suite. If `webpresso agent` doesn't exist, or doesn't support `--suite`,
  * the suite
  * registration tasks (2.7 / 3.7) are ghosts.
@@ -21,7 +21,7 @@ const REPO_ROOT = join(__dirname, "..", "..", "..");
 
 const PROBE = "p15-repo-webpresso-agent-cli";
 const CLAIM =
-  "`pnpm exec webpresso agent e2e --help` succeeds in this repo and the command accepts a `--suite` argument";
+  "`bun ./scripts/run-webpresso-cli.ts agent e2e --help` succeeds in this repo and the command accepts a `--suite` argument";
 
 function runCmd(
   cmd: string,
@@ -51,7 +51,11 @@ function runCmd(
 }
 
 async function run(): Promise<void> {
-  const help = await runCmd("pnpm", ["exec", "webpresso", "agent", "e2e", "--help"], 30_000);
+  const help = await runCmd(
+    "bun",
+    ["./scripts/run-webpresso-cli.ts", "agent", "e2e", "--help"],
+    30_000,
+  );
   const webpressoAgentExists =
     help.code === 0 || /webpresso agent|agent e2e|--suite/i.test(help.stdout + help.stderr);
 
@@ -77,7 +81,7 @@ async function run(): Promise<void> {
       `webpresso-agent-e2e-help-ok=${e2eHelpOk}`,
       `--suite-flag-mentioned=${suiteFlagMentioned}`,
     ].join(" | "),
-    citation: "internal: pnpm exec webpresso agent e2e --help",
+    citation: "internal: bun ./scripts/run-webpresso-cli.ts agent e2e --help",
   });
   if (verdict === "WRONG") process.exit(1);
 }
@@ -88,7 +92,7 @@ run().catch(async (err) => {
     verdict: "UNREACHABLE",
     claim: CLAIM,
     evidence: `threw: ${err instanceof Error ? err.message : String(err)}`,
-    citation: "internal: pnpm exec webpresso agent e2e --help",
+    citation: "internal: bun ./scripts/run-webpresso-cli.ts agent e2e --help",
   });
   process.exit(2);
 });

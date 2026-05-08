@@ -97,7 +97,7 @@ jobs:
           FAIL=0
           for SHA in $COMMITS; do
             git log -1 --format="%B" "$SHA" > /tmp/commit-msg.txt
-            pnpm exec webpresso agent audit commit-message --lore-warn --message-file /tmp/commit-msg.txt || FAIL=1
+            bun ./scripts/run-webpresso-cli.ts agent audit commit-message --lore-warn --message-file /tmp/commit-msg.txt || FAIL=1
           done
           exit $FAIL
 

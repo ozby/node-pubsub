@@ -18,10 +18,10 @@ pnpm dev
 ```
 
 `pnpm install` runs `postinstall`, which delegates to the shared
-`setup:agent-kit` script (`pnpm exec webpresso agent setup --yes --with
-omx,gstack`). That keeps the agent surfaces plus OMX/gstack operator skills
-refreshed for every fresh clone/worktree without duplicating the setup command
-in multiple lifecycle hooks.
+`setup:agent` script (`bun ./scripts/run-webpresso-cli.ts agent setup --yes
+--overwrite`). The wrapper resolves the installed unified CLI entrypoint
+directly, so this repo does not depend on whichever package currently owns the
+ambient `webpresso` bin in `node_modules/.bin`.
 
 Secrets and database connections are managed via `with-secrets` (Doppler + Neon providers). No `.env` files.
 

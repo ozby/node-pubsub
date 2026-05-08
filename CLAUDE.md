@@ -201,4 +201,9 @@ What this provides:
 
 Pin to release tags (`v<version>`) — `main` of `webpresso/agent-kit` does not have `dist/` checked in; only release tags do.
 
-The pnpm catalog dep `@webpresso/agent-kit` stays for now because `agent-kit.config.ts` still imports `defineAgentKitConfig`. Plugin install is additive, not a replacement for the library dep, until the unified CLI dependency swap is complete.
+The pnpm catalog dep `@webpresso/agent-kit` stays because the current unified
+`webpresso agent` / `webpresso blueprint` surfaces still compose through the
+installed Agent Kit package. The root package no longer needs
+`@webpresso/webpresso` as a devDependency, and root scripts should invoke the
+unified CLI through `scripts/run-webpresso-cli.ts` rather than relying on an
+ambient `node_modules/.bin/webpresso` winner.
