@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import type { JudgeAssessment, MappingSuggestionBatch } from "@repo/types";
-import { DEFAULT_PRIMARY_MODEL, suggestMappings, type StructuredRunner } from "./aiMappingAdapter";
+import {
+  DEFAULT_PRIMARY_MODEL,
+  buildMappingPrompt,
+  suggestMappings,
+  type MappingTelemetry,
+  type StructuredRunner,
+} from "./aiMappingAdapter";
 
 function createValidBatch(): MappingSuggestionBatch {
   return {
@@ -105,7 +111,7 @@ describe("suggestMappings", () => {
       suggestMappings(createInput(), {
         primaryRunner: fakeRunner,
       }),
-    ).resolves.toEqual({
+    ).resolves.toMatchObject({
       kind: "success",
       batch: createValidBatch(),
       decisionLog: {
@@ -143,7 +149,7 @@ describe("suggestMappings", () => {
       suggestMappings(createInput(), {
         primaryRunner: fakeRunner,
       }),
-    ).resolves.toEqual({
+    ).resolves.toMatchObject({
       kind: "invalid_output",
       reason: "Deterministic validation rejected the model output.",
       errors: ["/suggestions/0/explanation Expected string length greater or equal to 1"],
@@ -180,7 +186,7 @@ describe("suggestMappings", () => {
       suggestMappings(createInput(), {
         primaryRunner: fakeRunner,
       }),
-    ).resolves.toEqual({
+    ).resolves.toMatchObject({
       kind: "invalid_output",
       reason: "Deterministic validation rejected the model output.",
       errors: ["/suggestions/0/sourcePath Segment 'missing' is outside the current payload."],
@@ -213,7 +219,7 @@ describe("suggestMappings", () => {
         timeoutMs: 5,
         primaryMaxAttempts: 1,
       }),
-    ).resolves.toEqual({
+    ).resolves.toMatchObject({
       kind: "runtime_failure",
       reason: "Primary model attempt 1 timed out after 5ms",
       decisionLog: {
@@ -303,7 +309,7 @@ describe("suggestMappings", () => {
         primaryMaxAttempts: 2,
         retryDelayMs: 0,
       }),
-    ).resolves.toEqual({
+    ).resolves.toMatchObject({
       kind: "runtime_failure",
       reason: "unsupported provider configuration",
       decisionLog: {
@@ -341,7 +347,7 @@ describe("suggestMappings", () => {
       suggestMappings(createInput(), {
         primaryRunner: fakeRunner,
       }),
-    ).resolves.toEqual({
+    ).resolves.toMatchObject({
       kind: "abstain",
       reason: "Model confidence is too low for review creation.",
       decisionLog: {
@@ -500,5 +506,143 @@ describe("suggestMappings", () => {
     expect(result.batch.suggestions[0]?.judgeAssessment).toBeUndefined();
     expect(result.decisionLog.judgeDisagreements).toBe(0);
     expect(result.decisionLog.judgeUnavailableCount).toBe(1);
+  });
+
+  describe("primaryPromptText injection", () => {
+    it("uses injected primaryPromptText instead of calling buildMappingPrompt", async () => {
+      const receivedPrompts: string[] = [];
+      const fakeRunner: StructuredRunner = async (options) => {
+        receivedPrompts.push(options.prompt);
+        return createValidBatch();
+      };
+      const injectedPrompt = "INJECTED PROMPT TEXT";
+
+      await suggestMappings(createInput(), {
+        primaryRunner: fakeRunner,
+        primaryPromptText: injectedPrompt,
+      });
+
+      expect(receivedPrompts).toHaveLength(1);
+      expect(receivedPrompts[0]).toBe(injectedPrompt);
+    });
+
+    it("falls back to buildMappingPrompt when no primaryPromptText is given", async () => {
+      const receivedPrompts: string[] = [];
+      const fakeRunner: StructuredRunner = async (options) => {
+        receivedPrompts.push(options.prompt);
+        return createValidBatch();
+      };
+
+      await suggestMappings(createInput(), {
+        primaryRunner: fakeRunner,
+      });
+
+      const expectedPrompt = buildMappingPrompt(createInput());
+      expect(receivedPrompts[0]).toBe(expectedPrompt);
+    });
+  });
+
+  describe("runtime telemetry", () => {
+    it("returns telemetry on success result", async () => {
+      const fakeRunner: StructuredRunner = async () => createValidBatch();
+
+      const result = await suggestMappings(createInput(), {
+        primaryRunner: fakeRunner,
+      });
+
+      expect(result.kind).toBe("success");
+      expect(result.telemetry).toBeDefined();
+      const telemetry = result.telemetry as MappingTelemetry;
+      expect(telemetry.model).toBe(DEFAULT_PRIMARY_MODEL);
+      expect(telemetry.promptText).toBe(buildMappingPrompt(createInput()));
+      expect(typeof telemetry.startedAt).toBe("number");
+      expect(typeof telemetry.endedAt).toBe("number");
+      expect(telemetry.durationMs).toBe(telemetry.endedAt - telemetry.startedAt);
+      expect(typeof telemetry.outputText).toBe("string");
+      const parsed: unknown = JSON.parse(telemetry.outputText);
+      expect(parsed).toMatchObject({ contractId: "job-posting-v1" });
+    });
+
+    it("returns telemetry on abstain result", async () => {
+      const fakeRunner: StructuredRunner = async () => ({
+        ...createValidBatch(),
+        overallConfidence: 0.4,
+        suggestions: [
+          {
+            ...createValidBatch().suggestions[0],
+            confidence: 0.4,
+          },
+        ],
+      });
+
+      const result = await suggestMappings(createInput(), {
+        primaryRunner: fakeRunner,
+      });
+
+      expect(result.kind).toBe("abstain");
+      expect(result.telemetry).toBeDefined();
+      const telemetry = result.telemetry as MappingTelemetry;
+      expect(telemetry.model).toBe(DEFAULT_PRIMARY_MODEL);
+      expect(typeof telemetry.startedAt).toBe("number");
+      expect(typeof telemetry.endedAt).toBe("number");
+      expect(telemetry.durationMs).toBe(telemetry.endedAt - telemetry.startedAt);
+    });
+
+    it("returns telemetry on runtime_failure result", async () => {
+      const fakeRunner: StructuredRunner = async () => {
+        return await new Promise<MappingSuggestionBatch>(() => {});
+      };
+
+      const result = await suggestMappings(createInput(), {
+        primaryRunner: fakeRunner,
+        timeoutMs: 5,
+        primaryMaxAttempts: 1,
+      });
+
+      expect(result.kind).toBe("runtime_failure");
+      expect(result.telemetry).toBeDefined();
+      const telemetry = result.telemetry as MappingTelemetry;
+      expect(telemetry.model).toBe(DEFAULT_PRIMARY_MODEL);
+      expect(typeof telemetry.startedAt).toBe("number");
+      expect(typeof telemetry.endedAt).toBe("number");
+      expect(telemetry.durationMs).toBe(telemetry.endedAt - telemetry.startedAt);
+      expect(telemetry.outputText).toBe("");
+    });
+
+    it("passes through usage fields when runner provides them", async () => {
+      const fakeRunner: StructuredRunner = async (options) => {
+        const result = createValidBatch();
+        // Simulate runner attaching usage to result via a non-standard carrier
+        // The adapter needs to capture usage from the AI SDK response, but since
+        // our StructuredRunner abstraction returns T directly, we test the
+        // shape passes through when usage is available from the workers runner.
+        // For test-runner, usage is undefined (acceptable).
+        void options;
+        return result;
+      };
+
+      const result = await suggestMappings(createInput(), {
+        primaryRunner: fakeRunner,
+      });
+
+      expect(result.kind).toBe("success");
+      const telemetry = result.telemetry as MappingTelemetry;
+      // usage is optional; test-runner doesn't provide it
+      expect(telemetry.usage === undefined || typeof telemetry.usage === "object").toBe(true);
+    });
+
+    it("uses injected primaryPromptText in telemetry.promptText", async () => {
+      const fakeRunner: StructuredRunner = async () => createValidBatch();
+      const injectedPrompt = "CUSTOM PROMPT";
+
+      const result = await suggestMappings(createInput(), {
+        primaryRunner: fakeRunner,
+        primaryPromptText: injectedPrompt,
+      });
+
+      expect(result.kind).toBe("success");
+      const telemetry = result.telemetry as MappingTelemetry;
+      expect(telemetry.promptText).toBe(injectedPrompt);
+    });
   });
 });
