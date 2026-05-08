@@ -1,6 +1,5 @@
 ---
 type: tech-debt
-last_updated: 2026-05-07
 status: open
 severity: "{{severity}}"
 category: "{{category}}"
