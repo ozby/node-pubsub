@@ -407,6 +407,14 @@ describe("intake routes", () => {
         judgeDisagreements: 0,
         judgeUnavailableCount: 0,
       },
+      telemetry: {
+        model: "test-model",
+        promptText: "test prompt",
+        startedAt: 0,
+        endedAt: 0,
+        durationMs: 0,
+        outputText: "",
+      },
     });
     const state: FakeDbState = {
       attempts: [],
@@ -535,6 +543,14 @@ describe("intake routes", () => {
         confidence: { average: 0.96, maximum: 0.96, minimum: 0.96, overall: 0.92 },
         judgeDisagreements: 0,
         judgeUnavailableCount: 0,
+      },
+      telemetry: {
+        model: "test-model",
+        promptText: "test prompt",
+        startedAt: 0,
+        endedAt: 0,
+        durationMs: 0,
+        outputText: "",
       },
     });
     const state: FakeDbState = {

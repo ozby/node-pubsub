@@ -65,29 +65,48 @@ export interface SuggestMappingsDependencies {
   timeoutMs?: number;
   retryDelayMs?: number;
   primaryMaxAttempts?: number;
+  primaryPromptText?: string;
 }
+
+export type MappingTelemetry = {
+  model: string;
+  promptText: string;
+  startedAt: number;
+  endedAt: number;
+  durationMs: number;
+  outputText: string;
+  usage?: {
+    promptTokens?: number;
+    completionTokens?: number;
+    totalTokens?: number;
+  };
+};
 
 export type SuggestMappingsResult =
   | {
       kind: "success";
       batch: MappingSuggestionBatch;
       decisionLog: MappingDecisionLog;
+      telemetry: MappingTelemetry;
     }
   | {
       kind: "abstain";
       reason: string;
       decisionLog: MappingDecisionLog;
+      telemetry: MappingTelemetry;
     }
   | {
       kind: "invalid_output";
       reason: string;
       errors: string[];
       decisionLog: MappingDecisionLog;
+      telemetry: MappingTelemetry;
     }
   | {
       kind: "runtime_failure";
       reason: string;
       decisionLog: MappingDecisionLog;
+      telemetry: MappingTelemetry;
     };
 
 function summarizeConfidence(batch?: MappingSuggestionBatch): ConfidenceSummary {
@@ -415,6 +434,7 @@ function acquirePrimaryRunner(
   input: SuggestMappingsInput,
   dependencies: SuggestMappingsDependencies,
   primaryModel: string,
+  promptText: string,
 ): RunnerAcquireResult {
   const provider: MappingDecisionLog["provider"] = dependencies.primaryRunner
     ? "test-runner"
@@ -429,6 +449,7 @@ function acquirePrimaryRunner(
       return { ok: true, runner: async () => fallbackBatch, provider: "test-runner" };
     }
     const reason = error instanceof Error ? error.message : "Workers AI binding is unavailable";
+    const now = Date.now();
     return {
       ok: false,
       result: {
@@ -442,13 +463,21 @@ function acquirePrimaryRunner(
           undefined,
           { failureReason: "ai_binding_missing" },
         ),
+        telemetry: {
+          model: primaryModel,
+          promptText,
+          startedAt: now,
+          endedAt: now,
+          durationMs: 0,
+          outputText: "",
+        },
       },
     };
   }
 }
 
 type BatchFetchResult =
-  | { ok: true; batch: MappingSuggestionBatch }
+  | { ok: true; batch: MappingSuggestionBatch; telemetry: MappingTelemetry }
   | { ok: false; result: SuggestMappingsResult };
 
 async function fetchBatch(
@@ -456,7 +485,9 @@ async function fetchBatch(
   provider: MappingDecisionLog["provider"],
   input: SuggestMappingsInput,
   opts: ResolvedOpts,
+  promptText: string,
 ): Promise<BatchFetchResult> {
+  const startedAt = Date.now();
   try {
     const batch = (await runWithRetry(
       (attempt) =>
@@ -464,7 +495,7 @@ async function fetchBatch(
           (abortSignal) =>
             primaryRunner<MappingSuggestionBatch>({
               modelId: opts.primaryModel,
-              prompt: buildMappingPrompt(input),
+              prompt: promptText,
               schema: MappingSuggestionBatchSchema,
               schemaName: "MappingSuggestionBatch",
               schemaDescription:
@@ -479,8 +510,26 @@ async function fetchBatch(
         ),
       { maxAttempts: opts.primaryMaxAttempts, retryDelayMs: opts.retryDelayMs, sleep },
     )) as MappingSuggestionBatch;
-    return { ok: true, batch };
+    const endedAt = Date.now();
+    const telemetry: MappingTelemetry = {
+      model: opts.primaryModel,
+      promptText,
+      startedAt,
+      endedAt,
+      durationMs: endedAt - startedAt,
+      outputText: JSON.stringify(batch),
+    };
+    return { ok: true, batch, telemetry };
   } catch (error) {
+    const endedAt = Date.now();
+    const baseTelemetry: MappingTelemetry = {
+      model: opts.primaryModel,
+      promptText,
+      startedAt,
+      endedAt,
+      durationMs: endedAt - startedAt,
+      outputText: "",
+    };
     if (NoObjectGeneratedError.isInstance(error)) {
       return {
         ok: false,
@@ -496,6 +545,7 @@ async function fetchBatch(
             undefined,
             { failureReason: "no_object_generated" },
           ),
+          telemetry: baseTelemetry,
         },
       };
     }
@@ -515,9 +565,55 @@ async function fetchBatch(
               error instanceof ModelTimeoutError ? "primary_model_timeout" : "primary_model_failed",
           },
         ),
+        telemetry: baseTelemetry,
       },
     };
   }
+}
+
+async function buildSuccessResult(
+  validBatch: MappingSuggestionBatch,
+  input: SuggestMappingsInput,
+  dependencies: SuggestMappingsDependencies,
+  primaryRunner: StructuredRunner,
+  provider: MappingDecisionLog["provider"],
+  primaryModel: string,
+  telemetry: MappingTelemetry,
+): Promise<SuggestMappingsResult> {
+  if (!input.enableJudge) {
+    return {
+      kind: "success",
+      batch: validBatch,
+      decisionLog: buildDecisionLog(
+        provider,
+        primaryModel,
+        input.promptVersion,
+        "passed",
+        validBatch,
+      ),
+      telemetry,
+    };
+  }
+
+  const judgeRunner = dependencies.judgeRunner ?? primaryRunner;
+  const judged = await attachJudgeAssessments(validBatch, input, judgeRunner);
+
+  return {
+    kind: "success",
+    batch: judged.batch,
+    decisionLog: buildDecisionLog(
+      provider,
+      primaryModel,
+      input.promptVersion,
+      "passed",
+      judged.batch,
+      {
+        judgeDisagreements: judged.judgeDisagreements,
+        judgeUnavailableCount: judged.judgeUnavailableCount,
+      },
+    ),
+    telemetry,
+  };
 }
 
 export async function suggestMappings(
@@ -531,15 +627,19 @@ export async function suggestMappings(
       ? Number(dependencies.env.LOW_CONFIDENCE_THRESHOLD)
       : LOW_CONFIDENCE_THRESHOLD;
 
-  const runnerResult = acquirePrimaryRunner(input, dependencies, opts.primaryModel);
+  const promptText = dependencies.primaryPromptText ?? buildMappingPrompt(input);
+
+  const runnerResult = acquirePrimaryRunner(input, dependencies, opts.primaryModel, promptText);
   if (!runnerResult.ok) return runnerResult.result;
   const { runner: primaryRunner, provider } = runnerResult;
 
-  const batchResult = await fetchBatch(primaryRunner, provider, input, opts);
+  const batchResult = await fetchBatch(primaryRunner, provider, input, opts, promptText);
   if (!batchResult.ok) return batchResult.result;
 
+  const { batch: fetchedBatch, telemetry } = batchResult;
+
   const validation = validateMappingSuggestionBatch(
-    batchResult.batch,
+    fetchedBatch,
     createMappingValidationOptions(input),
   );
 
@@ -553,9 +653,10 @@ export async function suggestMappings(
         opts.primaryModel,
         input.promptVersion,
         "invalid_output",
-        batchResult.batch,
+        fetchedBatch,
         { failureReason: "deterministic_validation_failed" },
       ),
+      telemetry,
     };
   }
 
@@ -571,39 +672,17 @@ export async function suggestMappings(
         validation.value,
         { failureReason: "low_confidence" },
       ),
+      telemetry,
     };
   }
 
-  if (!input.enableJudge) {
-    return {
-      kind: "success",
-      batch: validation.value,
-      decisionLog: buildDecisionLog(
-        provider,
-        opts.primaryModel,
-        input.promptVersion,
-        "passed",
-        validation.value,
-      ),
-    };
-  }
-
-  const judgeRunner = dependencies.judgeRunner ?? primaryRunner;
-  const judged = await attachJudgeAssessments(validation.value, input, judgeRunner);
-
-  return {
-    kind: "success",
-    batch: judged.batch,
-    decisionLog: buildDecisionLog(
-      provider,
-      opts.primaryModel,
-      input.promptVersion,
-      "passed",
-      judged.batch,
-      {
-        judgeDisagreements: judged.judgeDisagreements,
-        judgeUnavailableCount: judged.judgeUnavailableCount,
-      },
-    ),
-  };
+  return buildSuccessResult(
+    validation.value,
+    input,
+    dependencies,
+    primaryRunner,
+    provider,
+    opts.primaryModel,
+    telemetry,
+  );
 }
