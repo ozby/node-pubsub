@@ -26,6 +26,8 @@ import {
   createAndDispatchTopicMessages,
   deriveIngestIdempotencyKey,
 } from "../messages/lifecycle";
+import { fetchPayloadMapperPrompt } from "../langfuse/prompts";
+import { dispatchIntakeTracing } from "../langfuse/intakeTracing";
 
 type AppContext = Context<{
   Bindings: Env;
@@ -989,6 +991,8 @@ intakeRoutes.post("/mapping-suggestions", async (c) => {
     return c.json({ status: "success", data: { normalized, fastPath: true } });
   }
 
+  const langfusePrompt = await fetchPayloadMapperPrompt(c.env);
+
   const mapped = await suggestMappings(
     {
       payload: validation.value.payload,
@@ -1000,8 +1004,21 @@ intakeRoutes.post("/mapping-suggestions", async (c) => {
     },
     {
       env: c.env,
+      primaryPromptText: langfusePrompt.promptText,
     },
   );
+
+  try {
+    const { tracePostPromise, flushPromise } = await dispatchIntakeTracing({
+      result: mapped,
+      promptName: langfusePrompt.promptName,
+      promptVersion: langfusePrompt.promptVersion,
+      env: c.env,
+    });
+    c.executionCtx.waitUntil(Promise.allSettled([tracePostPromise, flushPromise]));
+  } catch {
+    // Langfuse failure must not affect HTTP behavior
+  }
 
   // HEAL PATH — high-confidence success auto-approved and stored in HealStreamDO
   if (mapped.kind === "success") {

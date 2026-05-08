@@ -6,6 +6,8 @@ import { authenticate } from "../middleware/auth";
 import { AUTH_HEADER, bypassAuth, createMockEnv, createMockHealStream, get, post } from "./helpers";
 import { suggestMappings } from "../intake/aiMappingAdapter";
 import { shapeFingerprint } from "../intake/shapeFingerprint";
+import { fetchPayloadMapperPrompt } from "../langfuse/prompts";
+import { dispatchIntakeTracing } from "../langfuse/intakeTracing";
 
 vi.mock("../middleware/auth", () => ({
   authenticate: vi.fn(),
@@ -23,6 +25,22 @@ vi.mock("../db/client", async (importOriginal) => {
   const actual = await importOriginal<typeof import("../db/client")>();
   return { ...actual, createDb: vi.fn() };
 });
+
+vi.mock("../langfuse/prompts", () => ({
+  fetchPayloadMapperPrompt: vi.fn().mockResolvedValue({
+    promptText: "mocked-prompt-text",
+    promptName: "payload-mapper",
+    promptVersion: "42",
+    usedFallback: false,
+  }),
+}));
+
+vi.mock("../langfuse/intakeTracing", () => ({
+  dispatchIntakeTracing: vi.fn().mockResolvedValue({
+    tracePostPromise: Promise.resolve(),
+    flushPromise: Promise.resolve(),
+  }),
+}));
 
 type AttemptRow = typeof intakeAttempts.$inferSelect;
 type MappingVersionRow = typeof approvedMappingRevisions.$inferSelect;
@@ -737,5 +755,231 @@ describe("auto-heal fast path", () => {
 
     // Critical assertion: LLM was never invoked on the fast path.
     expect(vi.mocked(suggestMappings)).not.toHaveBeenCalled();
+  });
+
+  it("passes Langfuse prompt text to suggestMappings when prompt is resolved", async () => {
+    bypassAuth(vi.mocked(authenticate));
+    vi.mocked(fetchPayloadMapperPrompt).mockResolvedValueOnce({
+      promptText: "langfuse-managed-prompt",
+      promptName: "payload-mapper",
+      promptVersion: "7",
+      usedFallback: false,
+    });
+    vi.mocked(suggestMappings).mockResolvedValueOnce({
+      kind: "success",
+      batch: createAttemptRow().suggestionBatch!,
+      decisionLog: {
+        provider: "test-runner",
+        model: "test-model",
+        promptVersion: "payload-mapper-v1",
+        validationOutcome: "passed",
+        confidence: { average: 0.96, maximum: 0.96, minimum: 0.96, overall: 0.92 },
+        judgeDisagreements: 0,
+        judgeUnavailableCount: 0,
+      },
+      telemetry: {
+        model: "test-model",
+        promptText: "langfuse-managed-prompt",
+        startedAt: 0,
+        endedAt: 0,
+        durationMs: 0,
+        outputText: "",
+      },
+    });
+    const state: FakeDbState = {
+      attempts: [],
+      mappingVersions: [],
+      messages: [],
+      queues: [],
+      topics: [],
+    };
+    vi.mocked(createDb).mockReturnValue(createFakeDb(state) as never);
+
+    const response = await app.fetch(
+      post(
+        "/api/intake/mapping-suggestions",
+        {
+          contractId: "job-posting-v1",
+          fixtureId: "ashby-job-001",
+          queueId: "queue-1",
+          sourceSystem: "manual",
+        },
+        AUTH_HEADER,
+      ),
+      createMockEnv(deliveryQueue),
+    );
+
+    expect(response.status).toBe(201);
+    expect(vi.mocked(suggestMappings)).toHaveBeenCalledWith(
+      expect.objectContaining({}),
+      expect.objectContaining({ primaryPromptText: "langfuse-managed-prompt" }),
+    );
+  });
+
+  it("still returns 201 when fetchPayloadMapperPrompt uses fallback", async () => {
+    bypassAuth(vi.mocked(authenticate));
+    vi.mocked(fetchPayloadMapperPrompt).mockResolvedValueOnce({
+      promptText: "fallback-prompt-text",
+      promptName: "payload-mapper",
+      promptVersion: "payload-mapper-v1",
+      usedFallback: true,
+    });
+    vi.mocked(suggestMappings).mockResolvedValueOnce({
+      kind: "success",
+      batch: createAttemptRow().suggestionBatch!,
+      decisionLog: {
+        provider: "test-runner",
+        model: "test-model",
+        promptVersion: "payload-mapper-v1",
+        validationOutcome: "passed",
+        confidence: { average: 0.96, maximum: 0.96, minimum: 0.96, overall: 0.92 },
+        judgeDisagreements: 0,
+        judgeUnavailableCount: 0,
+      },
+      telemetry: {
+        model: "test-model",
+        promptText: "fallback-prompt-text",
+        startedAt: 0,
+        endedAt: 0,
+        durationMs: 0,
+        outputText: "",
+      },
+    });
+    const state: FakeDbState = {
+      attempts: [],
+      mappingVersions: [],
+      messages: [],
+      queues: [],
+      topics: [],
+    };
+    vi.mocked(createDb).mockReturnValue(createFakeDb(state) as never);
+
+    const response = await app.fetch(
+      post(
+        "/api/intake/mapping-suggestions",
+        {
+          contractId: "job-posting-v1",
+          fixtureId: "ashby-job-001",
+          queueId: "queue-1",
+          sourceSystem: "manual",
+        },
+        AUTH_HEADER,
+      ),
+      createMockEnv(deliveryQueue),
+    );
+
+    expect(response.status).toBe(201);
+  });
+
+  it("schedules Langfuse background work via waitUntil after suggestMappings", async () => {
+    bypassAuth(vi.mocked(authenticate));
+    const tracePostPromise = Promise.resolve();
+    const flushPromise = Promise.resolve();
+    vi.mocked(dispatchIntakeTracing).mockResolvedValueOnce({ tracePostPromise, flushPromise });
+    vi.mocked(suggestMappings).mockResolvedValueOnce({
+      kind: "success",
+      batch: createAttemptRow().suggestionBatch!,
+      decisionLog: {
+        provider: "test-runner",
+        model: "test-model",
+        promptVersion: "payload-mapper-v1",
+        validationOutcome: "passed",
+        confidence: { average: 0.96, maximum: 0.96, minimum: 0.96, overall: 0.92 },
+        judgeDisagreements: 0,
+        judgeUnavailableCount: 0,
+      },
+      telemetry: {
+        model: "test-model",
+        promptText: "test prompt",
+        startedAt: 0,
+        endedAt: 0,
+        durationMs: 0,
+        outputText: "",
+      },
+    });
+    const state: FakeDbState = {
+      attempts: [],
+      mappingVersions: [],
+      messages: [],
+      queues: [],
+      topics: [],
+    };
+    vi.mocked(createDb).mockReturnValue(createFakeDb(state) as never);
+
+    const waitUntilMock = vi.fn();
+    const env = createMockEnv(deliveryQueue);
+    const mockExecutionCtx = {
+      waitUntil: waitUntilMock,
+      passThroughOnException: vi.fn(),
+      props: {},
+    } as unknown as ExecutionContext;
+
+    const response = await app.fetch(
+      post(
+        "/api/intake/mapping-suggestions",
+        {
+          contractId: "job-posting-v1",
+          fixtureId: "ashby-job-001",
+          queueId: "queue-1",
+          sourceSystem: "manual",
+        },
+        AUTH_HEADER,
+      ),
+      env,
+      mockExecutionCtx,
+    );
+
+    expect(response.status).toBe(201);
+    expect(waitUntilMock).toHaveBeenCalledWith(expect.any(Promise));
+  });
+
+  it("returns 201 even when dispatchIntakeTracing rejects", async () => {
+    bypassAuth(vi.mocked(authenticate));
+    vi.mocked(dispatchIntakeTracing).mockRejectedValueOnce(new Error("Langfuse exploded"));
+    vi.mocked(suggestMappings).mockResolvedValueOnce({
+      kind: "success",
+      batch: createAttemptRow().suggestionBatch!,
+      decisionLog: {
+        provider: "test-runner",
+        model: "test-model",
+        promptVersion: "payload-mapper-v1",
+        validationOutcome: "passed",
+        confidence: { average: 0.96, maximum: 0.96, minimum: 0.96, overall: 0.92 },
+        judgeDisagreements: 0,
+        judgeUnavailableCount: 0,
+      },
+      telemetry: {
+        model: "test-model",
+        promptText: "test prompt",
+        startedAt: 0,
+        endedAt: 0,
+        durationMs: 0,
+        outputText: "",
+      },
+    });
+    const state: FakeDbState = {
+      attempts: [],
+      mappingVersions: [],
+      messages: [],
+      queues: [],
+      topics: [],
+    };
+    vi.mocked(createDb).mockReturnValue(createFakeDb(state) as never);
+
+    const response = await app.fetch(
+      post(
+        "/api/intake/mapping-suggestions",
+        {
+          contractId: "job-posting-v1",
+          fixtureId: "ashby-job-001",
+          queueId: "queue-1",
+          sourceSystem: "manual",
+        },
+        AUTH_HEADER,
+      ),
+      createMockEnv(deliveryQueue),
+    );
+
+    expect(response.status).toBe(201);
   });
 });
