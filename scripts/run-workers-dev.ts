@@ -26,6 +26,7 @@ const forwardedVars: Array<[string, string | undefined]> = [
   ["LOW_CONFIDENCE_THRESHOLD", process.env.LOW_CONFIDENCE_THRESHOLD],
   ["LANGFUSE_PUBLIC_KEY", process.env.LANGFUSE_PUBLIC_KEY],
   ["LANGFUSE_SECRET_KEY", process.env.LANGFUSE_SECRET_KEY],
+  ["LANGFUSE_BASE_URL", process.env.LANGFUSE_BASE_URL ?? "https://cloud.langfuse.com"],
 ];
 
 const args = ["exec", "wrangler", "dev", ...passthroughArgs];

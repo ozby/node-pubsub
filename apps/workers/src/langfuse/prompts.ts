@@ -45,7 +45,7 @@ export async function fetchPayloadMapperPrompt(
   const client = new LangfuseClient({
     publicKey: LANGFUSE_PUBLIC_KEY,
     secretKey: LANGFUSE_SECRET_KEY,
-    baseUrl: LANGFUSE_BASE_URL,
+    baseUrl: LANGFUSE_BASE_URL ?? "https://cloud.langfuse.com",
   });
 
   try {
