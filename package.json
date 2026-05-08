@@ -15,7 +15,7 @@
     "check": "vp check",
     "clean": "vp run clean",
     "client:bundle:check": "pnpm exec webpresso agent audit bundle-budget apps/client/dist --max-js-asset-bytes 512000 --max-html-eager-js-asset-bytes 262144 --max-html-eager-js-total-bytes 393216",
-    "dev": "with-secrets --doppler ozby-shell:dev -- vp run dev",
+    "dev": "doppler run --project ozby-shell --config dev -- vp run dev",
     "dev:no-doppler": "vp run dev",
     "format": "vp fmt",
     "format:check": "vp fmt --check",
