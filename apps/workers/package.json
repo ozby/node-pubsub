@@ -11,6 +11,7 @@
     "lint": "oxlint src"
   },
   "dependencies": {
+    "@langfuse/client": "^5.3.0",
     "@repo/types": "workspace:*",
     "@sinclair/typebox": "^0.34.49",
     "@webpresso/webpresso": "catalog:",
