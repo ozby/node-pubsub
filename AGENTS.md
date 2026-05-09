@@ -75,7 +75,7 @@ behavior and any broader checks this repo requires. Typical gates are:
 - lint / format check
 - affected tests
 - docs or blueprint validation when docs/plans changed
-- `ak symlink check` after `ak setup` to verify surfaces are in sync
+- `ak sync --check` after `ak setup` to verify surfaces are in sync
 
 If a gate fails, fix the root cause or record the blocker with evidence.
 
