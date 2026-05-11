@@ -34,6 +34,9 @@
     "ai:eval": "bun ./scripts/run-mapping-eval.ts",
     "probes:lab": "bun scripts/probes/consistency-lab/run-all.ts"
   },
+  "dependencies": {
+    "rulesync": "8.15.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
