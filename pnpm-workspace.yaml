@@ -62,7 +62,7 @@ catalog:
   tailwindcss: ^4.2.4
 
   # Task runner
-  vite-plus: 0.1.19
+  vite-plus: ^0.1.20
 
 catalogs:
   tooling:
