@@ -6,14 +6,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@repo/ui/components": ["../../packages/ui/src/components/index.tsx"],
-      "@repo/ui/lib": ["../../packages/ui/src/lib/index.tsx"]
+      "@/*": ["./src/*"]
     },
     "noUncheckedIndexedAccess": false,
     "verbatimModuleSyntax": false
   },
-  "include": ["src", "../../packages/ui/src"],
+  "include": ["src"],
   "references": [
     {
       "path": "./tsconfig.node.json"
