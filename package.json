@@ -35,7 +35,7 @@
     "probes:lab": "bun scripts/probes/consistency-lab/run-all.ts"
   },
   "dependencies": {
-    "@webpresso/cli": "link:../../webpresso/monorepo/packages/cli/public-cli"
+    "@webpresso/cli": "catalog:"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
@@ -71,8 +71,7 @@
       "@voidzero-dev/vite-plus-core>yaml": "2.8.3",
       "micromatch>picomatch": "2.3.2",
       "protobufjs": "7.5.5",
-      "table>ajv": "8.18.0",
-      "@webpresso/webpresso": "link:../../webpresso/webpresso"
+      "table>ajv": "8.18.0"
     },
     "peerDependencyRules": {
       "allowedVersions": {
