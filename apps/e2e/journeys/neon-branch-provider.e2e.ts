@@ -5,7 +5,7 @@ import {
   isNeonAvailable,
   listE2EBranches,
   NeonBranchProvider,
-} from "@webpresso/neon-branching";
+} from "@webpresso/db-branching-neon";
 
 const NEON_API_KEY = process.env.NEON_API_KEY;
 

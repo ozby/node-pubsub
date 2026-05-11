@@ -11,8 +11,8 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:tooling",
-    "@webpresso/typescript-config": "catalog:",
-    "@webpresso/vitest-config": "catalog:",
+    "@webpresso/agent-tsconfig": "catalog:",
+    "@webpresso/agent-vitest": "catalog:",
     "vitest": "catalog:tooling"
   }
 }

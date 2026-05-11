@@ -35,9 +35,9 @@
     "@stryker-mutator/vitest-runner": "catalog:",
     "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:tooling",
-    "@webpresso/stryker-config": "catalog:",
-    "@webpresso/typescript-config": "catalog:",
-    "@webpresso/vitest-config": "catalog:",
+    "@webpresso/agent-stryker": "catalog:",
+    "@webpresso/agent-tsconfig": "catalog:",
+    "@webpresso/agent-vitest": "catalog:",
     "bunchee": "catalog:",
     "oxlint": "catalog:tooling",
     "vitest": "catalog:tooling"

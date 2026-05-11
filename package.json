@@ -34,23 +34,20 @@
     "ai:eval": "bun ./scripts/run-mapping-eval.ts",
     "probes:lab": "bun scripts/probes/consistency-lab/run-all.ts"
   },
-  "dependencies": {
-    "@webpresso/cli": "catalog:"
-  },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@secretlint/secretlint-rule-preset-recommend": "^9.3.0",
     "@types/react": "catalog:",
     "@webpresso/agent-kit": "catalog:",
+    "@webpresso/agent-stryker": "catalog:",
+    "@webpresso/agent-tsconfig": "catalog:",
+    "@webpresso/agent-vitest": "catalog:",
     "@webpresso/runtime": "catalog:",
     "@webpresso/schema-engine": "catalog:",
     "@webpresso/schema-frontend": "catalog:",
     "@webpresso/schema-loaders": "catalog:",
     "@webpresso/schema-spec": "catalog:",
-    "@webpresso/stryker-config": "catalog:",
-    "@webpresso/typescript-config": "catalog:",
-    "@webpresso/vitest-config": "catalog:",
     "husky": "catalog:",
     "oxlint": "catalog:tooling",
     "react": "catalog:",
@@ -81,10 +78,10 @@
     "onlyBuiltDependencies": [
       "@webpresso/agent-kit",
       "@webpresso/db-branching",
-      "@webpresso/neon-branching",
+      "@webpresso/db-branching-neon",
       "@webpresso/runtime",
-      "@webpresso/vitest-config",
-      "@webpresso/workers-test-kit"
+      "@webpresso/agent-vitest",
+      "@webpresso/agent-workers-test"
     ]
   }
 }

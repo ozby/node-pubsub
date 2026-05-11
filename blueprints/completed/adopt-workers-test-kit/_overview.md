@@ -14,10 +14,10 @@ tags:
   - deduplication
 ---
 
-# Adopt `@webpresso/workers-test-kit` — replace hand-rolled test mocks
+# Adopt `@webpresso/agent-workers-test` — replace hand-rolled test mocks
 
 **Goal:** Replace the 158-line `apps/workers/src/tests/helpers.ts` mock layer
-(and duplicated equivalents in `apps/lab/`) with `@webpresso/workers-test-kit`,
+(and duplicated equivalents in `apps/lab/`) with `@webpresso/agent-workers-test`,
 which provides production-grade `BaseWorkerEnv`, `createMockEnv<T>`,
 `createMockExecutionContext`, `createMockHyperdrive`, `createMockDurableObjectNamespace`,
 `createAuthenticatedRequest`, and `setupWorkerTest<T>` as a shared library.
@@ -25,14 +25,14 @@ Eliminates ~200 lines of custom mock code that drifts silently when CF bindings 
 
 ## Planning Summary
 
-- **Why now:** `@webpresso/workers-test-kit` is newly published in `webpresso/`.
+- **Why now:** `@webpresso/agent-workers-test` is newly published in `webpresso/`.
   ingest-lens already has the exact same pattern — hand-rolled `createMockEnv`,
   `createMockExecutionContext`, `mockHyperdrive` — spread across
   `apps/workers/src/tests/helpers.ts` (158 lines, 25 mock call-sites) and
   `apps/lab/src/routes/*.test.ts`. Centralising removes maintenance burden and
   ensures CF type upgrades propagate automatically.
 - **Scope:**
-  1. Add `@webpresso/workers-test-kit` to the catalog and relevant packages.
+  1. Add `@webpresso/agent-workers-test` to the catalog and relevant packages.
   2. Refactor `apps/workers/src/tests/helpers.ts`: extend `BaseWorkerEnv`
      with the `Env` type from `db/client.ts`; replace inline `createMockHyperdrive`
      / `createMockDurableObjectNamespace` / `createMockEnv` with the kit's generics.
@@ -60,7 +60,7 @@ apps/workers/src/tests/         apps/workers/src/tests/
     createMockDO()       ─ rm
     buildSelectChain()   ─ keep ─▶ still in helpers.ts
 
-@webpresso/workers-test-kit (shared)
+@webpresso/agent-workers-test (shared)
   createMockEnv<T>()      ◀── imported by helpers.ts
   createMockHyperdrive()  ◀── imported by helpers.ts
   createMockDurableObjectNamespace() ◀──
@@ -100,7 +100,7 @@ apps/workers/src/tests/         apps/workers/src/tests/
 
 ### Phase 1: Workers helpers refactor [Complexity: S]
 
-#### [infra] Task 1.1: Add `@webpresso/workers-test-kit` to workspace
+#### [infra] Task 1.1: Add `@webpresso/agent-workers-test` to workspace
 
 **Status:** pending
 
@@ -109,13 +109,13 @@ apps/workers/src/tests/         apps/workers/src/tests/
 Add to the `catalog:` in `pnpm-workspace.yaml`:
 
 ```yaml
-"@webpresso/workers-test-kit": "github:webpresso/workers-test-kit#main"
+"@webpresso/agent-workers-test": "github:webpresso/workers-test-kit#main"
 ```
 
 Add to `apps/workers/package.json` `devDependencies`:
 
 ```json
-"@webpresso/workers-test-kit": "catalog:"
+"@webpresso/agent-workers-test": "catalog:"
 ```
 
 Run `pnpm install`. Verify `pnpm --filter @repo/workers check-types` passes.
@@ -128,7 +128,7 @@ Run `pnpm install`. Verify `pnpm --filter @repo/workers check-types` passes.
 **Acceptance:**
 
 - [ ] `pnpm --filter @repo/workers check-types` passes after install
-- [ ] `import { createMockEnv } from "@webpresso/workers-test-kit"` resolves
+- [ ] `import { createMockEnv } from "@webpresso/agent-workers-test"` resolves
 
 ---
 
@@ -138,7 +138,7 @@ Run `pnpm install`. Verify `pnpm --filter @repo/workers check-types` passes.
 
 **Depends:** 1.1
 
-Replace inline CF mock factories with imports from `@webpresso/workers-test-kit`.
+Replace inline CF mock factories with imports from `@webpresso/agent-workers-test`.
 Define `type WorkerTestEnv = Env` and update `createMockEnv` to call
 `kitCreateMockEnv<WorkerTestEnv>({ JWT_SECRET: "test-secret", DELIVERY_QUEUE: ..., ... })`.
 
@@ -204,7 +204,7 @@ with `{} as unknown as Queue` casts. Replace with
 `createMockEnv<LabEnv>({ LAB_SESSION_SECRET: "...", LAB_RUN_TOKEN: "...", ... })`
 from the kit.
 
-Add `@webpresso/workers-test-kit` to `apps/lab/package.json` devDependencies.
+Add `@webpresso/agent-workers-test` to `apps/lab/package.json` devDependencies.
 
 **Files:**
 
@@ -268,7 +268,7 @@ pnpm catalog:check                       # no drift
 
 ## Technology Choices
 
-- `@webpresso/workers-test-kit` via GitHub dependency (not yet on npm registry)
+- `@webpresso/agent-workers-test` via GitHub dependency (not yet on npm registry)
 - All kit mocks are `vi.fn()`-based — compatible with existing vitest setup
 
 ## Refinement Summary
@@ -280,7 +280,7 @@ pnpm catalog:check                       # no drift
 1. **Technology claims — accurate.** `apps/workers/src/tests/helpers.ts` exists (confirmed)
    and contains inline mock factories: `createMockEnv`, Hyperdrive (`null as unknown as
 Env["HYPERDRIVE"]`), DO namespace, and execution context stand-ins. The
-   `@webpresso/workers-test-kit` package exists at `/Users/ozby/repos/webpresso/workers-test-kit/`
+   `@webpresso/agent-workers-test` package exists at `/Users/ozby/repos/webpresso/workers-test-kit/`
    and exports all claimed symbols (`createMockEnv`, `createMockHyperdrive`,
    `createMockDurableObjectNamespace`, `createMockExecutionContext`,
    `createAuthenticatedRequest`, `setupWorkerTest`).
@@ -292,7 +292,7 @@ Env["HYPERDRIVE"]`), DO namespace, and execution context stand-ins. The
    Task 1.1 should use:
 
    ```yaml
-   "@webpresso/workers-test-kit": "git+ssh://git@github.com/webpresso/workers-test-kit.git#main"
+   "@webpresso/agent-workers-test": "git+ssh://git@github.com/webpresso/workers-test-kit.git#main"
    ```
 
 3. **Task 1.2 "keep" list has phantom helpers — correction needed.** Task 1.2 says to

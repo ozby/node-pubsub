@@ -1,20 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
 
-import {
-  resolveAgentKitCliEntry,
-  resolveWebpressoCliEntry,
-  routeInvocation,
-  runWebpressoCli,
-} from "./run-webpresso-cli";
+import { resolveAgentKitCliEntry, routeInvocation, runWebpressoCli } from "./run-webpresso-cli";
 
 describe("run-webpresso-cli", () => {
-  it("resolves the host bin next to the installed @webpresso/cli package", () => {
-    const entry = resolveWebpressoCliEntry(() => "/repo/node_modules/@webpresso/cli/package.json");
-
-    expect(entry).toBe("/repo/node_modules/@webpresso/host/src/bin/webpresso.ts");
-  });
-
-  it("resolves the agent-kit CLI entry for agent surfaces", () => {
+  it("resolves the agent-kit CLI entry from the installed package.json", () => {
     const entry = resolveAgentKitCliEntry(
       () => "/repo/node_modules/@webpresso/agent-kit/package.json",
     );
@@ -22,23 +11,25 @@ describe("run-webpresso-cli", () => {
     expect(entry).toBe("/repo/node_modules/@webpresso/agent-kit/src/cli/cli.ts");
   });
 
-  it("routes agent and blueprint surfaces through agent-kit", () => {
-    const resolvePackageJson = (specifier: string) =>
-      specifier === "@webpresso/cli/package.json"
-        ? "/repo/node_modules/@webpresso/cli/package.json"
-        : "/repo/node_modules/@webpresso/agent-kit/package.json";
+  it("strips the legacy `agent` prefix and routes the rest to agent-kit", () => {
+    const resolvePackageJson = () => "/repo/node_modules/@webpresso/agent-kit/package.json";
 
     expect(routeInvocation(["agent", "audit", "catalog-drift"], resolvePackageJson)).toEqual({
       command: "/repo/node_modules/@webpresso/agent-kit/src/cli/cli.ts",
       args: ["audit", "catalog-drift"],
     });
+  });
+
+  it("passes non-`agent` roots through to agent-kit unchanged", () => {
+    const resolvePackageJson = () => "/repo/node_modules/@webpresso/agent-kit/package.json";
+
     expect(routeInvocation(["blueprint", "audit", "--all"], resolvePackageJson)).toEqual({
       command: "/repo/node_modules/@webpresso/agent-kit/src/cli/cli.ts",
       args: ["blueprint", "audit", "--all"],
     });
   });
 
-  it("spawns the resolved host entrypoint with inherited stdio", () => {
+  it("spawns the resolved agent-kit entrypoint with inherited stdio", () => {
     const spawn = vi.fn(() => ({
       status: 0,
       pid: 1,
@@ -47,10 +38,7 @@ describe("run-webpresso-cli", () => {
       stderr: Buffer.alloc(0),
       signal: null,
     }));
-    const resolvePackageJson = (specifier: string) =>
-      specifier === "@webpresso/cli/package.json"
-        ? "/repo/node_modules/@webpresso/cli/package.json"
-        : "/repo/node_modules/@webpresso/agent-kit/package.json";
+    const resolvePackageJson = () => "/repo/node_modules/@webpresso/agent-kit/package.json";
 
     const exitCode = runWebpressoCli(["agent", "audit", "catalog-drift"], {
       resolvePackageJson,

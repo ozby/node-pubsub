@@ -141,7 +141,7 @@ flowchart LR
   hardcoded placeholder confidence; the real LLM confidence is available
   in the Worker after `suggestMappings()` returns. Every step after mapping
   approval — schema validation, normalization, publish — is deterministic code.
-- **Workers test substrate**: `@webpresso/workers-test-kit` is the
+- **Workers test substrate**: `@webpresso/agent-workers-test` is the
   upstream for `BaseWorkerEnv`, `createMockExecutionContext`, and
   `createMockHyperdrive`. `packages/test-utils` only re-exports
   `deepFreeze` for cross-package use.

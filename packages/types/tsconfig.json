@@ -1,5 +1,5 @@
 {
-  "extends": "@webpresso/typescript-config/base.json",
+  "extends": "@webpresso/agent-tsconfig/base.json",
   "compilerOptions": {
     "lib": ["ES2015"],
     "types": ["vitest/globals", "node"],

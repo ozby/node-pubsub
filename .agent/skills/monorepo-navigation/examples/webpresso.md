@@ -112,7 +112,7 @@ import { Button } from "@webpresso/ui";
 Two npm scopes coexist after the `6 degrees of seperation` rename:
 
 - Internal workspace packages use `@repo/*` scope (e.g. `@repo/platform-api`, `@repo/platform-web`, `@repo/chef`, `@repo/neon`, `@repo/e2e`, `@repo/docs-linter`)
-- Externally published packages keep `@webpresso/*` scope (e.g. `@webpresso/schema-engine`, `@webpresso/cli-wp`, `@webpresso/agent-kit`, `@webpresso/ui`, `@repo/generated`)
+- Externally published packages keep `@webpresso/*` scope (e.g. `@webpresso/schema-engine`, `@webpresso/agent-kit`, `@webpresso/ui`, `@repo/generated`)
 
 Short names in just commands: `platform-api`, `schema-engine`, `cli2` (slug only, no scope)
 

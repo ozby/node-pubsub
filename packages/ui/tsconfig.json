@@ -1,5 +1,5 @@
 {
-  "extends": "@webpresso/typescript-config/react-library.json",
+  "extends": "@webpresso/agent-tsconfig/react-library.json",
   "compilerOptions": {
     "lib": ["DOM", "ES2015"],
     "sourceMap": true,

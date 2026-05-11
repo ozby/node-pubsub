@@ -52,7 +52,7 @@ rebrand), and Wave 3 (integration-platform AI showcase) have all
 | ai-oss-tooling-adapter             | Adopt the minimal OSS AI/validation stack behind one Worker adapter               |
 | ai-payload-intake-mapper           | Workers AI suggestion-only payload mapping with validation and approval           |
 | public-dataset-demo-ingestion      | Demo packaged around public ATS fixture data with optional allowlisted live fetch |
-| adopt-workers-test-kit             | Replace hand-rolled CF mock factories with `@webpresso/workers-test-kit`          |
+| adopt-workers-test-kit             | Replace hand-rolled CF mock factories with `@webpresso/agent-workers-test`        |
 | adopt-db-branching                 | Adopt `@webpresso/db-branching` `BranchProvider` interface for Neon E2E branches  |
 | bump-agent-kit                     | Track `@webpresso/agent-kit` via catalog (git+ssh) — tech-debt + Lore CI          |
 
