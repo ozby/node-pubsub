@@ -38,7 +38,7 @@ starter template, and keep changes small, reviewable, and verified.
 No agent surfaces are tracked in git — everything is regenerated. After cloning:
 
 ```bash
-pnpm install && pnpm setup:agent  # pnpm setup:agent runs ak setup, which scaffolds .agent/, AGENTS.md, hooks, and runs symlink sync
+pnpm install && pnpm setup:agent  # pnpm setup:agent runs ak setup, which scaffolds .agent/, AGENTS.md, hooks, and runs ak sync
 ```
 
 Agent-kit is the single source of truth. To customize skills, commands, or

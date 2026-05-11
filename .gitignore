@@ -123,3 +123,12 @@ apps/workers/reports/
 .gemini/commands/
 .codex/agents/
 # <<< managed by @webpresso/agent-kit (skill-sync)
+
+# agent-kit compile cache (always regeneratable)
+.agent/.compile-manifest.json
+.agent/.compile.hash
+.agent/.blueprints.db
+.agent/.blueprints.lock
+.agent/.rotation-log.jsonl
+.agent/.tail-hint-history.jsonl
+.rulesync/

@@ -1,1 +1,1 @@
-../../../node_modules/@webpresso/agent-kit/skills/testing-philosophy/SKILL.md
+../../../.agent/skills/testing-philosophy/SKILL.md
