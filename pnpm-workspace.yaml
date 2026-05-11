@@ -30,24 +30,24 @@ catalog:
 
   # Shared build tools
   "@vitejs/plugin-react": ^6.0.1
-  "@webpresso/agent-kit": 0.7.3
-  "@webpresso/db-branching": 0.2.1
-  "@webpresso/neon-branching": 0.2.1
-  "@webpresso/runtime": 0.3.0
+  "@webpresso/agent-kit": ^0.7.3
+  "@webpresso/db-branching": ^0.2.1
+  "@webpresso/neon-branching": ^0.2.1
+  "@webpresso/runtime": ^0.3.0
   "@webpresso/schema-engine": 0.1.0-alpha.20
   "@webpresso/schema-frontend": 0.1.0-alpha.20
   "@webpresso/schema-loaders": 0.1.0-alpha.20
   "@webpresso/schema-spec": 0.1.0-alpha.20
-  "@webpresso/stryker-config": 0.1.0
+  "@webpresso/stryker-config": ^0.1.0
 
   # Webpresso tooling (GitHub Packages npm registry)
-  "@webpresso/typescript-config": 0.1.0
-  "@webpresso/vitest-config": 0.1.0
+  "@webpresso/typescript-config": ^0.1.0
+  "@webpresso/vitest-config": ^0.1.0
 
   # Webpresso umbrella (npm-registry, scoped on GitHub Packages)
-  "@webpresso/cli": 0.2.0
-  "@webpresso/webpresso": 0.1.1
-  "@webpresso/workers-test-kit": 0.1.0
+  "@webpresso/cli": ^0.2.0
+  "@webpresso/webpresso": ^0.1.1
+  "@webpresso/workers-test-kit": ^0.1.0
   axios: ^1.15.2
   bunchee: ^6.10.0
   class-variance-authority: ^0.7.1
