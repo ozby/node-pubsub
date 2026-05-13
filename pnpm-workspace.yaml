@@ -79,3 +79,25 @@ catalogs:
     postgres: ^3.4.9
     wrangler: ^4.84.1
 confirmModulesPurge: false
+
+allowBuilds:
+  "@webpresso/db-branching": true
+  "@webpresso/db-branching-neon": true
+  "@webpresso/runtime": true
+  "@webpresso/agent-vitest": true
+  "@webpresso/agent-workers-test": true
+
+overrides:
+  "@commitlint/config-validator>ajv": "8.18.0"
+  "@esbuild-kit/core-utils>esbuild": "0.25.12"
+  "@secretlint/config-loader>ajv": "8.18.0"
+  "@textlint/linter-formatter>js-yaml": "3.14.2"
+  "@textlint/linter-formatter>lodash": "4.18.1"
+  "@voidzero-dev/vite-plus-core>yaml": "2.8.3"
+  "micromatch>picomatch": "2.3.2"
+  protobufjs: "7.5.5"
+  "table>ajv": "8.18.0"
+
+peerDependencyRules:
+  allowedVersions:
+    "vite>esbuild": "*"
