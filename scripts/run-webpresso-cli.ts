@@ -18,7 +18,7 @@ type SpawnLike = (
 export function resolveAgentKitCliEntry(
   resolvePackageJson: ResolvePackageJson = (specifier) => require.resolve(specifier),
 ): string {
-  const packageJson = resolvePackageJson("@webpresso/agent-kit/package.json");
+  const packageJson = resolvePackageJson("webpresso/package.json");
   return resolve(dirname(packageJson), "src/cli/cli.ts");
 }
 

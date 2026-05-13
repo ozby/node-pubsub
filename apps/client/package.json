@@ -83,12 +83,11 @@
     "@types/react-dom": "catalog:",
     "@typescript/native-preview": "catalog:tooling",
     "@vitejs/plugin-react": "catalog:",
-    "@webpresso/agent-tsconfig": "catalog:",
-    "@webpresso/agent-vitest": "catalog:",
     "oxlint": "catalog:tooling",
     "tailwindcss": "catalog:",
     "vite": "^8.0.10",
     "vitest": "catalog:tooling",
+    "webpresso": "link:/Users/ozby/repos/webpresso/agent-kit",
     "wrangler": "catalog:workers"
   }
 }

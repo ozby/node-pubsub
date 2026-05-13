@@ -1,10 +1,7 @@
 import { vi } from "vitest";
 import type { Mock } from "vitest";
 import type { Context, Next } from "hono";
-import {
-  createMockHyperdrive,
-  createMockDurableObjectNamespace,
-} from "@webpresso/agent-workers-test";
+import { createMockHyperdrive, createMockDurableObjectNamespace } from "webpresso/workers-test";
 import { createDb, type Env } from "../db/client";
 import type { DecodedToken } from "../middleware/auth";
 

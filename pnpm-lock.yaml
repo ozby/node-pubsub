@@ -54,21 +54,6 @@ catalogs:
     '@vitejs/plugin-react':
       specifier: ^6.0.1
       version: 6.0.1
-    '@webpresso/agent-kit':
-      specifier: ^0.15.0
-      version: 0.15.0
-    '@webpresso/agent-stryker':
-      specifier: ^0.2.0
-      version: 0.2.0
-    '@webpresso/agent-tsconfig':
-      specifier: ^0.2.0
-      version: 0.2.0
-    '@webpresso/agent-vitest':
-      specifier: ^0.2.0
-      version: 0.2.0
-    '@webpresso/agent-workers-test':
-      specifier: ^0.2.0
-      version: 0.2.0
     '@webpresso/db-branching-neon':
       specifier: ^0.2.1
       version: 0.2.1
@@ -196,18 +181,6 @@ importers:
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.14
-      '@webpresso/agent-kit':
-        specifier: 'catalog:'
-        version: 0.15.0(valibot@1.4.0(typescript@6.0.3))
-      '@webpresso/agent-stryker':
-        specifier: 'catalog:'
-        version: 0.2.0(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(@stryker-mutator/vitest-runner@9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       '@webpresso/runtime':
         specifier: 'catalog:'
         version: 0.3.0
@@ -238,6 +211,9 @@ importers:
       vite-plus:
         specifier: 'catalog:'
         version: 0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../webpresso/agent-kit
 
   apps/client:
     dependencies:
@@ -339,7 +315,7 @@ importers:
         version: 5.99.2(react@19.2.5)
       '@webpresso/webpresso':
         specifier: 'catalog:'
-        version: 0.1.1(1f46a181dba35db027823e4adb23e478)
+        version: 0.1.1(0c2e1a2400e1aa735a85d11321a7584d)
       axios:
         specifier: 'catalog:'
         version: 1.15.2(debug@4.4.3)
@@ -409,7 +385,7 @@ importers:
         version: 0.5.19(tailwindcss@4.2.4)
       '@tailwindcss/vite':
         specifier: ^4.2.4
-        version: 4.2.4(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+        version: 4.2.4(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))
       '@testing-library/dom':
         specifier: ^10.4.1
         version: 10.4.1
@@ -433,13 +409,7 @@ importers:
         version: 7.0.0-dev.20260421.2
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+        version: 6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))
       oxlint:
         specifier: catalog:tooling
         version: 1.61.0(oxlint-tsgolint@0.22.0)
@@ -448,10 +418,13 @@ importers:
         version: 4.2.4
       vite:
         specifier: ^8.0.10
-        version: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
+        version: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../webpresso/agent-kit
       wrangler:
         specifier: catalog:workers
         version: 4.84.1(@cloudflare/workers-types@4.20260423.1)
@@ -471,18 +444,15 @@ importers:
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       oxlint:
         specifier: catalog:tooling
         version: 1.61.0(oxlint-tsgolint@0.22.0)
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../webpresso/agent-kit
 
   apps/lab:
     dependencies:
@@ -505,21 +475,15 @@ importers:
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
-      '@webpresso/agent-workers-test':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/workers-types@4.20260423.1)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       oxlint:
         specifier: catalog:tooling
         version: 1.61.0(oxlint-tsgolint@0.22.0)
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../webpresso/agent-kit
       wrangler:
         specifier: catalog:workers
         version: 4.84.1(@cloudflare/workers-types@4.20260423.1)
@@ -542,18 +506,15 @@ importers:
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       oxlint:
         specifier: catalog:tooling
         version: 1.61.0(oxlint-tsgolint@0.22.0)
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../../../webpresso/agent-kit
 
   apps/lab/scenarios/s1b-latency:
     dependencies:
@@ -570,18 +531,15 @@ importers:
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       oxlint:
         specifier: catalog:tooling
         version: 1.61.0(oxlint-tsgolint@0.22.0)
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../../../webpresso/agent-kit
 
   apps/workers:
     dependencies:
@@ -596,7 +554,7 @@ importers:
         version: 0.34.49
       '@webpresso/webpresso':
         specifier: 'catalog:'
-        version: 0.1.1(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@hookform/resolvers@5.2.2(react-hook-form@7.73.1(react@19.2.5)))(@opentelemetry/api@1.9.0)(@sinclair/typebox@0.34.49)(@tanstack/react-router@1.169.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(@types/node@25.6.0)(better-call@1.3.5(zod@4.4.3))(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(effect@3.20.0)(esbuild@0.28.0)(graphql-request@7.4.0(graphql@16.13.2))(hono@4.12.14)(jiti@2.6.1)(jsdom@20.0.3)(postgres@3.4.9)(react-dom@19.2.5(react@19.2.5))(react-hook-form@7.73.1(react@19.2.5))(react@19.2.5)(tsx@4.21.0)(valibot@1.4.0(typescript@6.0.3))
+        version: 0.1.1(67dcea56806a0b36bed883f7f04d3dae)
       ai:
         specifier: ^6.0.168
         version: 6.0.168(zod@4.4.3)
@@ -605,7 +563,7 @@ importers:
         version: 8.18.0
       better-auth:
         specifier: ^1.6.9
-        version: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+        version: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       drizzle-orm:
         specifier: catalog:workers
         version: 0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9)
@@ -621,25 +579,13 @@ importers:
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: catalog:workers
-        version: 0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+        version: 0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       '@cloudflare/workers-types':
         specifier: catalog:workers
         version: 4.20260423.1
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-stryker':
-        specifier: 'catalog:'
-        version: 0.2.0(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(@stryker-mutator/vitest-runner@9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
-      '@webpresso/agent-workers-test':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/workers-types@4.20260423.1)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       drizzle-kit:
         specifier: catalog:workers
         version: 0.31.10
@@ -649,6 +595,9 @@ importers:
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../webpresso/agent-kit
       wrangler:
         specifier: catalog:workers
         version: 4.84.1(@cloudflare/workers-types@4.20260423.1)
@@ -680,18 +629,15 @@ importers:
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../webpresso/agent-kit
 
   packages/config-typescript: {}
 
@@ -710,12 +656,6 @@ importers:
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       drizzle-kit:
         specifier: catalog:workers
         version: 0.31.10
@@ -725,6 +665,9 @@ importers:
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../webpresso/agent-kit
 
   packages/logger:
     devDependencies:
@@ -736,22 +679,13 @@ importers:
         version: 9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(typescript@6.0.3)
       '@stryker-mutator/vitest-runner':
         specifier: 'catalog:'
-        version: 9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+        version: 9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       '@types/node':
         specifier: 'catalog:'
         version: 25.6.0
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-stryker':
-        specifier: 'catalog:'
-        version: 0.2.0(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(@stryker-mutator/vitest-runner@9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       bunchee:
         specifier: 'catalog:'
         version: 6.10.0(typescript@6.0.3)
@@ -761,6 +695,9 @@ importers:
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../webpresso/agent-kit
 
   packages/test-utils:
     devDependencies:
@@ -772,22 +709,13 @@ importers:
         version: 9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(typescript@6.0.3)
       '@stryker-mutator/vitest-runner':
         specifier: 'catalog:'
-        version: 9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+        version: 9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       '@types/node':
         specifier: 'catalog:'
         version: 25.6.0
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-stryker':
-        specifier: 'catalog:'
-        version: 0.2.0(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(@stryker-mutator/vitest-runner@9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       bunchee:
         specifier: 'catalog:'
         version: 6.10.0(typescript@6.0.3)
@@ -797,6 +725,9 @@ importers:
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../webpresso/agent-kit
 
   packages/types:
     devDependencies:
@@ -806,15 +737,12 @@ importers:
       '@typescript/native-preview':
         specifier: catalog:tooling
         version: 7.0.0-dev.20260421.2
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../webpresso/agent-kit
 
   packages/ui:
     dependencies:
@@ -884,13 +812,7 @@ importers:
         version: 7.0.0-dev.20260421.2
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
-      '@webpresso/agent-tsconfig':
-        specifier: 'catalog:'
-        version: 0.2.0
-      '@webpresso/agent-vitest':
-        specifier: 'catalog:'
-        version: 0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+        version: 6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))
       bunchee:
         specifier: 'catalog:'
         version: 6.10.0(typescript@6.0.3)
@@ -906,6 +828,9 @@ importers:
       vitest:
         specifier: catalog:tooling
         version: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
+      webpresso:
+        specifier: link:/Users/ozby/repos/webpresso/agent-kit
+        version: link:../../../../webpresso/agent-kit
 
 packages:
 
@@ -2150,10 +2075,6 @@ packages:
       '@types/node':
         optional: true
 
-  '@isaacs/cliui@8.0.2':
-    resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
-    engines: {node: '>=12'}
-
   '@isaacs/fs-minipass@4.0.1':
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
@@ -2202,14 +2123,6 @@ packages:
   '@logdna/tail-file@2.2.0':
     resolution: {integrity: sha512-XGSsWDweP80Fks16lwkAUIr54ICyBs6PsI4mpfTLQaWgEJRtY9xEV+PeyDpJ+sJEGZxqINlpmAwe/6tS1pP8Ng==}
     engines: {node: '>=10.3.0'}
-
-  '@manypkg/find-root@3.1.0':
-    resolution: {integrity: sha512-BcSqCyKhBVZ5YkSzOiheMCV41kqAFptW6xGqYSTjkVTl9XQpr+pqHhwgGCOHQtjDCv7Is6EFyA14Sm5GVbVABA==}
-    engines: {node: '>=20.0.0'}
-
-  '@manypkg/tools@2.1.1':
-    resolution: {integrity: sha512-CEFCOGzhFdx5sIehISBRS9Ev5D1Zp+24YT1uyOkaEcY8uAKeK+kA58NChYfUwXmAFerm3zWZWYhQViUf8XhQcg==}
-    engines: {node: '>=20.0.0'}
 
   '@modelcontextprotocol/sdk@1.27.1':
     resolution: {integrity: sha512-sr6GbP+4edBwFndLbM60gf07z0FQ79gaExpnsjMGePXqFcSSb7t6iscpjk9DhFhwd+mTEQrzNafGP8/iGGFYaA==}
@@ -2272,17 +2185,9 @@ packages:
     engines: {node: ^20.17.0 || >=22.9.0}
     hasBin: true
 
-  '@npmcli/config@8.3.4':
-    resolution: {integrity: sha512-01rtHedemDNhUXdicU7s+QYz/3JyV5Naj84cvdXGH4mgCdL+agmSYaLF4LUG4vMCLzhBO8YtS0gPpH1FGvbgAw==}
-    engines: {node: ^16.14.0 || >=18.0.0}
-
   '@npmcli/fs@5.0.0':
     resolution: {integrity: sha512-7OsC1gNORBEawOa5+j2pXN9vsicaIOH5cPXxoR6fJOmH6/EXpJB2CajXOu1fPRFun2m1lktEFX11+P89hqO/og==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  '@npmcli/git@5.0.8':
-    resolution: {integrity: sha512-liASfw5cqhjNW9UFd+ruwwdEf/lbOAQjLL2XY2dFW/bkJheXDYZgOyul/4gVvEV4BWkTXjYGmDqMw9uegdbJNQ==}
-    engines: {node: ^16.14.0 || >=18.0.0}
 
   '@npmcli/git@7.0.2':
     resolution: {integrity: sha512-oeolHDjExNAJAnlYP2qzNjMX/Xi9bmu78C9dIGr4xjobrSKbuMYCph8lTzn4vnW3NjIqVmw/f8BCfouqyJXlRg==}
@@ -2293,10 +2198,6 @@ packages:
     engines: {node: ^20.17.0 || >=22.9.0}
     hasBin: true
 
-  '@npmcli/map-workspaces@3.0.6':
-    resolution: {integrity: sha512-tkYs0OYnzQm6iIRdfy+LcLBjcKuQCeE5YLb8KnrIlutJfheNaPvPpgoFEyEFgbjzl5PLZ3IA/BWAwRU0eHuQDA==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-
   '@npmcli/map-workspaces@5.0.3':
     resolution: {integrity: sha512-o2grssXo1e774E5OtEwwrgoszYRh0lqkJH+Pb9r78UcqdGJRDRfhpM8DvZPjzNLLNYeD/rNbjOKM3Ss5UABROw==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -2304,10 +2205,6 @@ packages:
   '@npmcli/metavuln-calculator@9.0.3':
     resolution: {integrity: sha512-94GLSYhLXF2t2LAC7pDwLaM4uCARzxShyAQKsirmlNcpidH89VA4/+K1LbJmRMgz5gy65E/QBBWQdUvGLe2Frg==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  '@npmcli/name-from-folder@2.0.0':
-    resolution: {integrity: sha512-pwK+BfEBZJbKdNYpHHRTNBwBoqrN/iIMO0AiGvYsp3Hoaq0WbgGSWQR6SCldZovoDpY3yje5lkFUe6gsDgJ2vg==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
   '@npmcli/name-from-folder@4.0.0':
     resolution: {integrity: sha512-qfrhVlOSqmKM8i6rkNdZzABj8MKEITGFAY+4teqBziksCQAOLutiAxM1wY2BKEd8KjUSpWmWCYxvXr0y4VTlPg==}
@@ -2317,17 +2214,9 @@ packages:
     resolution: {integrity: sha512-uuG5HZFXLfyFKqg8QypsmgLQW7smiRjVc45bqD/ofZZcR/uxEjgQU8qDPv0s9TEeMUiAAU/GC5bR6++UdTirIQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  '@npmcli/package-json@5.2.1':
-    resolution: {integrity: sha512-f7zYC6kQautXHvNbLEWgD/uGu1+xCn9izgqBfgItWSx22U0ZDekxN08A1vM8cTxj/cRVe0Q94Ode+tdoYmIOOQ==}
-    engines: {node: ^16.14.0 || >=18.0.0}
-
   '@npmcli/package-json@7.0.5':
     resolution: {integrity: sha512-iVuTlG3ORq2iaVa1IWUxAO/jIp77tUKBhoMjuzYW2kL4MLN1bi/ofqkZ7D7OOwh8coAx1/S2ge0rMdGv8sLSOQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  '@npmcli/promise-spawn@7.0.2':
-    resolution: {integrity: sha512-xhfYPXoV5Dy4UkY0D+v2KkwvnDfiA/8Mt3sWCGI/hM03NsYIH8ZaG6QzS9x7pje5vHZBZJ2v6VRFVTWACnqcmQ==}
-    engines: {node: ^16.14.0 || >=18.0.0}
 
   '@npmcli/promise-spawn@9.0.1':
     resolution: {integrity: sha512-OLUaoqBuyxeTqUvjA3FZFiXUfYC1alp3Sa99gW3EUDz3tZ3CbXDdcZ7qWKBzicrJleIgucoWamWH1saAmH/l2Q==}
@@ -2838,10 +2727,6 @@ packages:
     resolution: {integrity: sha512-T+tM3hQhb1f9tfrx8TaXFWr1pEeDkuOrEsbxB49eOuwuQgvlEgsYp4GSw1sUBzACFfYd36bL8RAB5mI5h6HymQ==, tarball: https://npm.pkg.github.com/download/@ozby/wrangler-sync/0.1.0/4d3ccdc75a006b213ac59099743fa4f2c7edd7bc}
     engines: {node: '>=20'}
     hasBin: true
-
-  '@pkgjs/parseargs@0.11.0':
-    resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
-    engines: {node: '>=14'}
 
   '@playwright/test@1.59.1':
     resolution: {integrity: sha512-PG6q63nQg5c9rIi4/Z5lR5IVF7yU5MqmKaPOe0HSc0O2cX1fPi96sUQu5j7eo4gKCkB2AnNGoWt7y4/Xx3Kcqg==}
@@ -4302,9 +4187,6 @@ packages:
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
 
-  '@types/concat-stream@2.0.3':
-    resolution: {integrity: sha512-3qe4oQAPNwVNwK4C9c8u+VJqv9kez+2MR4qJpoPFfXtgxxif1QbFusvXzK0/Wra2VX07smostI2VMmJNSpZjuQ==}
-
   '@types/conventional-commits-parser@5.0.2':
     resolution: {integrity: sha512-BgT2szDXnVypgpNxOK8aL5SGjUdaQbC++WZNjF1Qge3Og2+zhHj+RWhmehLhYyvQwqAmvezruVfOf8+3m74W+g==}
 
@@ -4335,9 +4217,6 @@ packages:
   '@types/d3-timer@3.0.2':
     resolution: {integrity: sha512-Ps3T8E8dZDam6fUyNiMkekK3XUsaUEik+idO9/YjPtfj2qruF8tFBXS7XhtE4iIXBLxhmLjP3SXpLhVf21I9Lw==}
 
-  '@types/debug@4.1.13':
-    resolution: {integrity: sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==}
-
   '@types/deep-eql@4.0.2':
     resolution: {integrity: sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==}
 
@@ -4349,24 +4228,6 @@ packages:
 
   '@types/google-protobuf@3.15.12':
     resolution: {integrity: sha512-40um9QqwHjRS92qnOaDpL7RmDK15NuZYo9HihiJRbYkMQZlWnuH8AdvbMy8/o6lgLmKbDUKa+OALCltHdbOTpQ==}
-
-  '@types/hast@3.0.4':
-    resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
-
-  '@types/hosted-git-info@3.0.5':
-    resolution: {integrity: sha512-Dmngh7U003cOHPhKGyA7LWqrnvcTyILNgNPmNCxlx7j8MIi54iBliiT8XqVLIQ3GchoOjVAyBzNJVyuaJjqokg==}
-
-  '@types/is-empty@1.2.3':
-    resolution: {integrity: sha512-4J1l5d79hoIvsrKh5VUKVRA1aIdsOb10Hu5j3J2VfP/msDnfTdGPmNp2E1Wg+vs97Bktzo+MZePFFXSGoykYJw==}
-
-  '@types/mdast@4.0.4':
-    resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
-
-  '@types/ms@2.1.0':
-    resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
-
-  '@types/node@22.19.18':
-    resolution: {integrity: sha512-9v00a+dn2yWVsYDEunWC4g/TcRKVq3r8N5FuZp7u0SGrPvdN9c2yXI9bBuf5Fl0hNCb+QTIePTn5pJs2pwBOQQ==}
 
   '@types/node@25.6.0':
     resolution: {integrity: sha512-+qIYRKdNYJwY3vRCZMdJbPLJAtGjQBudzZzdzwQYkEPQd+PJGixUL5QfvCLDaULoLv+RhT3LDkwEfKaAkgSmNQ==}
@@ -4391,14 +4252,8 @@ packages:
   '@types/shimmer@1.2.0':
     resolution: {integrity: sha512-UE7oxhQLLd9gub6JKIAhDq06T0F6FnztwMNRvYgjeQSBeMc1ZG/tA47EwfduvkuQS8apbkM/lpLpWsaCeYsXVg==}
 
-  '@types/supports-color@8.1.3':
-    resolution: {integrity: sha512-Hy6UMpxhE3j1tLpl27exp1XqHD7n8chAiNPzWfz16LPZoMMoSc4dzLl6w9qijkEb/r5O1ozdu1CWGA2L83ZeZg==}
-
   '@types/tmp@0.2.6':
     resolution: {integrity: sha512-chhaNf2oKHlRkDGt+tiKE2Z5aJ6qalm7Z9rlLdBwmOiAAf09YQvvoLXjWK4HWPF1xU/fqvMgfNfpVoBscA/tKA==}
-
-  '@types/unist@3.0.3':
-    resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
   '@types/use-sync-external-store@0.0.6':
     resolution: {integrity: sha512-zFDAD+tlpf2r4asuHEj0XH6pY6i0g5NeAHPn+15wk3BV6JA69eERFXC1gyGThDkVa1zCyKr5jox1+2LbV/AMLg==}
@@ -4441,9 +4296,6 @@ packages:
   '@typescript/native-preview@7.0.0-dev.20260421.2':
     resolution: {integrity: sha512-CmajHI25HpVWE9R1XFoxr+cphJPxoYD3eFioQtAvXYkMFKnLdICMS9pXre9Pybizb75ejRxjKD5/CVG055rEIg==}
     hasBin: true
-
-  '@ungap/structured-clone@1.3.1':
-    resolution: {integrity: sha512-mUFwbeTqrVgDQxFveS+df2yfap6iuP20NAKAsBt5jDEoOTDew+zwLAOilHCeQJOVSvmgCX4ogqIrA0mnyr08yQ==}
 
   '@valibot/to-json-schema@1.6.0':
     resolution: {integrity: sha512-d6rYyK5KVa2XdqamWgZ4/Nr+cXhxjy7lmpe6Iajw15J/jmU+gyxl2IEd1Otg1d7Rl3gOQL5reulnSypzBtYy1A==}
@@ -4639,40 +4491,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@webpresso/agent-kit@0.15.0':
-    resolution: {integrity: sha512-oL660g7MBRDkf9s2tebIIBe3UkwPdI8E9Rdq2deZ+IU0/zwRGGBkU5nbl312CNHDVIrahRjfGfVFJW2R5T4JHw==, tarball: https://npm.pkg.github.com/download/@webpresso/agent-kit/0.15.0/2ad5313cd77b9cd3376fd0483b58f80e2a27e9e4}
-    engines: {node: '>=24'}
-    hasBin: true
-
-  '@webpresso/agent-stryker@0.2.0':
-    resolution: {integrity: sha512-Wwt+3t/GlLC0TK1jQNMQeU+ZWIe70TQtVsFS0y+L3rTIHMxbHBoU5LYVC0kDvBlwP5MDGtWSNpuUydKhcFGYww==, tarball: https://npm.pkg.github.com/download/@webpresso/agent-stryker/0.2.0/26efe6986692bee2926b3f43cf8482b2b03c7dd6}
-    peerDependencies:
-      '@stryker-mutator/core': ^9.6.1
-      '@stryker-mutator/vitest-runner': ^9.6.1
-
-  '@webpresso/agent-tsconfig@0.2.0':
-    resolution: {integrity: sha512-huUW2tZShh/RROHRzLLgT0E19trqaDm6pzlcIf9JQfNHrrXGS91BoEci16Tz4LEsU87AjuYc9gzk8BSX4R4Qnw==, tarball: https://npm.pkg.github.com/download/@webpresso/agent-tsconfig/0.2.0/36d552d1039207d7f4b03ea300157bb80c3ed544}
-
-  '@webpresso/agent-vitest@0.2.0':
-    resolution: {integrity: sha512-fPd+dMqFKaRLjX6Lkz455LXlV/Te/J5NonMIY5gLT9HeqtZjoxmWSZZF44m4VIS7Ocm+UUNrvLJoCE6vD059Sw==, tarball: https://npm.pkg.github.com/download/@webpresso/agent-vitest/0.2.0/45f4838a0a84ac60fe78624592456e3b29c31e1d}
-    peerDependencies:
-      '@cloudflare/vitest-pool-workers': '>=0.14 <1'
-      '@vitejs/plugin-react': '>=5 <7'
-      vite-plus: '>=0.1.19 <1'
-      vitest: ^4.1.5
-    peerDependenciesMeta:
-      '@cloudflare/vitest-pool-workers':
-        optional: true
-      '@vitejs/plugin-react':
-        optional: true
-
-  '@webpresso/agent-workers-test@0.2.0':
-    resolution: {integrity: sha512-qkThvN8SX4wKa4PZRASS0MNDhU8rkDGT59FRuuwr10a5Kla3QeqT8/dSFENZl4A4v6jdGVJPW+g+ycsJG1HndQ==, tarball: https://npm.pkg.github.com/download/@webpresso/agent-workers-test/0.2.0/b2bbb0234eed2e93134d9bc60a47848fd1a01463}
-    engines: {node: '>=20'}
-    peerDependencies:
-      '@cloudflare/workers-types': '>=4.0.0'
-      vitest: ^4.1.5
-
   '@webpresso/codegen-core@0.1.0-alpha.20':
     resolution: {integrity: sha512-jMqfDjLroN2af6nXSk589/5iqJECaypwdSKIMWpKr5PODxqYLT3ue8yMXGqub8Zm3syyMNBqHvp+zGG2h6Hd3Q==, tarball: https://npm.pkg.github.com/download/@webpresso/codegen-core/0.1.0-alpha.20/ccd3ed6558972af1c927b3860552c2b9d99d938c}
     peerDependencies:
@@ -4696,14 +4514,6 @@ packages:
   '@webpresso/db-branching@0.2.1':
     resolution: {integrity: sha512-gAdw2F180QR+YiG5IVB3QL+r2NCJA+5uMlA5hjGqD0fbYwxcOgLvU+bdeOpVph5kNoCZAlc21uyrZCfwAAuOkw==, tarball: https://npm.pkg.github.com/download/@webpresso/db-branching/0.2.1/b5ef9bb01a3c66c59155fe0d57305b84a4b5dc91}
     engines: {node: '>=20'}
-
-  '@webpresso/runtime-format@0.1.2':
-    resolution: {integrity: sha512-PBhpSm1McG3Qu9S92RvLCc2pM3kUp+aZEusG+DvC5lFX0df2FczyBrxZvZPAeOkbJACwf614dQzPDChFpoHHaQ==, tarball: https://npm.pkg.github.com/download/@webpresso/runtime-format/0.1.2/03e743bdaf61a09c38bcf2ed3b83f495fe360b0e}
-    engines: {node: '>=24'}
-
-  '@webpresso/runtime-storage@0.1.2':
-    resolution: {integrity: sha512-oDC0eSIvH6eZbn6y40cmJCrvo5C1cGWuCRIEFLVFLyCtLoLTXlsuPN0ttpk9zQH5abAwfu9xT0sVwvkwksnUAA==, tarball: https://npm.pkg.github.com/download/@webpresso/runtime-storage/0.1.2/d608992f020fca5877461e8484090ba154a4dc4a}
-    engines: {node: '>=24'}
 
   '@webpresso/runtime@0.3.0':
     resolution: {integrity: sha512-1VXglIyJG46mAxHaQyhjdmbLpn0igBfzTw9kSOCFemnELIukGF3P2NRYi1kgFLvT7mEYQeO+bB8P1C7uULMDyQ==, tarball: https://npm.pkg.github.com/download/@webpresso/runtime/0.3.0/1c7cb17cac09669bf68932ee311dd34c8eeeab27}
@@ -4794,10 +4604,6 @@ packages:
   abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
     deprecated: Use your platform's native atob() and btoa() methods instead
-
-  abbrev@2.0.0:
-    resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
   abbrev@4.0.0:
     resolution: {integrity: sha512-a1wflyaL0tHtJSmLSOVybYhy22vRih4eduhhrkcjgrWGnRfrZtovJ2FRjxuTtkkj47O/baf0R86QU5OuYpz8fA==}
@@ -4929,12 +4735,6 @@ packages:
   axios@1.15.2:
     resolution: {integrity: sha512-wLrXxPtcrPTsNlJmKjkPnNPK2Ihe0hn0wGSaTEiHRPxwjvJwT3hKmXF4dpqxmPO9SoNb2FsYXj/xEo0gHN+D5A==}
 
-  bail@2.0.2:
-    resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
-
-  balanced-match@1.0.2:
-    resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
-
   balanced-match@4.0.4:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
     engines: {node: 18 || 20 || >=22}
@@ -5043,9 +4843,6 @@ packages:
   boundary@2.0.0:
     resolution: {integrity: sha512-rJKn5ooC9u8q13IMCrW0RSp31pxBCHE3y9V/tp3TdWSLf8Em3p6Di4NBpfzbJge9YjjFEsD0RtFEjtvHL5VyEA==}
 
-  brace-expansion@2.1.0:
-    resolution: {integrity: sha512-TN1kCZAgdgweJhWWpgKYrQaMNHcDULHkWwQIspdtjV4Y5aurRdZpjAqn6yX3FPqTA9ngHCc4hJxMAMgGfve85w==}
-
   brace-expansion@5.0.5:
     resolution: {integrity: sha512-VZznLgtwhn+Mact9tfiwx64fA9erHH/MCXEUfB/0bX/6Fz6ny5EGTXYltMocqg4xFAQZtnO3DHWWXi8RiuN7cQ==}
     engines: {node: 18 || 20 || >=22}
@@ -5078,10 +4875,6 @@ packages:
   bytes@3.1.2:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
     engines: {node: '>= 0.8'}
-
-  cac@7.0.0:
-    resolution: {integrity: sha512-tixWYgm5ZoOD+3g6UTea91eow5z6AAHaho3g0V9CNSNb45gM8SmflpAc+GRd1InC4AqN/07Unrgp56Y94N9hJQ==}
-    engines: {node: '>=20.19.0'}
 
   cacache@20.0.4:
     resolution: {integrity: sha512-M3Lab8NPYlZU2exsL3bMVvMrMqgwCnMWfdZbK28bn3pK6APT/Te/I8hjRPNu1uwORY9a1eEQoifXbKPQMfMTOA==}
@@ -5122,9 +4915,6 @@ packages:
     resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
-  character-entities@2.0.2:
-    resolution: {integrity: sha512-shx7oQ0Awen/BRIdkjkvz54PnEEI/EjwXDSIZp86/KKdbafHh1Df/RYGBhn4hbe2+uKC9FnT5UCEdyPz3ai9hQ==}
-
   chardet@2.1.1:
     resolution: {integrity: sha512-PsezH1rqdV9VvyNhxxOW32/d75r01NY7TQCmOqomRo15ZSOKbpTFVsfjghxo6JloQUCGnH4k1LGu0R4yCLlWQQ==}
 
@@ -5134,10 +4924,6 @@ packages:
   chownr@3.0.0:
     resolution: {integrity: sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g==}
     engines: {node: '>=18'}
-
-  ci-info@4.4.0:
-    resolution: {integrity: sha512-77PSwercCZU2Fc4sX94eF8k8Pxte6JAwL4/ICZLFjJLqegs7kCuAsqqj/70NQF6TvDpgFjkubQB2FW2ZZddvQg==}
-    engines: {node: '>=8'}
 
   cjs-module-lexer@1.4.3:
     resolution: {integrity: sha512-9z8TZaGM1pfswYeXrUpzPrkx8UnWYdhJclsiYMm6x/w5+nN+8Tf/LnAgfLGQCm59qAOxU8WwHEq2vNwF6i4j+Q==}
@@ -5203,10 +4989,6 @@ packages:
 
   compare-func@2.0.0:
     resolution: {integrity: sha512-zHig5N+tPWARooBnb0Zx1MFcdfpyJrfTJ3Y5L+IFvUm8rM74hHz66z0gw0x4tijh5CorKkKUCnW82R2vmpeCRA==}
-
-  concat-stream@2.0.0:
-    resolution: {integrity: sha512-MWufYdFw53ccGjCA+Ol7XJYpAlW6/prSMzuPOTRnJGcGzuhLn4Scrz7qf6o8bROZ514ltazcIFJZevcfbo0x7A==}
-    engines: {'0': node >= 6.0}
 
   content-disposition@1.0.1:
     resolution: {integrity: sha512-oIXISMynqSqm241k6kcQ5UwttDILMK4BiurCfGEREw6+X9jkkpEe5T9FZaApyLGGOnFuyMWZpdolTXMtvEJ08Q==}
@@ -5374,9 +5156,6 @@ packages:
   decimal.js@10.6.0:
     resolution: {integrity: sha512-YpgQiITW3JXGntzdUmyUR1V812Hn8T1YVXhCu+wO3OpS4eU9l4YdD3qjyiKdV6mvV29zapkMeD390UVEf2lkUg==}
 
-  decode-named-character-reference@1.3.0:
-    resolution: {integrity: sha512-GtpQYB283KrPp6nRw50q3U9/VfOutZOe103qlN7BPP6Ad27xYnOIWv4lPzo8HCAL+mMZofJ9KEy30fq6MfaK6Q==}
-
   decompress-response@6.0.0:
     resolution: {integrity: sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==}
     engines: {node: '>=10'}
@@ -5427,9 +5206,6 @@ packages:
 
   detect-node-es@1.1.0:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
-
-  devlop@1.1.0:
-    resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
 
   diff-match-patch@1.0.5:
     resolution: {integrity: sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==}
@@ -5670,9 +5446,6 @@ packages:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
 
-  eastasianwidth@0.2.0:
-    resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
-
   editions@6.22.0:
     resolution: {integrity: sha512-UgGlf8IW75je7HZjNDpJdCv4cGJWIi6yumFdZ0R7A8/CIhQiWUjyGLCxdHpd8bmyD1gnkfUNK0oeOXqUS2cpfQ==}
     engines: {ecmascript: '>= es5', node: '>=4'}
@@ -5705,9 +5478,6 @@ packages:
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
 
-  emoji-regex@9.2.2:
-    resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
-
   encodeurl@2.0.0:
     resolution: {integrity: sha512-Q0n9HRi4m6JuGIV1eFlmvJB7ZEVxu93IrMyiMsGC0lrMJMWzRgx6WGquyfQgZVb31vhGgXnfmPNNXmxnOkRBrg==}
     engines: {node: '>= 0.8'}
@@ -5726,9 +5496,6 @@ packages:
   env-paths@2.2.1:
     resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
     engines: {node: '>=6'}
-
-  err-code@2.0.3:
-    resolution: {integrity: sha512-2bmlRpNKBxT/CRmPOlyISQpNj+qSeYvcym/uT0Jx2bMOlKLtSy1ZmLuVxSEKKyor/N5yhvp/ZiG1oE3DEYMSFA==}
 
   error-ex@1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
@@ -5785,10 +5552,6 @@ packages:
 
   escape-html@1.0.3:
     resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
-
-  escape-string-regexp@5.0.0:
-    resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
-    engines: {node: '>=12'}
 
   escodegen@2.1.0:
     resolution: {integrity: sha512-2NlIDTwUWJN0mRPQOdtQBzbUHvdGY2P1VXSyU83Q3xKxM7WHX2Ql8dKq782Q9TgQUNOLEzEYu9bzLNj1q88I5w==}
@@ -5862,9 +5625,6 @@ packages:
     resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==}
     engines: {node: '>=0.10.0'}
 
-  extend@3.0.2:
-    resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
-
   fast-check@3.23.2:
     resolution: {integrity: sha512-h5+1OzzfCC3Ef7VbtKdcv7zsstUQwUDlYpUTvjeUsJAssPgLn7QzbboPtL5ro04Mq0rPOsMzl7q5hIbRs2wD1A==}
     engines: {node: '>=8.0.0'}
@@ -5913,9 +5673,6 @@ packages:
   fastq@1.19.1:
     resolution: {integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==}
 
-  fault@2.0.1:
-    resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
-
   fdir@6.5.0:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
     engines: {node: '>=12.0.0'}
@@ -5957,17 +5714,9 @@ packages:
       debug:
         optional: true
 
-  foreground-child@3.3.1:
-    resolution: {integrity: sha512-gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==}
-    engines: {node: '>=14'}
-
   form-data@4.0.5:
     resolution: {integrity: sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==}
     engines: {node: '>= 6'}
-
-  format@0.2.2:
-    resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
-    engines: {node: '>=0.4.x'}
 
   forwarded@0.2.0:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
@@ -6049,17 +5798,9 @@ packages:
   github-from-package@0.0.0:
     resolution: {integrity: sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==}
 
-  github-slugger@2.0.0:
-    resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
-
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
-
-  glob@10.5.0:
-    resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
-    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
-    hasBin: true
 
   glob@13.0.6:
     resolution: {integrity: sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==}
@@ -6198,10 +5939,6 @@ packages:
     resolution: {integrity: sha512-FCeMZT4NiRQGh+YkeKMtWrOmBgWjHjMJ26WQWrRQyoyzqevdaGSakUaJW5xQYmjLlUVk2qUnCjYVBax9EKKg8A==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  ignore@6.0.2:
-    resolution: {integrity: sha512-InwqeHHN2XpumIkMvpl/DCJVrAHgCsG5+cn1XlnLWGwtZBm8QJfSusItfrwx81CTp5agNZqpKU2J/ccC5nGT4A==}
-    engines: {node: '>= 4'}
-
   ignore@7.0.5:
     resolution: {integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==}
     engines: {node: '>= 4'}
@@ -6240,10 +5977,6 @@ packages:
     resolution: {integrity: sha512-QQnnxNyfvmHFIsj7gkPcYymR8Jdw/o7mp5ZFihxn6h8Ci6fh3Dx4E1gPjpQEpIuPo9XVNY/ZUwh4BPMjGyL01g==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  ini@4.1.3:
-    resolution: {integrity: sha512-X7rqawQBvfdjS10YU1y1YVreA3SsLrW9dX2CewP2EbBJM4ypVNLDkO5y04gejPwKIY9lR+7r9gn3rFPt/kmWFg==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-
   ini@6.0.0:
     resolution: {integrity: sha512-IBTdIkzZNOpqm7q3dRqJvMaldXjDHWkEDfrwGEQTs5eaQMWV+djAhR+wahyNNMAa+qpbDUhBMVt4ZKNwpPm7xQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -6276,9 +6009,6 @@ packages:
   is-core-module@2.16.1:
     resolution: {integrity: sha512-UfoeMA6fIJ8wTYFEUjelnaGI67v6+N7qXJEvQuIGa99l4xsCruSYOVSQ0uPANn4dAzm8lkYPaKLrrijLq7x23w==}
     engines: {node: '>= 0.4'}
-
-  is-empty@1.2.0:
-    resolution: {integrity: sha512-F2FnH/otLNJv0J6wc73A5Xo7oHLNnqplYqZhUu01tD54DIPvxIRSTSLkrUB/M0nHO4vo1O9PDfN4KoTxCzLh/w==}
 
   is-extendable@0.1.1:
     resolution: {integrity: sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==}
@@ -6347,10 +6077,6 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isexe@3.1.5:
-    resolution: {integrity: sha512-6B3tLtFqtQS4ekarvLVMZ+X+VlvQekbe4taUkf/rhVO3d/h0M2rfARm/pXLcPEsjjMsFgrFgSrhQIxcSVrBz8w==}
-    engines: {node: '>=18'}
-
   isexe@4.0.0:
     resolution: {integrity: sha512-FFUtZMpoZ8RqHS3XeXEmHWLA4thH+ZxCv2lOiPIn1Xc7CxrqhWzNSDzD+/chS/zbYezmiwWLdQC09JdQKmthOw==}
     engines: {node: '>=20'}
@@ -6359,15 +6085,9 @@ packages:
     resolution: {integrity: sha512-5mbUj3SiZXCuRf9fT3ibzbSSEWiy63gFfksmGfdOzujPjW3k+z8WvIBxcJHBoQNlaZaiyB25deviif2+osLmLw==}
     engines: {node: '>=4'}
 
-  jackspeak@3.4.3:
-    resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
-
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
-
-  jju@1.4.0:
-    resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
 
   jose@6.2.2:
     resolution: {integrity: sha512-d7kPDd34KO/YnzaDOlikGpOurfF0ByC2sEV4cANCtdqLlTfBlw2p14O/5d/zv40gJPbIQxfES3nSx1/oYNyuZQ==}
@@ -6481,10 +6201,6 @@ packages:
     resolution: {integrity: sha512-nbD8lB9EB3wNdMhOCdx5Li8DxnLbvKByylRLcJ1h+4SkrowVeECAyZlyiKMThF7xFdRz0jSQ2MoJr+wXux2y0Q==}
     engines: {node: '>=20.0.0'}
 
-  levenshtein-edit-distance@1.0.0:
-    resolution: {integrity: sha512-gpgBvPn7IFIAL32f0o6Nsh2g+5uOvkt4eK9epTfgE4YVxBxwVhJ/p1888lMm/u8mXdu1ETLSi6zeEmkBI+0F3w==}
-    hasBin: true
-
   lightningcss-android-arm64@1.32.0:
     resolution: {integrity: sha512-YK7/ClTt4kAK0vo6w3X+Pnm0D2cf2vPHbhOXdoNti1Ga0al1P4TBZhwjATvjNwLEBCnKvjJc2jQgHXH0NEwlAg==}
     engines: {node: '>= 12.0.0'}
@@ -6566,9 +6282,6 @@ packages:
     resolution: {integrity: sha512-wM1+Z03eypVAVUCE7QdSqpVIvelbOakn1M0bPDoA4SGWPx3sNDVUiMo3L6To6WWGClB7VyXnhQ4Sn7gxiJbE6A==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  load-plugin@6.0.3:
-    resolution: {integrity: sha512-kc0X2FEUZr145odl68frm+lMJuQ23+rTXYmR6TImqPtbpmXC4vVXbWKDQ9IzndA0HfyQamWfKLhzsqGSTxE63w==}
-
   locate-path@7.2.0:
     resolution: {integrity: sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -6612,9 +6325,6 @@ packages:
   long@5.3.1:
     resolution: {integrity: sha512-ka87Jz3gcx/I7Hal94xaN2tZEOPoUOEVftkQqZx2EeQRN7LGdfLlI3FvZ+7WDplm+vK2Urx9ULrvSowtdCieng==}
 
-  longest-streak@3.1.0:
-    resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
-
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
@@ -6652,24 +6362,6 @@ packages:
     resolution: {integrity: sha512-tUGAvjzORMUO28shoWNO7yH3kH3r6sYLdAD9w6zoYpjy5zKMFq76nniaMkajpeX/zbemzgICl9sfXhrwQt+hlw==}
     hasBin: true
 
-  mdast-util-from-markdown@2.0.3:
-    resolution: {integrity: sha512-W4mAWTvSlKvf8L6J+VN9yLSqQ9AOAAvHuoDAmPkz4dHf553m5gVj2ejadHJhoJmcmxEnOv6Pa8XJhpxE93kb8Q==}
-
-  mdast-util-frontmatter@2.0.1:
-    resolution: {integrity: sha512-LRqI9+wdgC25P0URIJY9vwocIzCcksduHQ9OF2joxQoyTNVduwLAFUzjoopuRJbJAReaKrNQKAZKL3uCMugWJA==}
-
-  mdast-util-phrasing@4.1.0:
-    resolution: {integrity: sha512-TqICwyvJJpBwvGAMZjj4J2n0X8QWp21b9l0o7eXyVJ25YNWYbJDVIyD1bZXE6WtV6RmKJVYmQAKWa0zWOABz2w==}
-
-  mdast-util-to-hast@13.2.1:
-    resolution: {integrity: sha512-cctsq2wp5vTsLIcaymblUriiTcZd0CwWtCbLvrOzYCDZoWyMNV8sZ7krj09FSnsiJi3WVsHLM4k6Dq/yaPyCXA==}
-
-  mdast-util-to-markdown@2.1.2:
-    resolution: {integrity: sha512-xj68wMTvGXVOKonmog6LwyJKrYXZPvlwabaryTjLh9LuvovB/KAH+kvi8Gjj+7rJjsFi23nkUxRQv1KqSroMqA==}
-
-  mdast-util-to-string@4.0.0:
-    resolution: {integrity: sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg==}
-
   media-typer@1.1.0:
     resolution: {integrity: sha512-aisnrDP4GNe06UcKFnV5bfMNPBUw4jsLGaWwWfnH3v02GnBuXX2MCVn5RbrWo0j3pczUilYblq7fQ7Nw2t5XKw==}
     engines: {node: '>= 0.8'}
@@ -6688,72 +6380,6 @@ packages:
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
-
-  micromark-core-commonmark@2.0.3:
-    resolution: {integrity: sha512-RDBrHEMSxVFLg6xvnXmb1Ayr2WzLAWjeSATAoxwKYJV94TeNavgoIdA0a9ytzDSVzBy2YKFK+emCPOEibLeCrg==}
-
-  micromark-extension-frontmatter@2.0.0:
-    resolution: {integrity: sha512-C4AkuM3dA58cgZha7zVnuVxBhDsbttIMiytjgsM2XbHAB2faRVaHRle40558FBN+DJcrLNCoqG5mlrpdU4cRtg==}
-
-  micromark-factory-destination@2.0.1:
-    resolution: {integrity: sha512-Xe6rDdJlkmbFRExpTOmRj9N3MaWmbAgdpSrBQvCFqhezUn4AHqJHbaEnfbVYYiexVSs//tqOdY/DxhjdCiJnIA==}
-
-  micromark-factory-label@2.0.1:
-    resolution: {integrity: sha512-VFMekyQExqIW7xIChcXn4ok29YE3rnuyveW3wZQWWqF4Nv9Wk5rgJ99KzPvHjkmPXF93FXIbBp6YdW3t71/7Vg==}
-
-  micromark-factory-space@2.0.1:
-    resolution: {integrity: sha512-zRkxjtBxxLd2Sc0d+fbnEunsTj46SWXgXciZmHq0kDYGnck/ZSGj9/wULTV95uoeYiK5hRXP2mJ98Uo4cq/LQg==}
-
-  micromark-factory-title@2.0.1:
-    resolution: {integrity: sha512-5bZ+3CjhAd9eChYTHsjy6TGxpOFSKgKKJPJxr293jTbfry2KDoWkhBb6TcPVB4NmzaPhMs1Frm9AZH7OD4Cjzw==}
-
-  micromark-factory-whitespace@2.0.1:
-    resolution: {integrity: sha512-Ob0nuZ3PKt/n0hORHyvoD9uZhr+Za8sFoP+OnMcnWK5lngSzALgQYKMr9RJVOWLqQYuyn6ulqGWSXdwf6F80lQ==}
-
-  micromark-util-character@2.1.1:
-    resolution: {integrity: sha512-wv8tdUTJ3thSFFFJKtpYKOYiGP2+v96Hvk4Tu8KpCAsTMs6yi+nVmGh1syvSCsaxz45J6Jbw+9DD6g97+NV67Q==}
-
-  micromark-util-chunked@2.0.1:
-    resolution: {integrity: sha512-QUNFEOPELfmvv+4xiNg2sRYeS/P84pTW0TCgP5zc9FpXetHY0ab7SxKyAQCNCc1eK0459uoLI1y5oO5Vc1dbhA==}
-
-  micromark-util-classify-character@2.0.1:
-    resolution: {integrity: sha512-K0kHzM6afW/MbeWYWLjoHQv1sgg2Q9EccHEDzSkxiP/EaagNzCm7T/WMKZ3rjMbvIpvBiZgwR3dKMygtA4mG1Q==}
-
-  micromark-util-combine-extensions@2.0.1:
-    resolution: {integrity: sha512-OnAnH8Ujmy59JcyZw8JSbK9cGpdVY44NKgSM7E9Eh7DiLS2E9RNQf0dONaGDzEG9yjEl5hcqeIsj4hfRkLH/Bg==}
-
-  micromark-util-decode-numeric-character-reference@2.0.2:
-    resolution: {integrity: sha512-ccUbYk6CwVdkmCQMyr64dXz42EfHGkPQlBj5p7YVGzq8I7CtjXZJrubAYezf7Rp+bjPseiROqe7G6foFd+lEuw==}
-
-  micromark-util-decode-string@2.0.1:
-    resolution: {integrity: sha512-nDV/77Fj6eH1ynwscYTOsbK7rR//Uj0bZXBwJZRfaLEJ1iGBR6kIfNmlNqaqJf649EP0F3NWNdeJi03elllNUQ==}
-
-  micromark-util-encode@2.0.1:
-    resolution: {integrity: sha512-c3cVx2y4KqUnwopcO9b/SCdo2O67LwJJ/UyqGfbigahfegL9myoEFoDYZgkT7f36T0bLrM9hZTAaAyH+PCAXjw==}
-
-  micromark-util-html-tag-name@2.0.1:
-    resolution: {integrity: sha512-2cNEiYDhCWKI+Gs9T0Tiysk136SnR13hhO8yW6BGNyhOC4qYFnwF1nKfD3HFAIXA5c45RrIG1ub11GiXeYd1xA==}
-
-  micromark-util-normalize-identifier@2.0.1:
-    resolution: {integrity: sha512-sxPqmo70LyARJs0w2UclACPUUEqltCkJ6PhKdMIDuJ3gSf/Q+/GIe3WKl0Ijb/GyH9lOpUkRAO2wp0GVkLvS9Q==}
-
-  micromark-util-resolve-all@2.0.1:
-    resolution: {integrity: sha512-VdQyxFWFT2/FGJgwQnJYbe1jjQoNTS4RjglmSjTUlpUMa95Htx9NHeYW4rGDJzbjvCsl9eLjMQwGeElsqmzcHg==}
-
-  micromark-util-sanitize-uri@2.0.1:
-    resolution: {integrity: sha512-9N9IomZ/YuGGZZmQec1MbgxtlgougxTodVwDzzEouPKo3qFWvymFHWcnDi2vzV1ff6kas9ucW+o3yzJK9YB1AQ==}
-
-  micromark-util-subtokenize@2.1.0:
-    resolution: {integrity: sha512-XQLu552iSctvnEcgXw6+Sx75GflAPNED1qx7eBJ+wydBb2KCbRZe+NwvIEEMM83uml1+2WSXpBAcp9IUCgCYWA==}
-
-  micromark-util-symbol@2.0.1:
-    resolution: {integrity: sha512-vs5t8Apaud9N28kgCrRUdEed4UJ+wWNvicHLPxCa9ENlYuAY31M0ETy5y1vA33YoNPDFTghEbnh6efaE8h4x0Q==}
-
-  micromark-util-types@2.0.2:
-    resolution: {integrity: sha512-Yw0ECSpJoViF1qTU4DC6NwtC4aWGt1EkzaQB8KPPyCRR8z9TWeV0HbEFGTO+ZY1wB22zmxnJqhPyTpOVCpeHTA==}
-
-  micromark@4.0.2:
-    resolution: {integrity: sha512-zpe98Q6kvavpCr1NPVSCMebCKfD7CA2NqZ+rykeNhONIJBpc1tFKt9hucLGwha3jNTNI8lHpctWJWoimVF4PfA==}
 
   micromatch@4.0.8:
     resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
@@ -6794,10 +6420,6 @@ packages:
   minimatch@10.2.5:
     resolution: {integrity: sha512-MULkVLfKGYDFYejP07QOurDLLQpcjk7Fw+7jXS2R2czRQzR56yHRveU5NDJEOviH+hETZKSkIk5c+T23GjFUMg==}
     engines: {node: 18 || 20 || >=22}
-
-  minimatch@9.0.9:
-    resolution: {integrity: sha512-OBwBN9AL4dqmETlpS2zasx+vTeWclWzkblfZk7KTA5j3jeOONz/tRCnZomUyvNg83wL5Zv9Ss6HMJXAgL8R2Yg==}
-    engines: {node: '>=16 || 14 >=14.17'}
 
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
@@ -6916,11 +6538,6 @@ packages:
   node-rsa@1.1.1:
     resolution: {integrity: sha512-Jd4cvbJMryN21r5HgxQOpMEqv+ooke/korixNNK3mGqfGJmy0M77WDDzo/05969+OkMy3XW1UuZsSmW9KQm7Fw==}
 
-  nopt@7.2.1:
-    resolution: {integrity: sha512-taM24ViiimT/XntxbPyJQzCG+p4EKOpgD3mxFwW38mGjVUrfERQOeY4EDHjdnptttfHuHQXFx+lTP08Q+mLa/w==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    hasBin: true
-
   nopt@9.0.0:
     resolution: {integrity: sha512-Zhq3a+yFKrYwSBluL4H9XP3m3y5uvQkB/09CwDruCiRmR/UJYnn9W4R48ry0uGC70aeTPKLynBtscP9efFFcPw==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -6934,25 +6551,13 @@ packages:
     resolution: {integrity: sha512-JLSpbzh6UUXIEoqPsYBvVNVmyrjVZ1fzEFbqxKkTJQkWBO3xFzFT+KDnSKQWwOQNbuWRwt5LSD6HOTLGIWzfrw==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  npm-install-checks@6.3.0:
-    resolution: {integrity: sha512-W29RiK/xtpCGqn6f3ixfRYGk+zRyr+Ew9F2E20BfXxT5/euLdA/Nm7fO7OeTGuAmTs30cpgInyJ0cYe708YTZw==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-
   npm-install-checks@8.0.0:
     resolution: {integrity: sha512-ScAUdMpyzkbpxoNekQ3tNRdFI8SJ86wgKZSQZdUxT+bj0wVFpsEMWnkXP0twVe1gJyNF5apBWDJhhIbgrIViRA==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  npm-normalize-package-bin@3.0.1:
-    resolution: {integrity: sha512-dMxCf+zZ+3zeQZXKxmyuCKlIDPGuv8EF940xbkC4kQVDTtqoh6rJFO+JTKSA6/Rwi0getWmtuy4Itup0AMcaDQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-
   npm-normalize-package-bin@5.0.0:
     resolution: {integrity: sha512-CJi3OS4JLsNMmr2u07OJlhcrPxCeOeP/4xq67aWNai6TNWWbTrlNDgl8NcFKVlcBKp18GPj+EzbNIgrBfZhsag==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  npm-package-arg@11.0.3:
-    resolution: {integrity: sha512-sHGJy8sOC1YraBywpzQlIKBE4pBbGbiF95U6Auspzyem956E0+FtDtsx1ZxlOJkQCZ1AFXAY/yuvtFYrOxF+Bw==}
-    engines: {node: ^16.14.0 || >=18.0.0}
 
   npm-package-arg@13.0.2:
     resolution: {integrity: sha512-IciCE3SY3uE84Ld8WZU23gAPPV9rIYod4F+rc+vJ7h7cwAJt9Vk6TVsK60ry7Uj3SRS3bqRRIGuTp9YVlk6WNA==}
@@ -6965,10 +6570,6 @@ packages:
   npm-pick-manifest@11.0.3:
     resolution: {integrity: sha512-buzyCfeoGY/PxKqmBqn1IUJrZnUi1VVJTdSSRPGI60tJdUhUoSQFhs0zycJokDdOznQentgrpf8LayEHyyYlqQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  npm-pick-manifest@9.1.0:
-    resolution: {integrity: sha512-nkc+3pIIhqHVQr085X9d2JzPzLyjzQS96zbruppqC9aZRm/x8xx6xhI98gHtsfELP2bE+loHq8ZaHFHhe+NauA==}
-    engines: {node: ^16.14.0 || >=18.0.0}
 
   npm-registry-fetch@19.1.1:
     resolution: {integrity: sha512-TakBap6OM1w0H73VZVDf44iFXsOS3h+L4wVMXmbWOQroZgFhMch0juN6XSzBNlD965yIKvWg2dfu7NSiaYLxtw==}
@@ -7047,9 +6648,6 @@ packages:
     resolution: {integrity: sha512-tkAQEw8ysMzmkhgw8k+1U/iPhWNhykKnSk4Rd5zLoPJCuJaGRPo6YposrZgaxHKzDHdDWWZvE/Sk7hsL2X/CpQ==}
     engines: {node: '>=18'}
 
-  package-json-from-dist@1.0.1:
-    resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
-
   pacote@21.5.0:
     resolution: {integrity: sha512-VtZ0SB8mb5Tzw3dXDfVAIjhyVKUHZkS/ZH9/5mpKenwC9sFOXNI0JI7kEF7IMkwOnsWMFrvAZHzx1T5fmrp9FQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -7103,10 +6701,6 @@ packages:
 
   path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
-
-  path-scurry@1.11.1:
-    resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
-    engines: {node: '>=16 || 14 >=14.18'}
 
   path-scurry@2.0.2:
     resolution: {integrity: sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg==}
@@ -7204,10 +6798,6 @@ packages:
     resolution: {integrity: sha512-gjVS5hOP+M3wMm5nmNOucbIrqudzs9v/57bWRHQWLYklXqoXKrVfYW2W9+glfGsqtPgpiz5WwyEEB+ksXIx3gQ==}
     engines: {node: '>=18'}
 
-  proc-log@4.2.0:
-    resolution: {integrity: sha512-g8+OnU/L2v+wyiVK+D5fA34J7EH8jZ8DDlvwhRCMxmMj7UCBvxiO1mGeN+36JXIKF4zevU4kRBd8lVgG9vLelA==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-
   proc-log@6.1.0:
     resolution: {integrity: sha512-iG+GYldRf2BQ0UDUAd6JQ/RwzaQy6mXmsk/IzlYyal4A4SNFw54MeH4/tLkF4I5WoWG9SQwuqWzS99jaFQHBuQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -7225,21 +6815,6 @@ packages:
 
   promise-call-limit@3.0.2:
     resolution: {integrity: sha512-mRPQO2T1QQVw11E7+UdCJu7S61eJVWknzml9sC1heAdj1jxl0fWMBypIt9ZOcLFf8FkG995ZD7RnVk7HH72fZw==}
-
-  promise-inflight@1.0.1:
-    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
-    peerDependencies:
-      bluebird: '*'
-    peerDependenciesMeta:
-      bluebird:
-        optional: true
-
-  promise-retry@2.0.1:
-    resolution: {integrity: sha512-y+WKFlBR8BGXnsNlIHFGPZmyDf3DFMoLhaflAnyZgV6rG6xu+JwesTo2Q9R6XwYmtmwAFCkAk3e35jEdoeh/3g==}
-    engines: {node: '>=10'}
-
-  propose@0.0.5:
-    resolution: {integrity: sha512-Jary1vb+ap2DIwOGfyiadcK4x1Iu3pzpkDBy8tljFPmQvnc9ES3m1PMZOMiWOG50cfoAyYNtGeBzrp+Rlh4G9A==}
 
   protobufjs@7.5.5:
     resolution: {integrity: sha512-3wY1AxV+VBNW8Yypfd1yQY9pXnqTAN+KwQxL8iYm3/BjKYMNg4i0owhEe26PWDOMaIrzeeF98Lqd5NGz4omiIg==}
@@ -7387,10 +6962,6 @@ packages:
     resolution: {integrity: sha512-1zM5HuOfagXCBWMN83fuFI/x+T/UhZ7k+KIzhrHXcQoeX5+7gmaDYjELQHmmzIodumBHeByBJT4QYS7ufAgs7A==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  read-package-json-fast@3.0.2:
-    resolution: {integrity: sha512-0J+Msgym3vrLOUB3hzQCuZHII0xkNGCtz/HJH9xZshwv9DbDwkw1KaE3gx/e2J5rpEY5rtOy6cyhKOPrkP7FZw==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-
   read-pkg@8.1.0:
     resolution: {integrity: sha512-PORM8AgzXeskHO/WEv312k9U03B8K9JSiWF/8N9sUuFjBa+9SF2u6K7VClzXwDXab51jCd8Nd36CNM+zR97ScQ==}
     engines: {node: '>=16'}
@@ -7417,21 +6988,6 @@ packages:
 
   regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
-
-  remark-frontmatter@5.0.0:
-    resolution: {integrity: sha512-XTFYvNASMe5iPN0719nPrdItC9aU0ssC4v14mH1BCi1u0n1gAocqcujWUrByftZTbLhRtiKRyjYTSIOcr69UVQ==}
-
-  remark-parse@11.0.0:
-    resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
-
-  remark-stringify@11.0.0:
-    resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
-
-  remark-validate-links@13.1.0:
-    resolution: {integrity: sha512-z+glZ4zoRyrWimQHtoqJEFJdPoIR1R1SDr/JoWjmS6EsYlyhxNuCHtIt165gmV7ltOSFJ+rGsipqRGfBPInd7A==}
-
-  remark@15.0.1:
-    resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -7466,10 +7022,6 @@ packages:
     resolution: {integrity: sha512-NPRy+/ncIMeDlTAsuqwKIiferiawhefFJtkNSW0qZJEqMEb+qBt/77B/jGeeek+F0uOeN05CDa6HXbbIgtVX4w==}
     engines: {node: '>= 0.4'}
     hasBin: true
-
-  retry@0.12.0:
-    resolution: {integrity: sha512-9LkiTwjUh6rT555DtE9rTX+BKByPfrMzEAtnlEtdEwr3Nkffwiihqe2bWADg+OQRjt9gl6ICdmB/ZFDCGAtSow==}
-    engines: {node: '>= 4'}
 
   reusify@1.1.0:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
@@ -7736,14 +7288,6 @@ packages:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
     engines: {node: '>=8'}
 
-  string-width@5.1.2:
-    resolution: {integrity: sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA==}
-    engines: {node: '>=12'}
-
-  string-width@6.1.0:
-    resolution: {integrity: sha512-k01swCJAgQmuADB0YIc+7TuatfNvTBVOoaUWJjTB9R4VJzR5vNWzf5t42ESVZFPS8xTySF7CAdV4t/aaIm3UnQ==}
-    engines: {node: '>=16'}
-
   string-width@7.2.0:
     resolution: {integrity: sha512-tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==}
     engines: {node: '>=18'}
@@ -7792,10 +7336,6 @@ packages:
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
-
-  supports-color@9.4.0:
-    resolution: {integrity: sha512-VL+lNrEoIXww1coLPOmiEmK/0sGigko5COxI09KzHc2VJXJsQ37UaQ+8quuxjDeA7+KnLGTWRyOXSLLR2Wb4jw==}
-    engines: {node: '>=12'}
 
   supports-hyperlinks@2.3.0:
     resolution: {integrity: sha512-RpsAZlpWcDwOPQA22aCH4J0t7L8JmAvsCxfOSEwm7cQs3LshN36QaTkwd70DnBOXDWGssw2eUoc8CaRWT0XunA==}
@@ -7928,12 +7468,6 @@ packages:
     resolution: {integrity: sha512-gcANaAnd2QDZFmHFEOF4k7uc1J/6a6z3DJMd/QwEyxLoKGiptJRwid582r7QIsFlFMIZ3SnxfS52S4hm2DHkuQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  trim-lines@3.0.1:
-    resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
-
-  trough@2.2.0:
-    resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
-
   ts-node@10.9.2:
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
@@ -8001,9 +7535,6 @@ packages:
     resolution: {integrity: sha512-FfBj5tjviexjIus3La4n4s9i+f81Zj7HU+lUlQWK219HMRfmzLsbIf4PZF2+X6EouJKyuANpvvef5VrUWM4AFw==}
     engines: {node: '>= 16.0.0'}
 
-  typedarray@0.0.6:
-    resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
-
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
@@ -8015,9 +7546,6 @@ packages:
 
   underscore@1.13.8:
     resolution: {integrity: sha512-DXtD3ZtEQzc7M8m4cXotyHR+FAS18C64asBYY5vqZexfYryNNnDc02W4hKg3rdQuqOYas1jkseX0+nZXjTXnvQ==}
-
-  undici-types@6.21.0:
-    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   undici-types@7.19.2:
     resolution: {integrity: sha512-qYVnV5OEm2AW8cJMCpdV20CDyaN3g0AjDlOGf1OW4iaDEx8MwdtChUp4zu4H0VP3nDRF/8RKWH+IPp9uW0YGZg==}
@@ -8044,30 +7572,6 @@ packages:
   unicorn-magic@0.4.0:
     resolution: {integrity: sha512-wH590V9VNgYH9g3lH9wWjTrUoKsjLF6sGLjhR4sH1LWpLmCOH0Zf7PukhDA8BiS7KHe4oPNkcTHqYkj7SOGUOw==}
     engines: {node: '>=20'}
-
-  unified-engine@11.2.2:
-    resolution: {integrity: sha512-15g/gWE7qQl9tQ3nAEbMd5h9HV1EACtFs6N9xaRBZICoCwnNGbal1kOs++ICf4aiTdItZxU2s/kYWhW7htlqJg==}
-
-  unified@11.0.5:
-    resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
-
-  unist-util-inspect@8.1.0:
-    resolution: {integrity: sha512-mOlg8Mp33pR0eeFpo5d2902ojqFFOKMMG2hF8bmH7ZlhnmjFgh0NI3/ZDwdaBJNbvrS7LZFVrBVtIE9KZ9s7vQ==}
-
-  unist-util-is@6.0.1:
-    resolution: {integrity: sha512-LsiILbtBETkDz8I9p1dQ0uyRUWuaQzd/cuEeS1hoRSyW5E5XGmTzlwY1OrNzzakGowI9Dr/I8HVaw4hTtnxy8g==}
-
-  unist-util-position@5.0.0:
-    resolution: {integrity: sha512-fucsC7HjXvkB5R3kTCO7kUjRdrS0BJt3M/FPxmHMBOm8JQi2BsHAHFsy27E0EolP8rp0NzXsJ+jNPyDWvOJZPA==}
-
-  unist-util-stringify-position@4.0.0:
-    resolution: {integrity: sha512-0ASV06AAoKCDkS2+xw5RXJywruurpbC4JZSm7nr7MOt1ojAzvyyaO+UxZf18j8FCF6kmzCZKcAgN/yu2gm2XgQ==}
-
-  unist-util-visit-parents@6.0.2:
-    resolution: {integrity: sha512-goh1s1TBrqSqukSc8wrjwWhL0hiJxgA8m4kFxGlQ+8FYQ3C/m11FcTs4YYem7V664AhHVvgoQLk890Ssdsr2IQ==}
-
-  unist-util-visit@5.1.0:
-    resolution: {integrity: sha512-m+vIdyeCOpdr/QeQCu2EzxX/ohgS8KbnPDgFni4dQsfSCtpz8UqDyY5GjRru8PDKuYn7Fq19j1CQ+nJSsGKOzg==}
 
   universal-user-agent@7.0.3:
     resolution: {integrity: sha512-TmnEAEAsBJVZM/AADELsK76llnwcf9vMKuPz8JflO1frO8Lchitr0fNaN9d+Ap0BjKtqWqd/J17qeDnXh8CL2A==}
@@ -8143,10 +7647,6 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
-  validate-npm-package-name@5.0.1:
-    resolution: {integrity: sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-
   validate-npm-package-name@7.0.2:
     resolution: {integrity: sha512-hVDIBwsRruT73PbK7uP5ebUt+ezEtCmzZz3F59BSr2F6OVFnJ/6h8liuvdLrQ88Xmnk6/+xGGuq+pG9WwTuy3A==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -8164,21 +7664,6 @@ packages:
   version-range@4.15.0:
     resolution: {integrity: sha512-Ck0EJbAGxHwprkzFO966t4/5QkRuzh+/I1RxhLgUKKwEn+Cd8NwM60mE3AqBZg5gYODoXW0EFsQvbZjRlvdqbg==}
     engines: {node: '>=4'}
-
-  vfile-message@4.0.3:
-    resolution: {integrity: sha512-QTHzsGd1EhbZs4AsQ20JX1rC3cOlt/IWJruk893DfLRr57lcnOeMaWG4K0JrRta4mIJZKth2Au3mM3u03/JWKw==}
-
-  vfile-reporter@8.1.1:
-    resolution: {integrity: sha512-qxRZcnFSQt6pWKn3PAk81yLK2rO2i7CDXpy8v8ZquiEOMLSnPw6BMSi9Y1sUCwGGl7a9b3CJT1CKpnRF7pp66g==}
-
-  vfile-sort@4.0.0:
-    resolution: {integrity: sha512-lffPI1JrbHDTToJwcq0rl6rBmkjQmMuXkAxsZPRS9DXbaJQvc642eCg6EGxcX2i1L+esbuhq+2l9tBll5v8AeQ==}
-
-  vfile-statistics@3.0.0:
-    resolution: {integrity: sha512-/qlwqwWBWFOmpXujL/20P+Iuydil0rZZNglR+VNm6J0gpLHwuVM5s7g2TfVoswbXjZ4HuIhLMySEyIw5i7/D8w==}
-
-  vfile@6.0.3:
-    resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
   victory-vendor@37.3.6:
     resolution: {integrity: sha512-SbPDPdDBYp+5MJHhBCAyI7wKM3d5ivekigc2Dk2s7pgbZ9wIgIBYGVw4zGHBml/qTFbexrofXW6Gu4noGxrOwQ==}
@@ -8276,9 +7761,6 @@ packages:
     resolution: {integrity: sha512-d+BFHzbiCx6zGfz0HyQ6Rg69w9k19nviJspaj4yNscGjrHu94sVP+aRm75yEbCh+r2/yR+7q6hux9LVtbuTGBw==}
     engines: {node: '>=14'}
 
-  walk-up-path@3.0.1:
-    resolution: {integrity: sha512-9YlCL/ynK3CTlrSRrDxZvUauLzAswPCrsaCgilqFevUYpeEW0/3ScEjaa3kbW/T0ghhkEr7mv+fpjqn1Y1YuTA==}
-
   walk-up-path@4.0.0:
     resolution: {integrity: sha512-3hu+tD8YzSLGuFYtPRb48vdhKMi0KQV5sn+uWr8+7dMEq/2G/dtLrdDinkLjqq5TIbIBjYJ4Ax/n3YiaW7QM8A==}
     engines: {node: 20 || >=22}
@@ -8306,11 +7788,6 @@ packages:
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
     engines: {node: '>= 8'}
-    hasBin: true
-
-  which@4.0.0:
-    resolution: {integrity: sha512-GlaYyEb07DPxYCKhKzplCWBJtvxZcZMrL+4UkrTSJHHPyZU4mYYTv3qaOe77H7EODLSSopAUFAc6W8U4yqvscg==}
-    engines: {node: ^16.13.0 || >=18.0.0}
     hasBin: true
 
   which@6.0.1:
@@ -8347,10 +7824,6 @@ packages:
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
     engines: {node: '>=10'}
-
-  wrap-ansi@8.1.0:
-    resolution: {integrity: sha512-si7QWI6zUMq56bESFvagtmzMdGOtoxfR+Sez11Mobfc7tm+VkUckk9bW2UeffTGVUbOksxmSw0AA2gs8g71NCQ==}
-    engines: {node: '>=12'}
 
   wrap-ansi@9.0.2:
     resolution: {integrity: sha512-42AtmgqjV+X1VpdOfyTGOYRi0/zsoLqtXQckTmqTeybT+BDIbM/Guxo7x3pE2vtpr1ok6xRqM9OpBe+Jyoqyww==}
@@ -8508,9 +7981,6 @@ packages:
 
   zod@4.4.3:
     resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
-
-  zwitch@2.0.4:
-    resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
 
@@ -8831,12 +8301,12 @@ snapshots:
       '@better-auth/core': 1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0)
       '@better-auth/utils': 0.4.0
 
-  '@better-auth/sso@1.6.10(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.0.17))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(better-call@1.3.5(zod@4.0.17))':
+  '@better-auth/sso@1.6.10(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.0.17))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))))(better-call@1.3.5(zod@4.0.17))':
     dependencies:
       '@better-auth/core': 1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.0.17))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0)
       '@better-auth/utils': 0.4.0
       '@better-fetch/fetch': 1.1.21
-      better-auth: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+      better-auth: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       better-call: 1.3.5(zod@4.0.17)
       fast-xml-parser: 5.7.3
       jose: 6.2.2
@@ -8844,12 +8314,12 @@ snapshots:
       tldts: 6.1.86
       zod: 4.4.3
 
-  '@better-auth/sso@1.6.10(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(better-call@1.3.5(zod@4.4.3))':
+  '@better-auth/sso@1.6.10(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))))(better-call@1.3.5(zod@4.4.3))':
     dependencies:
       '@better-auth/core': 1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0)
       '@better-auth/utils': 0.4.0
       '@better-fetch/fetch': 1.1.21
-      better-auth: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+      better-auth: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       better-call: 1.3.5(zod@4.4.3)
       fast-xml-parser: 5.7.3
       jose: 6.2.2
@@ -8891,7 +8361,7 @@ snapshots:
     optionalDependencies:
       workerd: 1.20260421.1
 
-  '@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))':
+  '@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))':
     dependencies:
       '@vitest/runner': 4.1.5
       '@vitest/snapshot': 4.1.5
@@ -9562,15 +9032,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.6.0
 
-  '@isaacs/cliui@8.0.2':
-    dependencies:
-      string-width: 5.1.2
-      string-width-cjs: string-width@4.2.3
-      strip-ansi: 7.2.0
-      strip-ansi-cjs: strip-ansi@6.0.1
-      wrap-ansi: 8.1.0
-      wrap-ansi-cjs: wrap-ansi@7.0.0
-
   '@isaacs/fs-minipass@4.0.1':
     dependencies:
       minipass: 7.1.3
@@ -9620,16 +9081,6 @@ snapshots:
       '@opentelemetry/api': 1.9.0
 
   '@logdna/tail-file@2.2.0': {}
-
-  '@manypkg/find-root@3.1.0':
-    dependencies:
-      '@manypkg/tools': 2.1.1
-
-  '@manypkg/tools@2.1.1':
-    dependencies:
-      jju: 1.4.0
-      js-yaml: 4.1.1
-      tinyglobby: 0.2.16
 
   '@modelcontextprotocol/sdk@1.27.1(zod@4.3.6)':
     dependencies:
@@ -9755,36 +9206,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@npmcli/config@8.3.4':
-    dependencies:
-      '@npmcli/map-workspaces': 3.0.6
-      '@npmcli/package-json': 5.2.1
-      ci-info: 4.4.0
-      ini: 4.1.3
-      nopt: 7.2.1
-      proc-log: 4.2.0
-      semver: 7.7.4
-      walk-up-path: 3.0.1
-    transitivePeerDependencies:
-      - bluebird
-
   '@npmcli/fs@5.0.0':
     dependencies:
       semver: 7.7.4
-
-  '@npmcli/git@5.0.8':
-    dependencies:
-      '@npmcli/promise-spawn': 7.0.2
-      ini: 4.1.3
-      lru-cache: 10.4.3
-      npm-pick-manifest: 9.1.0
-      proc-log: 4.2.0
-      promise-inflight: 1.0.1
-      promise-retry: 2.0.1
-      semver: 7.7.4
-      which: 4.0.0
-    transitivePeerDependencies:
-      - bluebird
 
   '@npmcli/git@7.0.2':
     dependencies:
@@ -9801,13 +9225,6 @@ snapshots:
     dependencies:
       npm-bundled: 5.0.0
       npm-normalize-package-bin: 5.0.0
-
-  '@npmcli/map-workspaces@3.0.6':
-    dependencies:
-      '@npmcli/name-from-folder': 2.0.0
-      glob: 10.5.0
-      minimatch: 9.0.9
-      read-package-json-fast: 3.0.2
 
   '@npmcli/map-workspaces@5.0.3':
     dependencies:
@@ -9826,23 +9243,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@npmcli/name-from-folder@2.0.0': {}
-
   '@npmcli/name-from-folder@4.0.0': {}
 
   '@npmcli/node-gyp@5.0.0': {}
-
-  '@npmcli/package-json@5.2.1':
-    dependencies:
-      '@npmcli/git': 5.0.8
-      glob: 10.5.0
-      hosted-git-info: 7.0.2
-      json-parse-even-better-errors: 3.0.2
-      normalize-package-data: 6.0.2
-      proc-log: 4.2.0
-      semver: 7.7.4
-    transitivePeerDependencies:
-      - bluebird
 
   '@npmcli/package-json@7.0.5':
     dependencies:
@@ -9853,10 +9256,6 @@ snapshots:
       proc-log: 6.1.0
       semver: 7.7.4
       spdx-expression-parse: 4.0.0
-
-  '@npmcli/promise-spawn@7.0.2':
-    dependencies:
-      which: 4.0.0
 
   '@npmcli/promise-spawn@9.0.1':
     dependencies:
@@ -10229,9 +9628,6 @@ snapshots:
     optional: true
 
   '@ozby/wrangler-sync@0.1.0': {}
-
-  '@pkgjs/parseargs@0.11.0':
-    optional: true
 
   '@playwright/test@1.59.1':
     dependencies:
@@ -11389,7 +10785,7 @@ snapshots:
 
   '@stryker-mutator/util@9.6.1': {}
 
-  '@stryker-mutator/vitest-runner@9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))':
+  '@stryker-mutator/vitest-runner@9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))':
     dependencies:
       '@stryker-mutator/api': 9.6.1
       '@stryker-mutator/core': 9.6.1(@types/node@25.6.0)
@@ -11531,12 +10927,12 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.2.4
 
-  '@tailwindcss/vite@4.2.4(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))':
+  '@tailwindcss/vite@4.2.4(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))':
     dependencies:
       '@tailwindcss/node': 4.2.4
       '@tailwindcss/oxide': 4.2.4
       tailwindcss: 4.2.4
-      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
+      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)
 
   '@tanstack/history@1.161.6': {}
 
@@ -11671,10 +11067,6 @@ snapshots:
       '@types/deep-eql': 4.0.2
       assertion-error: 2.0.1
 
-  '@types/concat-stream@2.0.3':
-    dependencies:
-      '@types/node': 25.6.0
-
   '@types/conventional-commits-parser@5.0.2':
     dependencies:
       '@types/node': 25.6.0
@@ -11703,10 +11095,6 @@ snapshots:
 
   '@types/d3-timer@3.0.2': {}
 
-  '@types/debug@4.1.13':
-    dependencies:
-      '@types/ms': 2.1.0
-
   '@types/deep-eql@4.0.2': {}
 
   '@types/estree@1.0.6': {}
@@ -11714,24 +11102,6 @@ snapshots:
   '@types/estree@1.0.8': {}
 
   '@types/google-protobuf@3.15.12': {}
-
-  '@types/hast@3.0.4':
-    dependencies:
-      '@types/unist': 3.0.3
-
-  '@types/hosted-git-info@3.0.5': {}
-
-  '@types/is-empty@1.2.3': {}
-
-  '@types/mdast@4.0.4':
-    dependencies:
-      '@types/unist': 3.0.3
-
-  '@types/ms@2.1.0': {}
-
-  '@types/node@22.19.18':
-    dependencies:
-      undici-types: 6.21.0
 
   '@types/node@25.6.0':
     dependencies:
@@ -11753,11 +11123,7 @@ snapshots:
 
   '@types/shimmer@1.2.0': {}
 
-  '@types/supports-color@8.1.3': {}
-
   '@types/tmp@0.2.6': {}
-
-  '@types/unist@3.0.3': {}
 
   '@types/use-sync-external-store@0.0.6': {}
 
@@ -11792,18 +11158,16 @@ snapshots:
       '@typescript/native-preview-win32-arm64': 7.0.0-dev.20260421.2
       '@typescript/native-preview-win32-x64': 7.0.0-dev.20260421.2
 
-  '@ungap/structured-clone@1.3.1': {}
-
   '@valibot/to-json-schema@1.6.0(valibot@1.4.0(typescript@6.0.3))':
     dependencies:
       valibot: 1.4.0(typescript@6.0.3)
 
   '@vercel/oidc@3.2.0': {}
 
-  '@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))':
+  '@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-rc.7
-      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
+      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)
 
   '@vitest/expect@4.1.5':
     dependencies:
@@ -11820,7 +11184,7 @@ snapshots:
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
+      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)
 
   '@vitest/pretty-format@4.1.5':
     dependencies:
@@ -11892,7 +11256,7 @@ snapshots:
       tinybench: 2.9.0
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
-      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
+      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)
       ws: 8.20.0
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
@@ -11925,54 +11289,6 @@ snapshots:
   '@voidzero-dev/vite-plus-win32-x64-msvc@0.1.20':
     optional: true
 
-  '@webpresso/agent-kit@0.15.0(valibot@1.4.0(typescript@6.0.3))':
-    dependencies:
-      '@manypkg/find-root': 3.1.0
-      '@modelcontextprotocol/sdk': 1.29.0(zod@4.4.3)
-      '@webpresso/runtime-format': 0.1.2
-      '@webpresso/runtime-storage': 0.1.2
-      better-sqlite3: 12.9.0
-      cac: 7.0.0
-      glob: 13.0.6
-      gray-matter: 4.0.3
-      js-yaml: 4.1.1
-      remark: 15.0.1
-      remark-frontmatter: 5.0.0
-      remark-validate-links: 13.1.0
-      rulesync: 8.15.1(valibot@1.4.0(typescript@6.0.3))
-      ts-pattern: 5.9.0
-      yaml: 2.8.4
-      zod: 4.4.3
-      zod-to-json-schema: 3.25.2(zod@4.4.3)
-    transitivePeerDependencies:
-      - '@cfworker/json-schema'
-      - arktype
-      - bluebird
-      - jose
-      - rescript
-      - supports-color
-      - valibot
-
-  '@webpresso/agent-stryker@0.2.0(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(@stryker-mutator/vitest-runner@9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))':
-    dependencies:
-      '@stryker-mutator/core': 9.6.1(@types/node@25.6.0)
-      '@stryker-mutator/vitest-runner': 9.6.1(@stryker-mutator/core@9.6.1(@types/node@25.6.0))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
-
-  '@webpresso/agent-tsconfig@0.2.0': {}
-
-  '@webpresso/agent-vitest@0.2.0(@cloudflare/vitest-pool-workers@0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(@vitejs/plugin-react@6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vite-plus@0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))':
-    dependencies:
-      vite-plus: 0.1.20(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(jsdom@20.0.3)(tsx@4.21.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
-      vitest: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
-    optionalDependencies:
-      '@cloudflare/vitest-pool-workers': 0.14.9(@cloudflare/workers-types@4.20260423.1)(@vitest/runner@4.1.5)(@vitest/snapshot@4.1.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
-      '@vitejs/plugin-react': 6.0.1(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
-
-  '@webpresso/agent-workers-test@0.2.0(@cloudflare/workers-types@4.20260423.1)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))':
-    dependencies:
-      '@cloudflare/workers-types': 4.20260423.1
-      vitest: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
-
   '@webpresso/codegen-core@0.1.0-alpha.20(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))':
     dependencies:
       '@webpresso/schema-loaders': 0.1.0-alpha.20(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)
@@ -11985,7 +11301,7 @@ snapshots:
       - graphql-request
       - react
 
-  '@webpresso/codegen-core@0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))':
+  '@webpresso/codegen-core@0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))':
     dependencies:
       '@webpresso/schema-loaders': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)
       '@webpresso/schema-spec': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)
@@ -12005,10 +11321,6 @@ snapshots:
       - debug
 
   '@webpresso/db-branching@0.2.1': {}
-
-  '@webpresso/runtime-format@0.1.2': {}
-
-  '@webpresso/runtime-storage@0.1.2': {}
 
   '@webpresso/runtime@0.3.0':
     dependencies:
@@ -12074,11 +11386,11 @@ snapshots:
       - valibot
       - vitest
 
-  '@webpresso/schema-engine@0.1.1(@cloudflare/workers-types@4.20260423.1)(@hookform/resolvers@5.2.2(react-hook-form@7.73.1(react@19.2.5)))(@opentelemetry/api@1.9.0)(@sinclair/typebox@0.34.49)(@tanstack/react-router@1.169.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(better-sqlite3@12.9.0)(effect@3.20.0)(postgres@3.4.9)(react-hook-form@7.73.1(react@19.2.5))(react@19.2.5)(valibot@1.4.0(typescript@6.0.3))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))':
+  '@webpresso/schema-engine@0.1.1(@cloudflare/workers-types@4.20260423.1)(@hookform/resolvers@5.2.2(react-hook-form@7.73.1(react@19.2.5)))(@opentelemetry/api@1.9.0)(@sinclair/typebox@0.34.49)(@tanstack/react-router@1.169.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(better-sqlite3@12.9.0)(effect@3.20.0)(postgres@3.4.9)(react-hook-form@7.73.1(react@19.2.5))(react@19.2.5)(valibot@1.4.0(typescript@6.0.3))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))':
     dependencies:
       '@babel/generator': 7.29.1
       '@babel/types': 7.29.0
-      '@webpresso/codegen-core': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+      '@webpresso/codegen-core': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       '@webpresso/schema-frontend': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))
       '@webpresso/schema-loaders': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)
       '@webpresso/schema-spec': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)
@@ -12185,24 +11497,24 @@ snapshots:
       react: 19.2.5
       zod: 4.4.3
 
-  '@webpresso/webpresso@0.1.1(1f46a181dba35db027823e4adb23e478)':
+  '@webpresso/webpresso@0.1.1(0c2e1a2400e1aa735a85d11321a7584d)':
     dependencies:
-      '@better-auth/sso': 1.6.10(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.0.17))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(better-call@1.3.5(zod@4.0.17))
+      '@better-auth/sso': 1.6.10(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.0.17))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))))(better-call@1.3.5(zod@4.0.17))
       '@clack/prompts': 1.3.0
       '@playwright/test': 1.59.1
-      '@webpresso/codegen-core': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+      '@webpresso/codegen-core': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       '@webpresso/runtime': 0.3.0
-      '@webpresso/schema-engine': 0.1.1(@cloudflare/workers-types@4.20260423.1)(@hookform/resolvers@5.2.2(react-hook-form@7.73.1(react@19.2.5)))(@opentelemetry/api@1.9.0)(@sinclair/typebox@0.34.49)(@tanstack/react-router@1.169.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(better-sqlite3@12.9.0)(effect@3.20.0)(postgres@3.4.9)(react-hook-form@7.73.1(react@19.2.5))(react@19.2.5)(valibot@1.4.0(typescript@6.0.3))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+      '@webpresso/schema-engine': 0.1.1(@cloudflare/workers-types@4.20260423.1)(@hookform/resolvers@5.2.2(react-hook-form@7.73.1(react@19.2.5)))(@opentelemetry/api@1.9.0)(@sinclair/typebox@0.34.49)(@tanstack/react-router@1.169.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(better-sqlite3@12.9.0)(effect@3.20.0)(postgres@3.4.9)(react-hook-form@7.73.1(react@19.2.5))(react@19.2.5)(valibot@1.4.0(typescript@6.0.3))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       '@webpresso/schema-frontend': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))
       '@webpresso/schema-loaders': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)
       '@webpresso/schema-spec': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)
-      better-auth: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+      better-auth: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       glob: 13.0.6
       oxlint: 0.15.15
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
       typescript: 6.0.3
-      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
+      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)
       vitest: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
     optionalDependencies:
       hono: 4.12.15
@@ -12287,24 +11599,24 @@ snapshots:
       - vue
       - yaml
 
-  ? '@webpresso/webpresso@0.1.1(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@hookform/resolvers@5.2.2(react-hook-form@7.73.1(react@19.2.5)))(@opentelemetry/api@1.9.0)(@sinclair/typebox@0.34.49)(@tanstack/react-router@1.169.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(@types/node@25.6.0)(better-call@1.3.5(zod@4.4.3))(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(effect@3.20.0)(esbuild@0.28.0)(graphql-request@7.4.0(graphql@16.13.2))(hono@4.12.14)(jiti@2.6.1)(jsdom@20.0.3)(postgres@3.4.9)(react-dom@19.2.5(react@19.2.5))(react-hook-form@7.73.1(react@19.2.5))(react@19.2.5)(tsx@4.21.0)(valibot@1.4.0(typescript@6.0.3))'
-  : dependencies:
-      '@better-auth/sso': 1.6.10(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))))(better-call@1.3.5(zod@4.4.3))
+  '@webpresso/webpresso@0.1.1(67dcea56806a0b36bed883f7f04d3dae)':
+    dependencies:
+      '@better-auth/sso': 1.6.10(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))))(better-call@1.3.5(zod@4.4.3))
       '@clack/prompts': 1.3.0
       '@playwright/test': 1.59.1
-      '@webpresso/codegen-core': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+      '@webpresso/codegen-core': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       '@webpresso/runtime': 0.3.0
-      '@webpresso/schema-engine': 0.1.1(@cloudflare/workers-types@4.20260423.1)(@hookform/resolvers@5.2.2(react-hook-form@7.73.1(react@19.2.5)))(@opentelemetry/api@1.9.0)(@sinclair/typebox@0.34.49)(@tanstack/react-router@1.169.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(better-sqlite3@12.9.0)(effect@3.20.0)(postgres@3.4.9)(react-hook-form@7.73.1(react@19.2.5))(react@19.2.5)(valibot@1.4.0(typescript@6.0.3))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+      '@webpresso/schema-engine': 0.1.1(@cloudflare/workers-types@4.20260423.1)(@hookform/resolvers@5.2.2(react-hook-form@7.73.1(react@19.2.5)))(@opentelemetry/api@1.9.0)(@sinclair/typebox@0.34.49)(@tanstack/react-router@1.169.1(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(better-sqlite3@12.9.0)(effect@3.20.0)(postgres@3.4.9)(react-hook-form@7.73.1(react@19.2.5))(react@19.2.5)(valibot@1.4.0(typescript@6.0.3))(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       '@webpresso/schema-frontend': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))
       '@webpresso/schema-loaders': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)
       '@webpresso/schema-spec': 0.1.1(graphql-request@7.4.0(graphql@16.13.2))(react@19.2.5)
-      better-auth: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)))
+      better-auth: 1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)))
       glob: 13.0.6
       oxlint: 0.15.15
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
       typescript: 6.0.3
-      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
+      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)
       vitest: 4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))
     optionalDependencies:
       hono: 4.12.14
@@ -12400,8 +11712,6 @@ snapshots:
 
   abab@2.0.6:
     optional: true
-
-  abbrev@2.0.0: {}
 
   abbrev@4.0.0: {}
 
@@ -12530,17 +11840,14 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  bail@2.0.2: {}
-
-  balanced-match@1.0.2: {}
-
   balanced-match@4.0.4: {}
 
-  base64-js@1.5.1: {}
+  base64-js@1.5.1:
+    optional: true
 
   before-after-hook@4.0.0: {}
 
-  better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0))):
+  better-auth@1.6.9(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4))):
     dependencies:
       '@better-auth/core': 1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0)
       '@better-auth/drizzle-adapter': 1.6.9(@better-auth/core@1.6.9(@better-auth/utils@0.4.0)(@better-fetch/fetch@1.1.21)(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-call@1.3.5(zod@4.4.3))(jose@6.2.2)(kysely@0.28.17)(nanostores@1.3.0))(@better-auth/utils@0.4.0)(drizzle-orm@0.45.2(@cloudflare/workers-types@4.20260423.1)(@opentelemetry/api@1.9.0)(better-sqlite3@12.9.0)(kysely@0.28.17)(postgres@3.4.9))
@@ -12601,6 +11908,7 @@ snapshots:
     dependencies:
       bindings: 1.5.0
       prebuild-install: 7.1.3
+    optional: true
 
   bin-links@6.0.0:
     dependencies:
@@ -12617,12 +11925,14 @@ snapshots:
   bindings@1.5.0:
     dependencies:
       file-uri-to-path: 1.0.0
+    optional: true
 
   bl@4.1.0:
     dependencies:
       buffer: 5.7.1
       inherits: 2.0.4
       readable-stream: 3.6.2
+    optional: true
 
   blake3-wasm@2.1.5: {}
 
@@ -12641,10 +11951,6 @@ snapshots:
       - supports-color
 
   boundary@2.0.0: {}
-
-  brace-expansion@2.1.0:
-    dependencies:
-      balanced-match: 1.0.2
 
   brace-expansion@5.0.5:
     dependencies:
@@ -12667,6 +11973,7 @@ snapshots:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
+    optional: true
 
   bunchee@6.10.0(typescript@6.0.3):
     dependencies:
@@ -12694,8 +12001,6 @@ snapshots:
       typescript: 6.0.3
 
   bytes@3.1.2: {}
-
-  cac@7.0.0: {}
 
   cacache@20.0.4:
     dependencies:
@@ -12737,15 +12042,12 @@ snapshots:
 
   chalk@5.6.2: {}
 
-  character-entities@2.0.2: {}
-
   chardet@2.1.1: {}
 
-  chownr@1.1.4: {}
+  chownr@1.1.4:
+    optional: true
 
   chownr@3.0.0: {}
-
-  ci-info@4.4.0: {}
 
   cjs-module-lexer@1.4.3: {}
 
@@ -12809,13 +12111,6 @@ snapshots:
     dependencies:
       array-ify: 1.0.0
       dot-prop: 5.3.0
-
-  concat-stream@2.0.0:
-    dependencies:
-      buffer-from: 1.1.2
-      inherits: 2.0.4
-      readable-stream: 3.6.2
-      typedarray: 0.0.6
 
   content-disposition@1.0.1: {}
 
@@ -12958,17 +12253,15 @@ snapshots:
   decimal.js@10.6.0:
     optional: true
 
-  decode-named-character-reference@1.3.0:
-    dependencies:
-      character-entities: 2.0.2
-
   decompress-response@6.0.0:
     dependencies:
       mimic-response: 3.1.0
+    optional: true
 
   deep-equal@1.0.1: {}
 
-  deep-extend@0.6.0: {}
+  deep-extend@0.6.0:
+    optional: true
 
   deepmerge@4.3.1: {}
 
@@ -12994,10 +12287,6 @@ snapshots:
   detect-libc@2.1.2: {}
 
   detect-node-es@1.1.0: {}
-
-  devlop@1.1.0:
-    dependencies:
-      dequal: 2.0.3
 
   diff-match-patch@1.0.5: {}
 
@@ -13060,8 +12349,6 @@ snapshots:
       es-errors: 1.3.0
       gopd: 1.2.0
 
-  eastasianwidth@0.2.0: {}
-
   editions@6.22.0:
     dependencies:
       version-range: 4.15.0
@@ -13091,8 +12378,6 @@ snapshots:
 
   emoji-regex@8.0.0: {}
 
-  emoji-regex@9.2.2: {}
-
   encodeurl@2.0.0: {}
 
   end-of-stream@1.4.5:
@@ -13108,8 +12393,6 @@ snapshots:
     optional: true
 
   env-paths@2.2.1: {}
-
-  err-code@2.0.3: {}
 
   error-ex@1.3.2:
     dependencies:
@@ -13232,8 +12515,6 @@ snapshots:
 
   escape-html@1.0.3: {}
 
-  escape-string-regexp@5.0.0: {}
-
   escodegen@2.1.0:
     dependencies:
       esprima: 4.0.1
@@ -13294,7 +12575,8 @@ snapshots:
       strip-final-newline: 4.0.0
       yoctocolors: 2.1.2
 
-  expand-template@2.0.3: {}
+  expand-template@2.0.3:
+    optional: true
 
   expect-type@1.3.0: {}
 
@@ -13341,8 +12623,6 @@ snapshots:
   extend-shallow@2.0.1:
     dependencies:
       is-extendable: 0.1.1
-
-  extend@3.0.2: {}
 
   fast-check@3.23.2:
     dependencies:
@@ -13414,10 +12694,6 @@ snapshots:
     dependencies:
       reusify: 1.1.0
 
-  fault@2.0.1:
-    dependencies:
-      format: 0.2.2
-
   fdir@6.5.0(picomatch@4.0.4):
     optionalDependencies:
       picomatch: 4.0.4
@@ -13435,7 +12711,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  file-uri-to-path@1.0.0: {}
+  file-uri-to-path@1.0.0:
+    optional: true
 
   fill-range@7.1.1:
     dependencies:
@@ -13462,11 +12739,6 @@ snapshots:
     optionalDependencies:
       debug: 4.4.3
 
-  foreground-child@3.3.1:
-    dependencies:
-      cross-spawn: 7.0.6
-      signal-exit: 4.1.0
-
   form-data@4.0.5:
     dependencies:
       asynckit: 0.4.0
@@ -13475,15 +12747,14 @@ snapshots:
       hasown: 2.0.2
       mime-types: 2.1.35
 
-  format@0.2.2: {}
-
   forwarded@0.2.0: {}
 
   fresh@0.5.2: {}
 
   fresh@2.0.0: {}
 
-  fs-constants@1.0.0: {}
+  fs-constants@1.0.0:
+    optional: true
 
   fs-minipass@3.0.3:
     dependencies:
@@ -13542,22 +12813,12 @@ snapshots:
       meow: 12.1.1
       split2: 4.2.0
 
-  github-from-package@0.0.0: {}
-
-  github-slugger@2.0.0: {}
+  github-from-package@0.0.0:
+    optional: true
 
   glob-parent@5.1.2:
     dependencies:
       is-glob: 4.0.3
-
-  glob@10.5.0:
-    dependencies:
-      foreground-child: 3.3.1
-      jackspeak: 3.4.3
-      minimatch: 9.0.9
-      minipass: 7.1.3
-      package-json-from-dist: 1.0.1
-      path-scurry: 1.11.1
 
   glob@13.0.6:
     dependencies:
@@ -13715,8 +12976,6 @@ snapshots:
     dependencies:
       minimatch: 10.2.5
 
-  ignore@6.0.2: {}
-
   ignore@7.0.5: {}
 
   immer@10.2.0: {}
@@ -13741,13 +13000,12 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  ini@1.3.8: {}
+  ini@1.3.8:
+    optional: true
 
   ini@2.0.0: {}
 
   ini@4.1.1: {}
-
-  ini@4.1.3: {}
 
   ini@6.0.0: {}
 
@@ -13772,8 +13030,6 @@ snapshots:
   is-core-module@2.16.1:
     dependencies:
       hasown: 2.0.2
-
-  is-empty@1.2.0: {}
 
   is-extendable@0.1.1: {}
 
@@ -13818,8 +13074,6 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isexe@3.1.5: {}
-
   isexe@4.0.0: {}
 
   istextorbinary@9.5.0:
@@ -13828,15 +13082,7 @@ snapshots:
       editions: 6.22.0
       textextensions: 6.11.0
 
-  jackspeak@3.4.3:
-    dependencies:
-      '@isaacs/cliui': 8.0.2
-    optionalDependencies:
-      '@pkgjs/parseargs': 0.11.0
-
   jiti@2.6.1: {}
-
-  jju@1.4.0: {}
 
   jose@6.2.2: {}
 
@@ -13963,8 +13209,6 @@ snapshots:
 
   kysely@0.28.17: {}
 
-  levenshtein-edit-distance@1.0.0: {}
-
   lightningcss-android-arm64@1.32.0:
     optional: true
 
@@ -14018,13 +13262,6 @@ snapshots:
 
   lines-and-columns@2.0.4: {}
 
-  load-plugin@6.0.3:
-    dependencies:
-      '@npmcli/config': 8.3.4
-      import-meta-resolve: 4.2.0
-    transitivePeerDependencies:
-      - bluebird
-
   locate-path@7.2.0:
     dependencies:
       p-locate: 6.0.0
@@ -14054,8 +13291,6 @@ snapshots:
   lodash@4.18.1: {}
 
   long@5.3.1: {}
-
-  longest-streak@3.1.0: {}
 
   lru-cache@10.4.3: {}
 
@@ -14103,67 +13338,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-from-markdown@2.0.3:
-    dependencies:
-      '@types/mdast': 4.0.4
-      '@types/unist': 3.0.3
-      decode-named-character-reference: 1.3.0
-      devlop: 1.1.0
-      mdast-util-to-string: 4.0.0
-      micromark: 4.0.2
-      micromark-util-decode-numeric-character-reference: 2.0.2
-      micromark-util-decode-string: 2.0.1
-      micromark-util-normalize-identifier: 2.0.1
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-      unist-util-stringify-position: 4.0.0
-    transitivePeerDependencies:
-      - supports-color
-
-  mdast-util-frontmatter@2.0.1:
-    dependencies:
-      '@types/mdast': 4.0.4
-      devlop: 1.1.0
-      escape-string-regexp: 5.0.0
-      mdast-util-from-markdown: 2.0.3
-      mdast-util-to-markdown: 2.1.2
-      micromark-extension-frontmatter: 2.0.0
-    transitivePeerDependencies:
-      - supports-color
-
-  mdast-util-phrasing@4.1.0:
-    dependencies:
-      '@types/mdast': 4.0.4
-      unist-util-is: 6.0.1
-
-  mdast-util-to-hast@13.2.1:
-    dependencies:
-      '@types/hast': 3.0.4
-      '@types/mdast': 4.0.4
-      '@ungap/structured-clone': 1.3.1
-      devlop: 1.1.0
-      micromark-util-sanitize-uri: 2.0.1
-      trim-lines: 3.0.1
-      unist-util-position: 5.0.0
-      unist-util-visit: 5.1.0
-      vfile: 6.0.3
-
-  mdast-util-to-markdown@2.1.2:
-    dependencies:
-      '@types/mdast': 4.0.4
-      '@types/unist': 3.0.3
-      longest-streak: 3.1.0
-      mdast-util-phrasing: 4.1.0
-      mdast-util-to-string: 4.0.0
-      micromark-util-classify-character: 2.0.1
-      micromark-util-decode-string: 2.0.1
-      unist-util-visit: 5.1.0
-      zwitch: 2.0.4
-
-  mdast-util-to-string@4.0.0:
-    dependencies:
-      '@types/mdast': 4.0.4
-
   media-typer@1.1.0: {}
 
   meow@12.1.1: {}
@@ -14173,146 +13347,6 @@ snapshots:
   merge-stream@2.0.0: {}
 
   merge2@1.4.1: {}
-
-  micromark-core-commonmark@2.0.3:
-    dependencies:
-      decode-named-character-reference: 1.3.0
-      devlop: 1.1.0
-      micromark-factory-destination: 2.0.1
-      micromark-factory-label: 2.0.1
-      micromark-factory-space: 2.0.1
-      micromark-factory-title: 2.0.1
-      micromark-factory-whitespace: 2.0.1
-      micromark-util-character: 2.1.1
-      micromark-util-chunked: 2.0.1
-      micromark-util-classify-character: 2.0.1
-      micromark-util-html-tag-name: 2.0.1
-      micromark-util-normalize-identifier: 2.0.1
-      micromark-util-resolve-all: 2.0.1
-      micromark-util-subtokenize: 2.1.0
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-extension-frontmatter@2.0.0:
-    dependencies:
-      fault: 2.0.1
-      micromark-util-character: 2.1.1
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-factory-destination@2.0.1:
-    dependencies:
-      micromark-util-character: 2.1.1
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-factory-label@2.0.1:
-    dependencies:
-      devlop: 1.1.0
-      micromark-util-character: 2.1.1
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-factory-space@2.0.1:
-    dependencies:
-      micromark-util-character: 2.1.1
-      micromark-util-types: 2.0.2
-
-  micromark-factory-title@2.0.1:
-    dependencies:
-      micromark-factory-space: 2.0.1
-      micromark-util-character: 2.1.1
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-factory-whitespace@2.0.1:
-    dependencies:
-      micromark-factory-space: 2.0.1
-      micromark-util-character: 2.1.1
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-util-character@2.1.1:
-    dependencies:
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-util-chunked@2.0.1:
-    dependencies:
-      micromark-util-symbol: 2.0.1
-
-  micromark-util-classify-character@2.0.1:
-    dependencies:
-      micromark-util-character: 2.1.1
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-util-combine-extensions@2.0.1:
-    dependencies:
-      micromark-util-chunked: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-util-decode-numeric-character-reference@2.0.2:
-    dependencies:
-      micromark-util-symbol: 2.0.1
-
-  micromark-util-decode-string@2.0.1:
-    dependencies:
-      decode-named-character-reference: 1.3.0
-      micromark-util-character: 2.1.1
-      micromark-util-decode-numeric-character-reference: 2.0.2
-      micromark-util-symbol: 2.0.1
-
-  micromark-util-encode@2.0.1: {}
-
-  micromark-util-html-tag-name@2.0.1: {}
-
-  micromark-util-normalize-identifier@2.0.1:
-    dependencies:
-      micromark-util-symbol: 2.0.1
-
-  micromark-util-resolve-all@2.0.1:
-    dependencies:
-      micromark-util-types: 2.0.2
-
-  micromark-util-sanitize-uri@2.0.1:
-    dependencies:
-      micromark-util-character: 2.1.1
-      micromark-util-encode: 2.0.1
-      micromark-util-symbol: 2.0.1
-
-  micromark-util-subtokenize@2.1.0:
-    dependencies:
-      devlop: 1.1.0
-      micromark-util-chunked: 2.0.1
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-
-  micromark-util-symbol@2.0.1: {}
-
-  micromark-util-types@2.0.2: {}
-
-  micromark@4.0.2:
-    dependencies:
-      '@types/debug': 4.1.13
-      debug: 4.4.3
-      decode-named-character-reference: 1.3.0
-      devlop: 1.1.0
-      micromark-core-commonmark: 2.0.3
-      micromark-factory-space: 2.0.1
-      micromark-util-character: 2.1.1
-      micromark-util-chunked: 2.0.1
-      micromark-util-combine-extensions: 2.0.1
-      micromark-util-decode-numeric-character-reference: 2.0.2
-      micromark-util-encode: 2.0.1
-      micromark-util-normalize-identifier: 2.0.1
-      micromark-util-resolve-all: 2.0.1
-      micromark-util-sanitize-uri: 2.0.1
-      micromark-util-subtokenize: 2.1.0
-      micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.2
-    transitivePeerDependencies:
-      - supports-color
 
   micromatch@4.0.8:
     dependencies:
@@ -14333,7 +13367,8 @@ snapshots:
 
   mimic-fn@2.1.0: {}
 
-  mimic-response@3.1.0: {}
+  mimic-response@3.1.0:
+    optional: true
 
   miniflare@4.20260421.0:
     dependencies:
@@ -14352,10 +13387,6 @@ snapshots:
   minimatch@10.2.5:
     dependencies:
       brace-expansion: 5.0.5
-
-  minimatch@9.0.9:
-    dependencies:
-      brace-expansion: 2.1.0
 
   minimist@1.2.8: {}
 
@@ -14393,7 +13424,8 @@ snapshots:
     dependencies:
       minipass: 7.1.3
 
-  mkdirp-classic@0.5.3: {}
+  mkdirp-classic@0.5.3:
+    optional: true
 
   module-details-from-path@1.0.4: {}
 
@@ -14425,7 +13457,8 @@ snapshots:
 
   nanostores@1.3.0: {}
 
-  napi-build-utils@2.0.0: {}
+  napi-build-utils@2.0.0:
+    optional: true
 
   negotiator@0.6.3: {}
 
@@ -14439,6 +13472,7 @@ snapshots:
   node-abi@3.92.0:
     dependencies:
       semver: 7.7.4
+    optional: true
 
   node-forge@1.4.0: {}
 
@@ -14461,10 +13495,6 @@ snapshots:
     dependencies:
       asn1: 0.2.6
 
-  nopt@7.2.1:
-    dependencies:
-      abbrev: 2.0.0
-
   nopt@9.0.0:
     dependencies:
       abbrev: 4.0.0
@@ -14479,24 +13509,11 @@ snapshots:
     dependencies:
       npm-normalize-package-bin: 5.0.0
 
-  npm-install-checks@6.3.0:
-    dependencies:
-      semver: 7.7.4
-
   npm-install-checks@8.0.0:
     dependencies:
       semver: 7.7.4
 
-  npm-normalize-package-bin@3.0.1: {}
-
   npm-normalize-package-bin@5.0.0: {}
-
-  npm-package-arg@11.0.3:
-    dependencies:
-      hosted-git-info: 7.0.2
-      proc-log: 4.2.0
-      semver: 7.7.4
-      validate-npm-package-name: 5.0.1
 
   npm-package-arg@13.0.2:
     dependencies:
@@ -14515,13 +13532,6 @@ snapshots:
       npm-install-checks: 8.0.0
       npm-normalize-package-bin: 5.0.0
       npm-package-arg: 13.0.2
-      semver: 7.7.4
-
-  npm-pick-manifest@9.1.0:
-    dependencies:
-      npm-install-checks: 6.3.0
-      npm-normalize-package-bin: 3.0.1
-      npm-package-arg: 11.0.3
       semver: 7.7.4
 
   npm-registry-fetch@19.1.1:
@@ -14648,8 +13658,6 @@ snapshots:
 
   p-map@7.0.4: {}
 
-  package-json-from-dist@1.0.1: {}
-
   pacote@21.5.0:
     dependencies:
       '@gar/promise-retry': 1.0.3
@@ -14717,11 +13725,6 @@ snapshots:
   path-key@4.0.0: {}
 
   path-parse@1.0.7: {}
-
-  path-scurry@1.11.1:
-    dependencies:
-      lru-cache: 10.4.3
-      minipass: 7.1.3
 
   path-scurry@2.0.2:
     dependencies:
@@ -14807,6 +13810,7 @@ snapshots:
       simple-get: 4.0.1
       tar-fs: 2.1.4
       tunnel-agent: 0.6.0
+    optional: true
 
   pretty-bytes@5.6.0: {}
 
@@ -14820,8 +13824,6 @@ snapshots:
     dependencies:
       parse-ms: 4.0.0
 
-  proc-log@4.2.0: {}
-
   proc-log@6.1.0: {}
 
   proggy@4.0.0: {}
@@ -14831,17 +13833,6 @@ snapshots:
   promise-all-reject-late@1.0.1: {}
 
   promise-call-limit@3.0.2: {}
-
-  promise-inflight@1.0.1: {}
-
-  promise-retry@2.0.1:
-    dependencies:
-      err-code: 2.0.3
-      retry: 0.12.0
-
-  propose@0.0.5:
-    dependencies:
-      levenshtein-edit-distance: 1.0.0
 
   protobufjs@7.5.5:
     dependencies:
@@ -14912,6 +13903,7 @@ snapshots:
       ini: 1.3.8
       minimist: 1.2.8
       strip-json-comments: 2.0.1
+    optional: true
 
   react-day-picker@9.14.0(react@19.2.5):
     dependencies:
@@ -14993,11 +13985,6 @@ snapshots:
 
   read-cmd-shim@6.0.0: {}
 
-  read-package-json-fast@3.0.2:
-    dependencies:
-      json-parse-even-better-errors: 3.0.2
-      npm-normalize-package-bin: 3.0.1
-
   read-pkg@8.1.0:
     dependencies:
       '@types/normalize-package-data': 2.4.4
@@ -15010,6 +13997,7 @@ snapshots:
       inherits: 2.0.4
       string_decoder: 1.3.0
       util-deprecate: 1.0.2
+    optional: true
 
   recharts@3.8.1(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-is@18.3.1)(react@19.2.5)(redux@5.0.1):
     dependencies:
@@ -15039,56 +14027,6 @@ snapshots:
 
   regenerator-runtime@0.14.1: {}
 
-  remark-frontmatter@5.0.0:
-    dependencies:
-      '@types/mdast': 4.0.4
-      mdast-util-frontmatter: 2.0.1
-      micromark-extension-frontmatter: 2.0.0
-      unified: 11.0.5
-    transitivePeerDependencies:
-      - supports-color
-
-  remark-parse@11.0.0:
-    dependencies:
-      '@types/mdast': 4.0.4
-      mdast-util-from-markdown: 2.0.3
-      micromark-util-types: 2.0.2
-      unified: 11.0.5
-    transitivePeerDependencies:
-      - supports-color
-
-  remark-stringify@11.0.0:
-    dependencies:
-      '@types/mdast': 4.0.4
-      mdast-util-to-markdown: 2.1.2
-      unified: 11.0.5
-
-  remark-validate-links@13.1.0:
-    dependencies:
-      '@types/hosted-git-info': 3.0.5
-      '@types/mdast': 4.0.4
-      github-slugger: 2.0.0
-      hosted-git-info: 7.0.2
-      mdast-util-to-hast: 13.2.1
-      mdast-util-to-string: 4.0.0
-      propose: 0.0.5
-      trough: 2.2.0
-      unified-engine: 11.2.2
-      unist-util-visit: 5.1.0
-      vfile: 6.0.3
-    transitivePeerDependencies:
-      - bluebird
-      - supports-color
-
-  remark@15.0.1:
-    dependencies:
-      '@types/mdast': 4.0.4
-      remark-parse: 11.0.0
-      remark-stringify: 11.0.0
-      unified: 11.0.5
-    transitivePeerDependencies:
-      - supports-color
-
   require-directory@2.1.1: {}
 
   require-from-string@2.0.2: {}
@@ -15117,8 +14055,6 @@ snapshots:
       is-core-module: 2.16.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
-
-  retry@0.12.0: {}
 
   reusify@1.1.0: {}
 
@@ -15245,7 +14181,8 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  safe-buffer@5.2.1: {}
+  safe-buffer@5.2.1:
+    optional: true
 
   safer-buffer@2.1.2: {}
 
@@ -15412,13 +14349,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  simple-concat@1.0.1: {}
+  simple-concat@1.0.1:
+    optional: true
 
   simple-get@4.0.1:
     dependencies:
       decompress-response: 6.0.0
       once: 1.4.0
       simple-concat: 1.0.1
+    optional: true
 
   sirv@3.0.2:
     dependencies:
@@ -15514,18 +14453,6 @@ snapshots:
       is-fullwidth-code-point: 3.0.0
       strip-ansi: 6.0.1
 
-  string-width@5.1.2:
-    dependencies:
-      eastasianwidth: 0.2.0
-      emoji-regex: 9.2.2
-      strip-ansi: 7.2.0
-
-  string-width@6.1.0:
-    dependencies:
-      eastasianwidth: 0.2.0
-      emoji-regex: 10.6.0
-      strip-ansi: 7.2.0
-
   string-width@7.2.0:
     dependencies:
       emoji-regex: 10.6.0
@@ -15535,6 +14462,7 @@ snapshots:
   string_decoder@1.3.0:
     dependencies:
       safe-buffer: 5.2.1
+    optional: true
 
   strip-ansi@6.0.1:
     dependencies:
@@ -15550,7 +14478,8 @@ snapshots:
 
   strip-final-newline@4.0.0: {}
 
-  strip-json-comments@2.0.1: {}
+  strip-json-comments@2.0.1:
+    optional: true
 
   strnum@2.3.0: {}
 
@@ -15567,8 +14496,6 @@ snapshots:
   supports-color@7.2.0:
     dependencies:
       has-flag: 4.0.0
-
-  supports-color@9.4.0: {}
 
   supports-hyperlinks@2.3.0:
     dependencies:
@@ -15602,6 +14529,7 @@ snapshots:
       mkdirp-classic: 0.5.3
       pump: 3.0.4
       tar-stream: 2.2.0
+    optional: true
 
   tar-stream@2.2.0:
     dependencies:
@@ -15610,6 +14538,7 @@ snapshots:
       fs-constants: 1.0.0
       inherits: 2.0.4
       readable-stream: 3.6.2
+    optional: true
 
   tar@7.5.13:
     dependencies:
@@ -15692,10 +14621,6 @@ snapshots:
 
   treeverse@3.0.0: {}
 
-  trim-lines@3.0.1: {}
-
-  trough@2.2.0: {}
-
   ts-node@10.9.2(@swc/core@1.15.30(@swc/helpers@0.5.21))(@types/node@25.6.0)(typescript@6.0.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
@@ -15741,6 +14666,7 @@ snapshots:
   tunnel-agent@0.6.0:
     dependencies:
       safe-buffer: 5.2.1
+    optional: true
 
   tunnel@0.0.6: {}
 
@@ -15768,15 +14694,11 @@ snapshots:
       tunnel: 0.0.6
       underscore: 1.13.8
 
-  typedarray@0.0.6: {}
-
   typescript@6.0.3: {}
 
   uint8array-extras@1.5.0: {}
 
   underscore@1.13.8: {}
-
-  undici-types@6.21.0: {}
 
   undici-types@7.19.2: {}
 
@@ -15793,70 +14715,6 @@ snapshots:
   unicorn-magic@0.3.0: {}
 
   unicorn-magic@0.4.0: {}
-
-  unified-engine@11.2.2:
-    dependencies:
-      '@types/concat-stream': 2.0.3
-      '@types/debug': 4.1.13
-      '@types/is-empty': 1.2.3
-      '@types/node': 22.19.18
-      '@types/unist': 3.0.3
-      concat-stream: 2.0.0
-      debug: 4.4.3
-      extend: 3.0.2
-      glob: 10.5.0
-      ignore: 6.0.2
-      is-empty: 1.2.0
-      is-plain-obj: 4.1.0
-      load-plugin: 6.0.3
-      parse-json: 7.1.1
-      trough: 2.2.0
-      unist-util-inspect: 8.1.0
-      vfile: 6.0.3
-      vfile-message: 4.0.3
-      vfile-reporter: 8.1.1
-      vfile-statistics: 3.0.0
-      yaml: 2.8.4
-    transitivePeerDependencies:
-      - bluebird
-      - supports-color
-
-  unified@11.0.5:
-    dependencies:
-      '@types/unist': 3.0.3
-      bail: 2.0.2
-      devlop: 1.1.0
-      extend: 3.0.2
-      is-plain-obj: 4.1.0
-      trough: 2.2.0
-      vfile: 6.0.3
-
-  unist-util-inspect@8.1.0:
-    dependencies:
-      '@types/unist': 3.0.3
-
-  unist-util-is@6.0.1:
-    dependencies:
-      '@types/unist': 3.0.3
-
-  unist-util-position@5.0.0:
-    dependencies:
-      '@types/unist': 3.0.3
-
-  unist-util-stringify-position@4.0.0:
-    dependencies:
-      '@types/unist': 3.0.3
-
-  unist-util-visit-parents@6.0.2:
-    dependencies:
-      '@types/unist': 3.0.3
-      unist-util-is: 6.0.1
-
-  unist-util-visit@5.1.0:
-    dependencies:
-      '@types/unist': 3.0.3
-      unist-util-is: 6.0.1
-      unist-util-visit-parents: 6.0.2
 
   universal-user-agent@7.0.3: {}
 
@@ -15916,8 +14774,6 @@ snapshots:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
 
-  validate-npm-package-name@5.0.1: {}
-
   validate-npm-package-name@7.0.2: {}
 
   vary@1.1.2: {}
@@ -15932,37 +14788,6 @@ snapshots:
       - '@types/react-dom'
 
   version-range@4.15.0: {}
-
-  vfile-message@4.0.3:
-    dependencies:
-      '@types/unist': 3.0.3
-      unist-util-stringify-position: 4.0.0
-
-  vfile-reporter@8.1.1:
-    dependencies:
-      '@types/supports-color': 8.1.3
-      string-width: 6.1.0
-      supports-color: 9.4.0
-      unist-util-stringify-position: 4.0.0
-      vfile: 6.0.3
-      vfile-message: 4.0.3
-      vfile-sort: 4.0.0
-      vfile-statistics: 3.0.0
-
-  vfile-sort@4.0.0:
-    dependencies:
-      vfile: 6.0.3
-      vfile-message: 4.0.3
-
-  vfile-statistics@3.0.0:
-    dependencies:
-      vfile: 6.0.3
-      vfile-message: 4.0.3
-
-  vfile@6.0.3:
-    dependencies:
-      '@types/unist': 3.0.3
-      vfile-message: 4.0.3
 
   victory-vendor@37.3.6:
     dependencies:
@@ -16028,7 +14853,7 @@ snapshots:
       - vite
       - yaml
 
-  vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0):
+  vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -16041,6 +14866,7 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
       tsx: 4.21.0
+      yaml: 2.8.4
 
   vitest@4.1.5(@opentelemetry/api@1.9.0)(@types/node@25.6.0)(jsdom@20.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)):
     dependencies:
@@ -16062,7 +14888,7 @@ snapshots:
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
       tinyrainbow: 3.1.0
-      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)
+      vite: 8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.4)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
@@ -16075,8 +14901,6 @@ snapshots:
     dependencies:
       xml-name-validator: 4.0.0
     optional: true
-
-  walk-up-path@3.0.1: {}
 
   walk-up-path@4.0.0: {}
 
@@ -16102,10 +14926,6 @@ snapshots:
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
-
-  which@4.0.0:
-    dependencies:
-      isexe: 3.1.5
 
   which@6.0.1:
     dependencies:
@@ -16151,12 +14971,6 @@ snapshots:
       ansi-styles: 4.3.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
-
-  wrap-ansi@8.1.0:
-    dependencies:
-      ansi-styles: 6.2.3
-      string-width: 5.1.2
-      strip-ansi: 7.2.0
 
   wrap-ansi@9.0.2:
     dependencies:
@@ -16272,5 +15086,3 @@ snapshots:
   zod@4.3.6: {}
 
   zod@4.4.3: {}
-
-  zwitch@2.0.4: {}

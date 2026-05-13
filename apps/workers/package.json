@@ -27,13 +27,10 @@
     "@cloudflare/vitest-pool-workers": "catalog:workers",
     "@cloudflare/workers-types": "catalog:workers",
     "@typescript/native-preview": "catalog:tooling",
-    "@webpresso/agent-stryker": "catalog:",
-    "@webpresso/agent-tsconfig": "catalog:",
-    "@webpresso/agent-vitest": "catalog:",
-    "@webpresso/agent-workers-test": "catalog:",
     "drizzle-kit": "catalog:workers",
     "oxlint": "catalog:tooling",
     "vitest": "catalog:tooling",
+    "webpresso": "link:/Users/ozby/repos/webpresso/agent-kit",
     "wrangler": "catalog:workers"
   }
 }

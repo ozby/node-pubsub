@@ -1,9 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { Hono } from "hono";
-import {
-  createMockHyperdrive,
-  createMockDurableObjectNamespace,
-} from "@webpresso/agent-workers-test";
+import { createMockHyperdrive, createMockDurableObjectNamespace } from "webpresso/workers-test";
 import { killSwitchMiddleware } from "./kill-switch";
 import type { Env } from "../env";
 
