@@ -1,0 +1,11 @@
+name: agent-kit audit
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  agent-kit:
+    uses: webpresso/agent-kit-action/.github/workflows/audit.yml@v1
+    with:
+      pr-comment: ${{ github.event_name == 'pull_request' }}

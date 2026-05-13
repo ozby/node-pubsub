@@ -1,1 +1,1 @@
-../../node_modules/.pnpm/@webpresso+agent-kit@0.7.3/node_modules/@webpresso/agent-kit/catalog/agent/agents/doc-writer.md
+../../node_modules/@webpresso/agent-kit/catalog/agent/agents/doc-writer.md

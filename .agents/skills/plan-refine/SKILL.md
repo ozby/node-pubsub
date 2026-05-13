@@ -1,1 +1,1 @@
-../../../node_modules/@webpresso/agent-kit/skills/plan-refine/SKILL.md
+../../../.agent/skills/plan-refine/SKILL.md

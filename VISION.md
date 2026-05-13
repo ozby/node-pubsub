@@ -1,6 +1,6 @@
 ---
 type: vision
-last_updated: 2026-05-08
+last_updated: 2026-05-11
 ---
 
 # ingest-lens Vision

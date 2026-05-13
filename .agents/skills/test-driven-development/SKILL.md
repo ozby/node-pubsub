@@ -1,1 +1,1 @@
-../../../node_modules/@webpresso/agent-kit/skills/test-driven-development/SKILL.md
+../../../.agent/skills/test-driven-development/SKILL.md

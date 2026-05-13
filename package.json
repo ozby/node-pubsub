@@ -34,15 +34,14 @@
     "ai:eval": "bun ./scripts/run-mapping-eval.ts",
     "probes:lab": "bun scripts/probes/consistency-lab/run-all.ts"
   },
+  "dependencies": {
+    "rulesync": "8.15.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@secretlint/secretlint-rule-preset-recommend": "^9.3.0",
     "@types/react": "catalog:",
-    "@webpresso/agent-kit": "catalog:",
-    "@webpresso/agent-stryker": "catalog:",
-    "@webpresso/agent-tsconfig": "catalog:",
-    "@webpresso/agent-vitest": "catalog:",
     "@webpresso/runtime": "catalog:",
     "@webpresso/schema-engine": "catalog:",
     "@webpresso/schema-frontend": "catalog:",
@@ -52,7 +51,8 @@
     "oxlint": "catalog:tooling",
     "react": "catalog:",
     "secretlint": "^9.3.0",
-    "vite-plus": "catalog:"
+    "vite-plus": "catalog:",
+    "webpresso": "link:/Users/ozby/repos/webpresso/agent-kit"
   },
   "engines": {
     "node": ">=24"
@@ -76,12 +76,11 @@
       }
     },
     "onlyBuiltDependencies": [
-      "@webpresso/agent-kit",
       "@webpresso/db-branching",
       "@webpresso/db-branching-neon",
       "@webpresso/runtime",
-      "@webpresso/agent-vitest",
-      "@webpresso/agent-workers-test"
+      "webpresso/vitest",
+      "webpresso/workers-test"
     ]
   }
 }

@@ -1,1 +1,1 @@
-../../../node_modules/@webpresso/agent-kit/skills/pll/SKILL.md
+../../../.agent/skills/pll/SKILL.md

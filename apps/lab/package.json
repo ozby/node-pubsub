@@ -19,11 +19,9 @@
   "devDependencies": {
     "@cloudflare/workers-types": "catalog:workers",
     "@typescript/native-preview": "catalog:tooling",
-    "@webpresso/agent-tsconfig": "catalog:",
-    "@webpresso/agent-vitest": "catalog:",
-    "@webpresso/agent-workers-test": "catalog:",
     "oxlint": "catalog:tooling",
     "vitest": "catalog:tooling",
+    "webpresso": "link:/Users/ozby/repos/webpresso/agent-kit",
     "wrangler": "catalog:workers"
   }
 }

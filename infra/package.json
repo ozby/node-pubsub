@@ -21,9 +21,8 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:tooling",
-    "@webpresso/agent-tsconfig": "catalog:",
-    "@webpresso/agent-vitest": "catalog:",
     "tsx": "^4.21.0",
-    "vitest": "catalog:tooling"
+    "vitest": "catalog:tooling",
+    "webpresso": "link:/Users/ozby/repos/webpresso/agent-kit"
   }
 }

@@ -3,7 +3,12 @@
     "context-mode": {
       "type": "local",
       "command": ["context-mode"]
+    },
+    "agent-kit": {
+      "type": "local",
+      "command": ["bun", "node_modules/@webpresso/agent-kit/src/mcp/cli.ts"]
     }
   },
-  "plugin": ["context-mode"]
+  "plugin": ["context-mode"],
+  "$schema": "https://opencode.ai/config.json"
 }
